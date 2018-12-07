@@ -9,7 +9,9 @@ class MobileNet(nn.Module):
     '''
         1.0 MobileNet-224 实现，目前还没加宽度因子alpha,分辨力因子p
     '''
-    def __init__(self, num_classes=1000):
+    def __init__(self, alpha=1, p=224, num_classes=1000):
+        self.alpha = alpha
+        self.p = p
         super(MobileNet, self).__init__()
 
         def conv_bn(inp, oup, stride):
@@ -29,54 +31,155 @@ class MobileNet(nn.Module):
                 nn.BatchNorm2d(oup),
                 nn.ReLU(inplace=True),
             )
-
-        self.model = nn.Sequential(
-            conv_bn(  3,  32, 2), # 112x112x32
-            conv_dw( 32,  64, 1), # 112x112x64
-            conv_dw( 64, 128, 2), # 56x56x128
-            conv_dw(128, 128, 1), # 56x56x128
-            conv_dw(128, 256, 2), # 28x28x256
-            conv_dw(256, 256, 1), # 28x28x256
-            conv_dw(256, 512, 2), # 14x14x512
-            conv_dw(512, 512, 1), # 14x14x512
-            conv_dw(512, 512, 1), # 14x14x512
-            conv_dw(512, 512, 1), # 14x14x512
-            conv_dw(512, 512, 1), # 14x14x512
-            conv_dw(512, 512, 1), # 14x14x512
-            conv_dw(512, 1024, 2), # 7x7x1024
-            conv_dw(1024, 1024, 1), # 7x7x1024
-            nn.AvgPool2d(7), # 1x1x1024
-        )
-        self.fc = nn.Linear(1024, num_classes)
+        # for input size 224x224
+        if self.p == 224:
+            self.model = nn.Sequential(
+                conv_bn(  3,  int(32*self.alpha), 2), # 112x112x32
+                conv_dw( int(32*self.alpha),  int(64*self.alpha), 1), # 112x112x64
+                conv_dw( int(64*self.alpha), int(128*self.alpha), 2), # 56x56x128
+                conv_dw(int(128*self.alpha), int(128*self.alpha), 1), # 56x56x128
+                conv_dw(int(128*self.alpha), int(256*self.alpha), 2), # 28x28x256
+                conv_dw(int(256*self.alpha), int(256*self.alpha), 1), # 28x28x256
+                conv_dw(int(256*self.alpha), int(512*self.alpha), 2), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(1024*self.alpha), 2), # 7x7x1024
+                conv_dw(int(1024*self.alpha), int(1024*self.alpha), 1), # 7x7x1024
+                nn.AvgPool2d(7), # 1x1x1024, ***************************need to change
+            )
+         # for input size 192x192
+        elif self.p == 192: 
+            self.model = nn.Sequential(
+                conv_bn(  3,  int(32*self.alpha), 2), # 112x112x32
+                conv_dw( int(32*self.alpha),  int(64*self.alpha), 1), # 112x112x64
+                conv_dw( int(64*self.alpha), int(128*self.alpha), 2), # 56x56x128
+                conv_dw(int(128*self.alpha), int(128*self.alpha), 1), # 56x56x128
+                conv_dw(int(128*self.alpha), int(256*self.alpha), 2), # 28x28x256
+                conv_dw(int(256*self.alpha), int(256*self.alpha), 1), # 28x28x256
+                conv_dw(int(256*self.alpha), int(512*self.alpha), 2), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(1024*self.alpha), 2), # 7x7x1024
+                conv_dw(int(1024*self.alpha), int(1024*self.alpha), 1), # 7x7x1024
+                nn.AvgPool2d(6), # 1x1x1024, ***************************need to change
+            )
+        # for input size 160x160
+        elif self.p == 160: 
+            self.model = nn.Sequential(
+                conv_bn(  3,  int(32*self.alpha), 2), # 112x112x32
+                conv_dw( int(32*self.alpha),  int(64*self.alpha), 1), # 112x112x64
+                conv_dw( int(64*self.alpha), int(128*self.alpha), 2), # 56x56x128
+                conv_dw(int(128*self.alpha), int(128*self.alpha), 1), # 56x56x128
+                conv_dw(int(128*self.alpha), int(256*self.alpha), 2), # 28x28x256
+                conv_dw(int(256*self.alpha), int(256*self.alpha), 1), # 28x28x256
+                conv_dw(int(256*self.alpha), int(512*self.alpha), 2), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(1024*self.alpha), 2), # 7x7x1024
+                conv_dw(int(1024*self.alpha), int(1024*self.alpha), 1), # 7x7x1024
+                nn.AvgPool2d(5), # 1x1x1024, ***************************need to change
+            )
+        # for input size 128x128
+        else :
+            self.model = nn.Sequential(
+                conv_bn(  3,  int(32*self.alpha), 2), # 112x112x32
+                conv_dw( int(32*self.alpha),  int(64*self.alpha), 1), # 112x112x64
+                conv_dw( int(64*self.alpha), int(128*self.alpha), 2), # 56x56x128
+                conv_dw(int(128*self.alpha), int(128*self.alpha), 1), # 56x56x128
+                conv_dw(int(128*self.alpha), int(256*self.alpha), 2), # 28x28x256
+                conv_dw(int(256*self.alpha), int(256*self.alpha), 1), # 28x28x256
+                conv_dw(int(256*self.alpha), int(512*self.alpha), 2), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(512*self.alpha), 1), # 14x14x512
+                conv_dw(int(512*self.alpha), int(1024*self.alpha), 2), # 7x7x1024
+                conv_dw(int(1024*self.alpha), int(1024*self.alpha), 1), # 7x7x1024
+                nn.AvgPool2d(4), # 1x1x1024, ***************************need to change
+            )
+        self.fc = nn.Linear(int(1024*self.alpha), num_classes)
 
     def forward(self, x):
         x = self.model(x)
-        x = x.view(-1, 1024)
+        x = x.view(-1, int(1024*self.alpha))
         x = self.fc(x)
         return x
 
-def mobilenet_224_1_0(num_classes=1000):
-    model = MobileNet(num_classes)
+
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+def mobilenet_1_0(alpha=1, p=224, num_classes=1000):
+    model = MobileNet(alpha, p, num_classes)
     return model
 
-def speed(model, name):
+def mobilenet_0_75(alpha=0.75, p=224, num_classes=1000):
+    model = MobileNet(alpha, p, num_classes)
+    return model
+
+def mobilenet_0_5(alpha=0.5, p=224, num_classes=1000):
+    model = MobileNet(alpha, p, num_classes)
+    return model
+
+def mobilenet_0_25(alpha=0.25, p=224, num_classes=1000):
+    model = MobileNet(alpha, p, num_classes)
+    return model
+
+def speed(model, name, inputX, inputY):
     t0 = time.time()
-    input = torch.rand(1,3,224,224).cuda()
+    input = torch.rand(1,3,inputX,inputY).cuda()
     input = Variable(input, volatile = True)
     t1 = time.time()
 
     model(input)
     t2 = time.time()
-
-    model(input)
-    t3 = time.time()
     
-    print('%10s : %f' % (name, t3 - t2))
+    print('=> {} cost: {}'.format(name, t2 - t1))
 
 if __name__ == '__main__':
     #cudnn.benchmark = True # This will make network slow ??
-    
-    mobilenet = mobilenet_224_1_0(1000).cuda()
+    #  mobilenet_1_0
+    mobilenet = mobilenet_1_0(1, 224, 1000).cuda()
+    print("=> mobilenet_1_0 :\n {}".format(mobilenet))
+    speed(mobilenet, 'mobilenet_224_1_0', 224, 224) # for 224x224
 
+    mobilenet = mobilenet_1_0(1, 192, 1000).cuda()
+    print("=> mobilenet_1_0 :\n {}".format(mobilenet))
+    speed(mobilenet, 'mobilenet_192_1_0', 192, 192) # for 192x192
     
-    speed(mobilenet, 'mobilenet')
+    mobilenet = mobilenet_1_0(1, 160, 1000).cuda()
+    print("=> mobilenet_1_0 :\n {}".format(mobilenet))
+    speed(mobilenet, 'mobilenet_160_1_0', 160, 160) # for 160x160
+    
+    mobilenet = mobilenet_1_0(1, 128, 1000).cuda()
+    print("=> mobilenet_1_0 :\n {}".format(mobilenet))
+    speed(mobilenet, 'mobilenet_128_1_0', 128, 128) # for 128x128
+    print("=> mobilenet_1_0 param : {}".format(count_parameters(mobilenet)))
+
+    # #  mobilenet_0_75
+    # mobilenet = mobilenet_0_75(0.75, 224, 1000).cuda()
+    # print("=> mobilenet_0_75 :\n {}".format(mobilenet))
+    # speed(mobilenet, 'mobilenet_224_0_75', 224, 224)
+    # print("=> mobilenet_0_75 param : {}".format(count_parameters(mobilenet)))
+
+    # #  mobilenet_0_5
+    # mobilenet = mobilenet_0_5(0.5, 224, 1000).cuda()
+    # print("=> mobilenet_0_5 :\n {}".format(mobilenet))
+    # speed(mobilenet, 'mobilenet_224_0_5', 224, 224)
+    # print("=> mobilenet_0_5 param : {}".format(count_parameters(mobilenet)))
+
+    # #  mobilenet_0_25
+    # mobilenet = mobilenet_0_75(0.25, 224, 1000).cuda()
+    # print("=> mobilenet_0_25 :\n {}".format(mobilenet))
+    # speed(mobilenet, 'mobilenet_224_0_25', 224, 224)
+    # print("=> mobilenet_0_25 param : {}".format(count_parameters(mobilenet)))

@@ -32,4 +32,4 @@ from .cifar_squeezenext_ibn_a_2_0_75 import sqnxt_23_1x_ibn_a_2_0_75, sqnxt_23_1
 from .cifar_squeezenext_ibn_b import sqnxt_23_1x_ibn_b, sqnxt_23_1x_v5_ibn_b, sqnxt_23_2x_ibn_b, sqnxt_23_2x_v5_ibn_b
 
 #add mobilenet
-from .mobilenet import mobilenet_224_1_0,
+from .mobilenet import mobilenet_0_25, mobilenet_0_5, mobilenet_0_75, mobilenet_1_0
