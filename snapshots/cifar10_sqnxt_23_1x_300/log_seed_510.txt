@@ -1,0 +1,2109 @@
+save path : ./snapshots/cifar10_sqnxt_23_1x_300
+{'arch': 'sqnxt_23_1x', 'batch_size': 128, 'data_path': './data', 'dataset': 'cifar10', 'decay': 0.0005, 'epochs': 300, 'evaluate': False, 'gammas': [0.1, 0.1], 'learning_rate': 0.1, 'manualSeed': 510, 'momentum': 0.9, 'ngpu': 1, 'print_freq': 200, 'resume': '', 'save_path': './snapshots/cifar10_sqnxt_23_1x_300', 'schedule': [150, 225], 'start_epoch': 0, 'use_cuda': True, 'workers': 4}
+Random Seed: 510
+python version : 3.6.5 |Anaconda, Inc.| (default, Apr 29 2018, 16:14:56)  [GCC 7.2.0]
+torch  version : 0.4.1.post2
+cudnn  version : 7102
+=> creating model 'sqnxt_23_1x'
+=> network :
+ SqueezeNext(
+  (conv1): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (stage1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 8, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(8, 16, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(16, 16, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 8, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(8, 16, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(16, 16, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (2): BasicBlock(
+      (conv1): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 8, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(8, 16, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(16, 16, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (3): BasicBlock(
+      (conv1): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 8, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(8, 16, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(16, 16, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (4): BasicBlock(
+      (conv1): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 8, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(8, 16, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(16, 16, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (5): BasicBlock(
+      (conv1): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(16, 8, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(8, 16, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(16, 16, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+  )
+  (stage2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(32, 32, kernel_size=(1, 1), stride=(2, 2))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(16, 32, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(32, 32, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2))
+        (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(16, 32, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(32, 32, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (2): BasicBlock(
+      (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(16, 32, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(32, 32, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (3): BasicBlock(
+      (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(16, 32, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(32, 32, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (4): BasicBlock(
+      (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(16, 32, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(32, 32, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (5): BasicBlock(
+      (conv1): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(16, 32, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(32, 32, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+  )
+  (stage3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(2, 2))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(32, 64, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(64, 64, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(32, 64, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(64, 64, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (2): BasicBlock(
+      (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(32, 64, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(64, 64, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (3): BasicBlock(
+      (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(32, 64, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(64, 64, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (4): BasicBlock(
+      (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(32, 64, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(64, 64, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (5): BasicBlock(
+      (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(32, 64, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(64, 64, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (6): BasicBlock(
+      (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(32, 64, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(64, 64, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+    (7): BasicBlock(
+      (conv1): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(32, 64, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(64, 64, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(64, 128, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential()
+    )
+  )
+  (stage4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(1, 1), stride=(2, 2))
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv2): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1))
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv3): Conv2d(64, 128, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1))
+      (bn3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv4): Conv2d(128, 128, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0))
+      (bn4): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv5): Conv2d(128, 256, kernel_size=(1, 1), stride=(1, 1))
+      (bn5): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (shortcut): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2))
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (conv2): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1))
+  (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (linear): Linear(in_features=128, out_features=10, bias=True)
+)
+=> do not use any checkpoint for sqnxt_23_1x model
+
+==>>[2018-11-22 03:05:06] [Epoch=000/300] [Need: 00:00:00] [learning_rate=0.1000] [Best : Accuracy=0.00, Error=100.00]
+  Epoch: [000][000/391]   Time 0.869 (0.869)   Data 0.101 (0.101)   Loss 2.4003 (2.4003)   Prec@1 10.938 (10.938)   Prec@5 58.594 (58.594)   [2018-11-22 03:05:07]
+  Epoch: [000][200/391]   Time 0.155 (0.154)   Data 0.000 (0.001)   Loss 1.8363 (2.0308)   Prec@1 31.250 (23.527)   Prec@5 84.375 (74.891)   [2018-11-22 03:05:37]
+  **Train** Prec@1 28.946 Prec@5 80.532 Error@1 71.054
+  **Test** Prec@1 39.210 Prec@5 89.300 Error@1 60.790
+
+==>>[2018-11-22 03时06分10秒] [Epoch=001/300] [Need: 05:18:13] [learning_rate=0.1000] [Best : Accuracy=39.21, Error=60.79]
+  Epoch: [001][000/391]   Time 0.256 (0.256)   Data 0.105 (0.105)   Loss 1.7161 (1.7161)   Prec@1 35.156 (35.156)   Prec@5 89.062 (89.062)   [2018-11-22 03时06分10秒]
+  Epoch: [001][200/391]   Time 0.151 (0.150)   Data 0.000 (0.001)   Loss 1.4877 (1.6019)   Prec@1 46.094 (40.384)   Prec@5 92.188 (89.614)   [2018-11-22 03时06分40秒]
+  **Train** Prec@1 42.706 Prec@5 90.556 Error@1 57.294
+  **Test** Prec@1 45.730 Prec@5 92.190 Error@1 54.270
+
+==>>[2018-11-22 03时07分13秒] [Epoch=002/300] [Need: 05:15:03] [learning_rate=0.1000] [Best : Accuracy=45.73, Error=54.27]
+  Epoch: [002][000/391]   Time 0.244 (0.244)   Data 0.092 (0.092)   Loss 1.5219 (1.5219)   Prec@1 49.219 (49.219)   Prec@5 89.844 (89.844)   [2018-11-22 03时07分13秒]
+  Epoch: [002][200/391]   Time 0.151 (0.152)   Data 0.000 (0.001)   Loss 1.3739 (1.3996)   Prec@1 58.594 (49.028)   Prec@5 89.844 (92.980)   [2018-11-22 03时07分43秒]
+  **Train** Prec@1 50.508 Prec@5 93.342 Error@1 49.492
+  **Test** Prec@1 53.640 Prec@5 93.960 Error@1 46.360
+
+==>>[2018-11-22 03时08分16秒] [Epoch=003/300] [Need: 05:13:51] [learning_rate=0.1000] [Best : Accuracy=53.64, Error=46.36]
+  Epoch: [003][000/391]   Time 0.259 (0.259)   Data 0.106 (0.106)   Loss 1.1991 (1.1991)   Prec@1 54.688 (54.688)   Prec@5 94.531 (94.531)   [2018-11-22 03时08分17秒]
+  Epoch: [003][200/391]   Time 0.149 (0.152)   Data 0.000 (0.001)   Loss 1.1944 (1.2355)   Prec@1 59.375 (55.710)   Prec@5 95.312 (94.862)   [2018-11-22 03时08分47秒]
+  **Train** Prec@1 57.552 Prec@5 95.160 Error@1 42.448
+  **Test** Prec@1 51.510 Prec@5 94.290 Error@1 48.490
+
+==>>[2018-11-22 03时09分20秒] [Epoch=004/300] [Need: 05:12:42] [learning_rate=0.1000] [Best : Accuracy=53.64, Error=46.36]
+  Epoch: [004][000/391]   Time 0.264 (0.264)   Data 0.103 (0.103)   Loss 1.0832 (1.0832)   Prec@1 64.062 (64.062)   Prec@5 96.875 (96.875)   [2018-11-22 03时09分20秒]
+  Epoch: [004][200/391]   Time 0.150 (0.151)   Data 0.000 (0.001)   Loss 1.0378 (1.0910)   Prec@1 62.500 (61.353)   Prec@5 95.312 (96.078)   [2018-11-22 03时09分50秒]
+  **Train** Prec@1 61.950 Prec@5 96.264 Error@1 38.050
+  **Test** Prec@1 59.890 Prec@5 95.680 Error@1 40.110
+
+==>>[2018-11-22 03时10分23秒] [Epoch=005/300] [Need: 05:11:35] [learning_rate=0.1000] [Best : Accuracy=59.89, Error=40.11]
+  Epoch: [005][000/391]   Time 0.246 (0.246)   Data 0.095 (0.095)   Loss 1.0656 (1.0656)   Prec@1 64.062 (64.062)   Prec@5 92.969 (92.969)   [2018-11-22 03时10分23秒]
+  Epoch: [005][200/391]   Time 0.149 (0.154)   Data 0.000 (0.001)   Loss 1.1453 (1.0063)   Prec@1 64.062 (64.572)   Prec@5 96.875 (96.685)   [2018-11-22 03时10分54秒]
+  **Train** Prec@1 64.984 Prec@5 96.810 Error@1 35.016
+  **Test** Prec@1 62.930 Prec@5 96.400 Error@1 37.070
+
+==>>[2018-11-22 03时11分27秒] [Epoch=006/300] [Need: 05:11:16] [learning_rate=0.1000] [Best : Accuracy=62.93, Error=37.07]
+  Epoch: [006][000/391]   Time 0.264 (0.264)   Data 0.111 (0.111)   Loss 1.1065 (1.1065)   Prec@1 63.281 (63.281)   Prec@5 91.406 (91.406)   [2018-11-22 03时11分28秒]
+  Epoch: [006][200/391]   Time 0.150 (0.152)   Data 0.000 (0.001)   Loss 0.8240 (0.9403)   Prec@1 68.750 (66.643)   Prec@5 97.656 (96.999)   [2018-11-22 03时11分58秒]
+  **Train** Prec@1 66.902 Prec@5 97.168 Error@1 33.098
+  **Test** Prec@1 64.920 Prec@5 97.240 Error@1 35.080
+
+==>>[2018-11-22 03时12分31秒] [Epoch=007/300] [Need: 05:10:14] [learning_rate=0.1000] [Best : Accuracy=64.92, Error=35.08]
+  Epoch: [007][000/391]   Time 0.253 (0.253)   Data 0.102 (0.102)   Loss 0.7377 (0.7377)   Prec@1 73.438 (73.438)   Prec@5 99.219 (99.219)   [2018-11-22 03时12分31秒]
+  Epoch: [007][200/391]   Time 0.152 (0.151)   Data 0.000 (0.001)   Loss 0.8207 (0.8866)   Prec@1 69.531 (68.781)   Prec@5 96.875 (97.559)   [2018-11-22 03时13分01秒]
+  **Train** Prec@1 69.132 Prec@5 97.624 Error@1 30.868
+  **Test** Prec@1 59.920 Prec@5 95.470 Error@1 40.080
+
+==>>[2018-11-22 03时13分34秒] [Epoch=008/300] [Need: 05:08:55] [learning_rate=0.1000] [Best : Accuracy=64.92, Error=35.08]
+  Epoch: [008][000/391]   Time 0.256 (0.256)   Data 0.103 (0.103)   Loss 0.8235 (0.8235)   Prec@1 71.094 (71.094)   Prec@5 96.875 (96.875)   [2018-11-22 03时13分34秒]
+  Epoch: [008][200/391]   Time 0.150 (0.152)   Data 0.000 (0.001)   Loss 0.9092 (0.8394)   Prec@1 67.969 (70.631)   Prec@5 95.312 (97.753)   [2018-11-22 03时14分05秒]
+  **Train** Prec@1 71.060 Prec@5 97.868 Error@1 28.940
+  **Test** Prec@1 66.960 Prec@5 97.160 Error@1 33.040
+
+==>>[2018-11-22 03时14分37秒] [Epoch=009/300] [Need: 05:07:52] [learning_rate=0.1000] [Best : Accuracy=66.96, Error=33.04]
+  Epoch: [009][000/391]   Time 0.250 (0.250)   Data 0.099 (0.099)   Loss 0.7447 (0.7447)   Prec@1 73.438 (73.438)   Prec@5 98.438 (98.438)   [2018-11-22 03时14分38秒]
+  Epoch: [009][200/391]   Time 0.153 (0.151)   Data 0.000 (0.001)   Loss 0.8825 (0.7906)   Prec@1 74.219 (72.392)   Prec@5 98.438 (98.022)   [2018-11-22 03时15分08秒]
+  **Train** Prec@1 72.296 Prec@5 98.054 Error@1 27.704
+  **Test** Prec@1 68.690 Prec@5 97.310 Error@1 31.310
+
+==>>[2018-11-22 03时15分41秒] [Epoch=010/300] [Need: 05:06:37] [learning_rate=0.1000] [Best : Accuracy=68.69, Error=31.31]
+  Epoch: [010][000/391]   Time 0.259 (0.259)   Data 0.107 (0.107)   Loss 0.8546 (0.8546)   Prec@1 72.656 (72.656)   Prec@5 98.438 (98.438)   [2018-11-22 03时15分41秒]
+  Epoch: [010][200/391]   Time 0.152 (0.151)   Data 0.000 (0.001)   Loss 0.8373 (0.7647)   Prec@1 68.750 (73.169)   Prec@5 97.656 (98.193)   [2018-11-22 03时16分11秒]
+  **Train** Prec@1 73.208 Prec@5 98.152 Error@1 26.792
+  **Test** Prec@1 67.220 Prec@5 95.180 Error@1 32.780
+
+==>>[2018-11-22 03时16分44秒] [Epoch=011/300] [Need: 05:05:28] [learning_rate=0.1000] [Best : Accuracy=68.69, Error=31.31]
+  Epoch: [011][000/391]   Time 0.252 (0.252)   Data 0.099 (0.099)   Loss 0.6123 (0.6123)   Prec@1 81.250 (81.250)   Prec@5 98.438 (98.438)   [2018-11-22 03时16分44秒]
+  Epoch: [011][200/391]   Time 0.152 (0.152)   Data 0.000 (0.001)   Loss 0.7384 (0.7563)   Prec@1 75.781 (73.776)   Prec@5 97.656 (98.204)   [2018-11-22 03时17分14秒]
+  **Train** Prec@1 74.076 Prec@5 98.156 Error@1 25.924
+  **Test** Prec@1 72.930 Prec@5 98.300 Error@1 27.070
+
+==>>[2018-11-22 03时17分47秒] [Epoch=012/300] [Need: 05:04:27] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [012][000/391]   Time 0.261 (0.261)   Data 0.110 (0.110)   Loss 0.5945 (0.5945)   Prec@1 80.469 (80.469)   Prec@5 97.656 (97.656)   [2018-11-22 03时17分48秒]
+  Epoch: [012][200/391]   Time 0.159 (0.151)   Data 0.001 (0.001)   Loss 0.7325 (0.7287)   Prec@1 76.562 (74.471)   Prec@5 96.875 (98.453)   [2018-11-22 03时18分18秒]
+  **Train** Prec@1 74.650 Prec@5 98.424 Error@1 25.350
+  **Test** Prec@1 69.920 Prec@5 96.910 Error@1 30.080
+
+==>>[2018-11-22 03时18分50秒] [Epoch=013/300] [Need: 05:03:19] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [013][000/391]   Time 0.262 (0.262)   Data 0.112 (0.112)   Loss 0.6349 (0.6349)   Prec@1 77.344 (77.344)   Prec@5 98.438 (98.438)   [2018-11-22 03时18分51秒]
+  Epoch: [013][200/391]   Time 0.150 (0.151)   Data 0.001 (0.001)   Loss 0.5215 (0.7143)   Prec@1 81.250 (75.074)   Prec@5 100.000 (98.465)   [2018-11-22 03时19分21秒]
+  **Train** Prec@1 75.124 Prec@5 98.446 Error@1 24.876
+  **Test** Prec@1 69.230 Prec@5 96.600 Error@1 30.770
+
+==>>[2018-11-22 03时19分54秒] [Epoch=014/300] [Need: 05:02:11] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [014][000/391]   Time 0.259 (0.259)   Data 0.106 (0.106)   Loss 0.5559 (0.5559)   Prec@1 77.344 (77.344)   Prec@5 100.000 (100.000)   [2018-11-22 03时19分54秒]
+  Epoch: [014][200/391]   Time 0.151 (0.151)   Data 0.001 (0.001)   Loss 0.7867 (0.7018)   Prec@1 78.906 (75.560)   Prec@5 97.656 (98.457)   [2018-11-22 03时20分24秒]
+  **Train** Prec@1 75.638 Prec@5 98.448 Error@1 24.362
+  **Test** Prec@1 65.250 Prec@5 97.130 Error@1 34.750
+
+==>>[2018-11-22 03时20分57秒] [Epoch=015/300] [Need: 05:01:00] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [015][000/391]   Time 0.258 (0.258)   Data 0.108 (0.108)   Loss 0.5688 (0.5688)   Prec@1 79.688 (79.688)   Prec@5 99.219 (99.219)   [2018-11-22 03时20分57秒]
+  Epoch: [015][200/391]   Time 0.149 (0.151)   Data 0.000 (0.001)   Loss 0.5907 (0.6966)   Prec@1 80.469 (75.828)   Prec@5 100.000 (98.496)   [2018-11-22 03时21分27秒]
+  **Train** Prec@1 75.964 Prec@5 98.486 Error@1 24.036
+  **Test** Prec@1 72.460 Prec@5 98.450 Error@1 27.540
+
+==>>[2018-11-22 03时22分00秒] [Epoch=016/300] [Need: 04:59:55] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [016][000/391]   Time 0.264 (0.264)   Data 0.112 (0.112)   Loss 0.7584 (0.7584)   Prec@1 73.438 (73.438)   Prec@5 98.438 (98.438)   [2018-11-22 03时22分00秒]
+  Epoch: [016][200/391]   Time 0.150 (0.151)   Data 0.000 (0.001)   Loss 0.5715 (0.6857)   Prec@1 78.906 (76.333)   Prec@5 100.000 (98.507)   [2018-11-22 03时22分30秒]
+  **Train** Prec@1 76.434 Prec@5 98.530 Error@1 23.566
+  **Test** Prec@1 69.200 Prec@5 97.940 Error@1 30.800
+
+==>>[2018-11-22 03时23分03秒] [Epoch=017/300] [Need: 04:58:51] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [017][000/391]   Time 0.251 (0.251)   Data 0.098 (0.098)   Loss 0.6470 (0.6470)   Prec@1 78.125 (78.125)   Prec@5 100.000 (100.000)   [2018-11-22 03时23分04秒]
+  Epoch: [017][200/391]   Time 0.149 (0.152)   Data 0.000 (0.001)   Loss 0.6500 (0.6604)   Prec@1 79.688 (77.048)   Prec@5 97.656 (98.655)   [2018-11-22 03时23分34秒]
+  **Train** Prec@1 76.594 Prec@5 98.596 Error@1 23.406
+  **Test** Prec@1 69.200 Prec@5 97.500 Error@1 30.800
+
+==>>[2018-11-22 03时24分06秒] [Epoch=018/300] [Need: 04:57:45] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [018][000/391]   Time 0.263 (0.263)   Data 0.113 (0.113)   Loss 0.6613 (0.6613)   Prec@1 75.781 (75.781)   Prec@5 99.219 (99.219)   [2018-11-22 03时24分07秒]
+  Epoch: [018][200/391]   Time 0.149 (0.151)   Data 0.000 (0.001)   Loss 0.6789 (0.6626)   Prec@1 78.125 (76.702)   Prec@5 97.656 (98.713)   [2018-11-22 03时24分37秒]
+  **Train** Prec@1 76.742 Prec@5 98.690 Error@1 23.258
+  **Test** Prec@1 70.660 Prec@5 98.100 Error@1 29.340
+
+==>>[2018-11-22 03时25分09秒] [Epoch=019/300] [Need: 04:56:35] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [019][000/391]   Time 0.243 (0.243)   Data 0.091 (0.091)   Loss 0.6041 (0.6041)   Prec@1 81.250 (81.250)   Prec@5 99.219 (99.219)   [2018-11-22 03时25分10秒]
+  Epoch: [019][200/391]   Time 0.152 (0.151)   Data 0.001 (0.001)   Loss 0.5412 (0.6607)   Prec@1 77.344 (77.188)   Prec@5 99.219 (98.616)   [2018-11-22 03时25分40秒]
+  **Train** Prec@1 76.920 Prec@5 98.610 Error@1 23.080
+  **Test** Prec@1 64.200 Prec@5 94.920 Error@1 35.800
+
+==>>[2018-11-22 03时26分12秒] [Epoch=020/300] [Need: 04:55:28] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [020][000/391]   Time 0.263 (0.263)   Data 0.107 (0.107)   Loss 0.5776 (0.5776)   Prec@1 77.344 (77.344)   Prec@5 99.219 (99.219)   [2018-11-22 03时26分13秒]
+  Epoch: [020][200/391]   Time 0.146 (0.151)   Data 0.001 (0.001)   Loss 0.6221 (0.6488)   Prec@1 82.031 (77.387)   Prec@5 100.000 (98.745)   [2018-11-22 03时26分43秒]
+  **Train** Prec@1 77.294 Prec@5 98.686 Error@1 22.706
+  **Test** Prec@1 62.830 Prec@5 97.580 Error@1 37.170
+
+==>>[2018-11-22 03时27分15秒] [Epoch=021/300] [Need: 04:54:19] [learning_rate=0.1000] [Best : Accuracy=72.93, Error=27.07]
+  Epoch: [021][000/391]   Time 0.259 (0.259)   Data 0.110 (0.110)   Loss 0.6350 (0.6350)   Prec@1 80.469 (80.469)   Prec@5 96.094 (96.094)   [2018-11-22 03时27分16秒]
+  Epoch: [021][200/391]   Time 0.149 (0.150)   Data 0.000 (0.001)   Loss 0.5286 (0.6554)   Prec@1 80.469 (77.146)   Prec@5 99.219 (98.647)   [2018-11-22 03时27分45秒]
+  **Train** Prec@1 77.500 Prec@5 98.680 Error@1 22.500
+  **Test** Prec@1 74.290 Prec@5 98.570 Error@1 25.710
+
+==>>[2018-11-22 03时28分18秒] [Epoch=022/300] [Need: 04:53:12] [learning_rate=0.1000] [Best : Accuracy=74.29, Error=25.71]
+  Epoch: [022][000/391]   Time 0.239 (0.239)   Data 0.089 (0.089)   Loss 0.5509 (0.5509)   Prec@1 81.250 (81.250)   Prec@5 100.000 (100.000)   [2018-11-22 03时28分19秒]
+  Epoch: [022][200/391]   Time 0.149 (0.151)   Data 0.000 (0.001)   Loss 0.7820 (0.6417)   Prec@1 75.781 (77.507)   Prec@5 99.219 (98.706)   [2018-11-22 03时28分49秒]
+  **Train** Prec@1 77.566 Prec@5 98.706 Error@1 22.434
+  **Test** Prec@1 74.300 Prec@5 98.460 Error@1 25.700
+
+==>>[2018-11-22 03时29分21秒] [Epoch=023/300] [Need: 04:52:04] [learning_rate=0.1000] [Best : Accuracy=74.30, Error=25.70]
+  Epoch: [023][000/391]   Time 0.257 (0.257)   Data 0.107 (0.107)   Loss 0.4453 (0.4453)   Prec@1 85.156 (85.156)   Prec@5 99.219 (99.219)   [2018-11-22 03时29分21秒]
+  Epoch: [023][200/391]   Time 0.149 (0.151)   Data 0.000 (0.001)   Loss 0.5521 (0.6281)   Prec@1 81.250 (78.059)   Prec@5 98.438 (98.850)   [2018-11-22 03时29分51秒]
+  **Train** Prec@1 77.660 Prec@5 98.754 Error@1 22.340
+  **Test** Prec@1 72.600 Prec@5 98.690 Error@1 27.400
+
+==>>[2018-11-22 03时30分24秒] [Epoch=024/300] [Need: 04:50:54] [learning_rate=0.1000] [Best : Accuracy=74.30, Error=25.70]
+  Epoch: [024][000/391]   Time 0.255 (0.255)   Data 0.105 (0.105)   Loss 0.5904 (0.5904)   Prec@1 76.562 (76.562)   Prec@5 99.219 (99.219)   [2018-11-22 03时30分24秒]
+  Epoch: [024][200/391]   Time 0.149 (0.150)   Data 0.000 (0.001)   Loss 0.5386 (0.6326)   Prec@1 79.688 (78.261)   Prec@5 98.438 (98.818)   [2018-11-22 03时30分54秒]
+  **Train** Prec@1 78.342 Prec@5 98.794 Error@1 21.658
+  **Test** Prec@1 77.330 Prec@5 98.770 Error@1 22.670
+
+==>>[2018-11-22 03时31分26秒] [Epoch=025/300] [Need: 04:49:40] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [025][000/391]   Time 0.255 (0.255)   Data 0.103 (0.103)   Loss 0.3774 (0.3774)   Prec@1 86.719 (86.719)   Prec@5 100.000 (100.000)   [2018-11-22 03时31分26秒]
+  Epoch: [025][200/391]   Time 0.149 (0.152)   Data 0.000 (0.001)   Loss 0.4372 (0.6260)   Prec@1 87.500 (78.591)   Prec@5 100.000 (98.760)   [2018-11-22 03时31分57秒]
+  **Train** Prec@1 78.306 Prec@5 98.792 Error@1 21.694
+  **Test** Prec@1 72.670 Prec@5 98.130 Error@1 27.330
+
+==>>[2018-11-22 03时32分29秒] [Epoch=026/300] [Need: 04:48:34] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [026][000/391]   Time 0.260 (0.260)   Data 0.111 (0.111)   Loss 0.5653 (0.5653)   Prec@1 80.469 (80.469)   Prec@5 99.219 (99.219)   [2018-11-22 03时32分29秒]
+  Epoch: [026][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.7239 (0.6308)   Prec@1 72.656 (78.102)   Prec@5 97.656 (98.741)   [2018-11-22 03时32分59秒]
+  **Train** Prec@1 78.192 Prec@5 98.766 Error@1 21.808
+  **Test** Prec@1 62.810 Prec@5 97.590 Error@1 37.190
+
+==>>[2018-11-22 03时33分32秒] [Epoch=027/300] [Need: 04:47:24] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [027][000/391]   Time 0.263 (0.263)   Data 0.113 (0.113)   Loss 0.4960 (0.4960)   Prec@1 85.156 (85.156)   Prec@5 100.000 (100.000)   [2018-11-22 03时33分32秒]
+  Epoch: [027][200/391]   Time 0.149 (0.150)   Data 0.001 (0.001)   Loss 0.6059 (0.6264)   Prec@1 80.469 (78.214)   Prec@5 100.000 (98.838)   [2018-11-22 03时34分02秒]
+  **Train** Prec@1 78.110 Prec@5 98.858 Error@1 21.890
+  **Test** Prec@1 72.120 Prec@5 97.860 Error@1 27.880
+
+==>>[2018-11-22 03时34分34秒] [Epoch=028/300] [Need: 04:46:14] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [028][000/391]   Time 0.261 (0.261)   Data 0.111 (0.111)   Loss 0.7047 (0.7047)   Prec@1 73.438 (73.438)   Prec@5 98.438 (98.438)   [2018-11-22 03时34分34秒]
+  Epoch: [028][200/391]   Time 0.149 (0.150)   Data 0.000 (0.001)   Loss 0.6709 (0.6211)   Prec@1 76.562 (78.642)   Prec@5 97.656 (98.721)   [2018-11-22 03时35分04秒]
+  **Train** Prec@1 78.490 Prec@5 98.828 Error@1 21.510
+  **Test** Prec@1 72.960 Prec@5 98.490 Error@1 27.040
+
+==>>[2018-11-22 03时35分37秒] [Epoch=029/300] [Need: 04:45:05] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [029][000/391]   Time 0.250 (0.250)   Data 0.099 (0.099)   Loss 0.5186 (0.5186)   Prec@1 78.906 (78.906)   Prec@5 98.438 (98.438)   [2018-11-22 03时35分37秒]
+  Epoch: [029][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.5585 (0.6170)   Prec@1 78.906 (78.681)   Prec@5 100.000 (98.834)   [2018-11-22 03时36分07秒]
+  **Train** Prec@1 78.804 Prec@5 98.842 Error@1 21.196
+  **Test** Prec@1 63.820 Prec@5 97.740 Error@1 36.180
+
+==>>[2018-11-22 03时36分39秒] [Epoch=030/300] [Need: 04:43:57] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [030][000/391]   Time 0.252 (0.252)   Data 0.102 (0.102)   Loss 0.5775 (0.5775)   Prec@1 78.125 (78.125)   Prec@5 100.000 (100.000)   [2018-11-22 03时36分39秒]
+  Epoch: [030][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.5336 (0.6097)   Prec@1 80.469 (78.836)   Prec@5 98.438 (98.842)   [2018-11-22 03时37分09秒]
+  **Train** Prec@1 78.890 Prec@5 98.824 Error@1 21.110
+  **Test** Prec@1 72.600 Prec@5 98.560 Error@1 27.400
+
+==>>[2018-11-22 03时37分42秒] [Epoch=031/300] [Need: 04:42:48] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [031][000/391]   Time 0.251 (0.251)   Data 0.100 (0.100)   Loss 0.5243 (0.5243)   Prec@1 84.375 (84.375)   Prec@5 100.000 (100.000)   [2018-11-22 03时37分42秒]
+  Epoch: [031][200/391]   Time 0.149 (0.151)   Data 0.000 (0.001)   Loss 0.6337 (0.6091)   Prec@1 77.344 (79.015)   Prec@5 99.219 (98.791)   [2018-11-22 03时38分12秒]
+  **Train** Prec@1 79.060 Prec@5 98.818 Error@1 20.940
+  **Test** Prec@1 72.430 Prec@5 98.020 Error@1 27.570
+
+==>>[2018-11-22 03时38分45秒] [Epoch=032/300] [Need: 04:41:45] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [032][000/391]   Time 0.265 (0.265)   Data 0.115 (0.115)   Loss 0.5007 (0.5007)   Prec@1 79.688 (79.688)   Prec@5 100.000 (100.000)   [2018-11-22 03时38分45秒]
+  Epoch: [032][200/391]   Time 0.149 (0.150)   Data 0.000 (0.001)   Loss 0.8620 (0.6042)   Prec@1 71.094 (79.147)   Prec@5 96.875 (98.850)   [2018-11-22 03时39分15秒]
+  **Train** Prec@1 78.756 Prec@5 98.888 Error@1 21.244
+  **Test** Prec@1 76.420 Prec@5 98.700 Error@1 23.580
+
+==>>[2018-11-22 03时39分47秒] [Epoch=033/300] [Need: 04:40:40] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [033][000/391]   Time 0.265 (0.265)   Data 0.115 (0.115)   Loss 0.4629 (0.4629)   Prec@1 85.156 (85.156)   Prec@5 100.000 (100.000)   [2018-11-22 03时39分48秒]
+  Epoch: [033][200/391]   Time 0.150 (0.150)   Data 0.000 (0.001)   Loss 0.5196 (0.5999)   Prec@1 83.594 (79.419)   Prec@5 100.000 (98.846)   [2018-11-22 03时40分18秒]
+  **Train** Prec@1 79.060 Prec@5 98.856 Error@1 20.940
+  **Test** Prec@1 72.240 Prec@5 98.630 Error@1 27.760
+
+==>>[2018-11-22 03时40分50秒] [Epoch=034/300] [Need: 04:39:35] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [034][000/391]   Time 0.261 (0.261)   Data 0.109 (0.109)   Loss 0.5957 (0.5957)   Prec@1 75.000 (75.000)   Prec@5 99.219 (99.219)   [2018-11-22 03时40分51秒]
+  Epoch: [034][200/391]   Time 0.150 (0.151)   Data 0.000 (0.001)   Loss 0.6012 (0.6058)   Prec@1 79.688 (78.716)   Prec@5 100.000 (98.803)   [2018-11-22 03时41分21秒]
+  **Train** Prec@1 78.866 Prec@5 98.842 Error@1 21.134
+  **Test** Prec@1 73.380 Prec@5 98.260 Error@1 26.620
+
+==>>[2018-11-22 03时41分53秒] [Epoch=035/300] [Need: 04:38:30] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [035][000/391]   Time 0.250 (0.250)   Data 0.100 (0.100)   Loss 0.5176 (0.5176)   Prec@1 85.156 (85.156)   Prec@5 99.219 (99.219)   [2018-11-22 03时41分53秒]
+  Epoch: [035][200/391]   Time 0.148 (0.150)   Data 0.001 (0.001)   Loss 0.5326 (0.5981)   Prec@1 84.375 (79.388)   Prec@5 99.219 (98.993)   [2018-11-22 03时42分23秒]
+  **Train** Prec@1 79.258 Prec@5 98.956 Error@1 20.742
+  **Test** Prec@1 74.740 Prec@5 98.560 Error@1 25.260
+
+==>>[2018-11-22 03时42分56秒] [Epoch=036/300] [Need: 04:37:25] [learning_rate=0.1000] [Best : Accuracy=77.33, Error=22.67]
+  Epoch: [036][000/391]   Time 0.250 (0.250)   Data 0.100 (0.100)   Loss 0.5163 (0.5163)   Prec@1 83.594 (83.594)   Prec@5 100.000 (100.000)   [2018-11-22 03时42分56秒]
+  Epoch: [036][200/391]   Time 0.149 (0.150)   Data 0.000 (0.001)   Loss 0.6025 (0.6021)   Prec@1 77.344 (79.089)   Prec@5 99.219 (98.989)   [2018-11-22 03时43分26秒]
+  **Train** Prec@1 79.080 Prec@5 98.946 Error@1 20.920
+  **Test** Prec@1 77.780 Prec@5 98.840 Error@1 22.220
+
+==>>[2018-11-22 03时43分59秒] [Epoch=037/300] [Need: 04:36:21] [learning_rate=0.1000] [Best : Accuracy=77.78, Error=22.22]
+  Epoch: [037][000/391]   Time 0.268 (0.268)   Data 0.114 (0.114)   Loss 0.5866 (0.5866)   Prec@1 81.250 (81.250)   Prec@5 99.219 (99.219)   [2018-11-22 03时43分59秒]
+  Epoch: [037][200/391]   Time 0.150 (0.151)   Data 0.000 (0.001)   Loss 0.8015 (0.5918)   Prec@1 75.781 (79.645)   Prec@5 97.656 (98.865)   [2018-11-22 03时44分29秒]
+  **Train** Prec@1 79.458 Prec@5 98.826 Error@1 20.542
+  **Test** Prec@1 74.530 Prec@5 98.410 Error@1 25.470
+
+==>>[2018-11-22 03时45分02秒] [Epoch=038/300] [Need: 04:35:18] [learning_rate=0.1000] [Best : Accuracy=77.78, Error=22.22]
+  Epoch: [038][000/391]   Time 0.263 (0.263)   Data 0.113 (0.113)   Loss 0.7275 (0.7275)   Prec@1 72.656 (72.656)   Prec@5 97.656 (97.656)   [2018-11-22 03时45分02秒]
+  Epoch: [038][200/391]   Time 0.151 (0.151)   Data 0.000 (0.001)   Loss 0.5643 (0.5965)   Prec@1 81.250 (79.120)   Prec@5 97.656 (98.931)   [2018-11-22 03时45分32秒]
+  **Train** Prec@1 79.326 Prec@5 98.892 Error@1 20.674
+  **Test** Prec@1 75.860 Prec@5 98.730 Error@1 24.140
+
+==>>[2018-11-22 03时46分05秒] [Epoch=039/300] [Need: 04:34:14] [learning_rate=0.1000] [Best : Accuracy=77.78, Error=22.22]
+  Epoch: [039][000/391]   Time 0.250 (0.250)   Data 0.099 (0.099)   Loss 0.6839 (0.6839)   Prec@1 77.344 (77.344)   Prec@5 96.094 (96.094)   [2018-11-22 03时46分05秒]
+  Epoch: [039][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.5284 (0.5969)   Prec@1 87.500 (79.097)   Prec@5 97.656 (98.861)   [2018-11-22 03时46分35秒]
+  **Train** Prec@1 79.218 Prec@5 98.854 Error@1 20.782
+  **Test** Prec@1 70.420 Prec@5 98.470 Error@1 29.580
+
+==>>[2018-11-22 03时47分08秒] [Epoch=040/300] [Need: 04:33:10] [learning_rate=0.1000] [Best : Accuracy=77.78, Error=22.22]
+  Epoch: [040][000/391]   Time 0.251 (0.251)   Data 0.102 (0.102)   Loss 0.4687 (0.4687)   Prec@1 84.375 (84.375)   Prec@5 98.438 (98.438)   [2018-11-22 03时47分08秒]
+  Epoch: [040][200/391]   Time 0.150 (0.149)   Data 0.001 (0.001)   Loss 0.5338 (0.5945)   Prec@1 84.375 (79.536)   Prec@5 99.219 (98.869)   [2018-11-22 03时47分38秒]
+  **Train** Prec@1 79.322 Prec@5 98.894 Error@1 20.678
+  **Test** Prec@1 73.680 Prec@5 98.180 Error@1 26.320
+
+==>>[2018-11-22 03时48分10秒] [Epoch=041/300] [Need: 04:32:03] [learning_rate=0.1000] [Best : Accuracy=77.78, Error=22.22]
+  Epoch: [041][000/391]   Time 0.256 (0.256)   Data 0.107 (0.107)   Loss 0.6211 (0.6211)   Prec@1 75.781 (75.781)   Prec@5 99.219 (99.219)   [2018-11-22 03时48分10秒]
+  Epoch: [041][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.5845 (0.5933)   Prec@1 81.250 (79.322)   Prec@5 100.000 (98.783)   [2018-11-22 03时48分40秒]
+  **Train** Prec@1 79.414 Prec@5 98.852 Error@1 20.586
+  **Test** Prec@1 71.670 Prec@5 97.990 Error@1 28.330
+
+==>>[2018-11-22 03时49分12秒] [Epoch=042/300] [Need: 04:30:56] [learning_rate=0.1000] [Best : Accuracy=77.78, Error=22.22]
+  Epoch: [042][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.5827 (0.5827)   Prec@1 77.344 (77.344)   Prec@5 98.438 (98.438)   [2018-11-22 03时49分13秒]
+  Epoch: [042][200/391]   Time 0.151 (0.150)   Data 0.000 (0.001)   Loss 0.6398 (0.5919)   Prec@1 81.250 (79.551)   Prec@5 96.875 (98.962)   [2018-11-22 03时49分43秒]
+  **Train** Prec@1 79.318 Prec@5 98.920 Error@1 20.682
+  **Test** Prec@1 77.540 Prec@5 98.860 Error@1 22.460
+
+==>>[2018-11-22 03时50分15秒] [Epoch=043/300] [Need: 04:29:51] [learning_rate=0.1000] [Best : Accuracy=77.78, Error=22.22]
+  Epoch: [043][000/391]   Time 0.253 (0.253)   Data 0.104 (0.104)   Loss 0.6448 (0.6448)   Prec@1 77.344 (77.344)   Prec@5 99.219 (99.219)   [2018-11-22 03时50分15秒]
+  Epoch: [043][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.6273 (0.5751)   Prec@1 73.438 (80.033)   Prec@5 100.000 (98.927)   [2018-11-22 03时50分45秒]
+  **Train** Prec@1 79.720 Prec@5 98.912 Error@1 20.280
+  **Test** Prec@1 73.370 Prec@5 97.830 Error@1 26.630
+
+==>>[2018-11-22 03时51分18秒] [Epoch=044/300] [Need: 04:28:44] [learning_rate=0.1000] [Best : Accuracy=77.78, Error=22.22]
+  Epoch: [044][000/391]   Time 0.264 (0.264)   Data 0.113 (0.113)   Loss 0.5427 (0.5427)   Prec@1 80.469 (80.469)   Prec@5 100.000 (100.000)   [2018-11-22 03时51分18秒]
+  Epoch: [044][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5291 (0.5848)   Prec@1 78.125 (79.765)   Prec@5 98.438 (98.982)   [2018-11-22 03时51分48秒]
+  **Train** Prec@1 79.688 Prec@5 98.998 Error@1 20.312
+  **Test** Prec@1 69.030 Prec@5 97.320 Error@1 30.970
+
+==>>[2018-11-22 03时52分20秒] [Epoch=045/300] [Need: 04:27:38] [learning_rate=0.1000] [Best : Accuracy=77.78, Error=22.22]
+  Epoch: [045][000/391]   Time 0.262 (0.262)   Data 0.113 (0.113)   Loss 0.6051 (0.6051)   Prec@1 75.000 (75.000)   Prec@5 99.219 (99.219)   [2018-11-22 03时52分20秒]
+  Epoch: [045][200/391]   Time 0.150 (0.150)   Data 0.001 (0.001)   Loss 0.6884 (0.5829)   Prec@1 78.906 (79.979)   Prec@5 97.656 (98.939)   [2018-11-22 03时52分50秒]
+  **Train** Prec@1 79.688 Prec@5 98.920 Error@1 20.312
+  **Test** Prec@1 78.640 Prec@5 98.680 Error@1 21.360
+
+==>>[2018-11-22 03时53分23秒] [Epoch=046/300] [Need: 04:26:33] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [046][000/391]   Time 0.256 (0.256)   Data 0.106 (0.106)   Loss 0.5396 (0.5396)   Prec@1 78.906 (78.906)   Prec@5 100.000 (100.000)   [2018-11-22 03时53分23秒]
+  Epoch: [046][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6143 (0.5942)   Prec@1 79.688 (79.307)   Prec@5 99.219 (98.962)   [2018-11-22 03时53分53秒]
+  **Train** Prec@1 79.630 Prec@5 98.922 Error@1 20.370
+  **Test** Prec@1 72.140 Prec@5 97.250 Error@1 27.860
+
+==>>[2018-11-22 03时54分25秒] [Epoch=047/300] [Need: 04:25:27] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [047][000/391]   Time 0.250 (0.250)   Data 0.101 (0.101)   Loss 0.6244 (0.6244)   Prec@1 82.031 (82.031)   Prec@5 100.000 (100.000)   [2018-11-22 03时54分25秒]
+  Epoch: [047][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.6813 (0.5896)   Prec@1 75.781 (79.544)   Prec@5 98.438 (98.943)   [2018-11-22 03时54分55秒]
+  **Train** Prec@1 79.396 Prec@5 98.944 Error@1 20.604
+  **Test** Prec@1 73.250 Prec@5 97.180 Error@1 26.750
+
+==>>[2018-11-22 03时55分27秒] [Epoch=048/300] [Need: 04:24:21] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [048][000/391]   Time 0.251 (0.251)   Data 0.102 (0.102)   Loss 0.6411 (0.6411)   Prec@1 78.906 (78.906)   Prec@5 99.219 (99.219)   [2018-11-22 03时55分28秒]
+  Epoch: [048][200/391]   Time 0.150 (0.150)   Data 0.001 (0.001)   Loss 0.6549 (0.5847)   Prec@1 78.906 (79.855)   Prec@5 98.438 (98.877)   [2018-11-22 03时55分58秒]
+  **Train** Prec@1 79.638 Prec@5 98.876 Error@1 20.362
+  **Test** Prec@1 70.840 Prec@5 97.050 Error@1 29.160
+
+==>>[2018-11-22 03时56分30秒] [Epoch=049/300] [Need: 04:23:16] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [049][000/391]   Time 0.252 (0.252)   Data 0.102 (0.102)   Loss 0.6251 (0.6251)   Prec@1 77.344 (77.344)   Prec@5 100.000 (100.000)   [2018-11-22 03时56分30秒]
+  Epoch: [049][200/391]   Time 0.150 (0.149)   Data 0.000 (0.001)   Loss 0.5824 (0.5895)   Prec@1 81.250 (79.458)   Prec@5 100.000 (98.970)   [2018-11-22 03时57分00秒]
+  **Train** Prec@1 79.572 Prec@5 98.992 Error@1 20.428
+  **Test** Prec@1 62.360 Prec@5 96.440 Error@1 37.640
+
+==>>[2018-11-22 03时57分32秒] [Epoch=050/300] [Need: 04:22:10] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [050][000/391]   Time 0.261 (0.261)   Data 0.112 (0.112)   Loss 0.5713 (0.5713)   Prec@1 82.812 (82.812)   Prec@5 97.656 (97.656)   [2018-11-22 03时57分32秒]
+  Epoch: [050][200/391]   Time 0.149 (0.149)   Data 0.001 (0.001)   Loss 0.5424 (0.5794)   Prec@1 82.812 (80.158)   Prec@5 100.000 (99.001)   [2018-11-22 03时58分02秒]
+  **Train** Prec@1 79.814 Prec@5 98.954 Error@1 20.186
+  **Test** Prec@1 72.720 Prec@5 98.640 Error@1 27.280
+
+==>>[2018-11-22 03时58分35秒] [Epoch=051/300] [Need: 04:21:04] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [051][000/391]   Time 0.261 (0.261)   Data 0.112 (0.112)   Loss 0.5682 (0.5682)   Prec@1 80.469 (80.469)   Prec@5 99.219 (99.219)   [2018-11-22 03时58分35秒]
+  Epoch: [051][200/391]   Time 0.149 (0.151)   Data 0.000 (0.001)   Loss 0.5841 (0.5806)   Prec@1 82.812 (79.684)   Prec@5 98.438 (98.989)   [2018-11-22 03时59分05秒]
+  **Train** Prec@1 79.616 Prec@5 98.942 Error@1 20.384
+  **Test** Prec@1 74.550 Prec@5 98.420 Error@1 25.450
+
+==>>[2018-11-22 03时59分37秒] [Epoch=052/300] [Need: 04:20:00] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [052][000/391]   Time 0.244 (0.244)   Data 0.093 (0.093)   Loss 0.4407 (0.4407)   Prec@1 85.156 (85.156)   Prec@5 98.438 (98.438)   [2018-11-22 03时59分37秒]
+  Epoch: [052][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6232 (0.5798)   Prec@1 78.125 (79.843)   Prec@5 97.656 (98.974)   [2018-11-22 04时00分07秒]
+  **Train** Prec@1 79.774 Prec@5 98.944 Error@1 20.226
+  **Test** Prec@1 71.090 Prec@5 96.640 Error@1 28.910
+
+==>>[2018-11-22 04时00分39秒] [Epoch=053/300] [Need: 04:18:54] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [053][000/391]   Time 0.244 (0.244)   Data 0.094 (0.094)   Loss 0.5177 (0.5177)   Prec@1 79.688 (79.688)   Prec@5 99.219 (99.219)   [2018-11-22 04时00分40秒]
+  Epoch: [053][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5930 (0.5852)   Prec@1 79.688 (79.894)   Prec@5 98.438 (98.989)   [2018-11-22 04时01分09秒]
+  **Train** Prec@1 79.702 Prec@5 98.922 Error@1 20.298
+  **Test** Prec@1 73.520 Prec@5 98.590 Error@1 26.480
+
+==>>[2018-11-22 04时01分42秒] [Epoch=054/300] [Need: 04:17:49] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [054][000/391]   Time 0.267 (0.267)   Data 0.117 (0.117)   Loss 0.5767 (0.5767)   Prec@1 78.906 (78.906)   Prec@5 97.656 (97.656)   [2018-11-22 04时01分42秒]
+  Epoch: [054][200/391]   Time 0.148 (0.150)   Data 0.001 (0.001)   Loss 0.6365 (0.5811)   Prec@1 78.125 (79.711)   Prec@5 98.438 (98.997)   [2018-11-22 04时02分12秒]
+  **Train** Prec@1 79.454 Prec@5 98.908 Error@1 20.546
+  **Test** Prec@1 63.420 Prec@5 96.870 Error@1 36.580
+
+==>>[2018-11-22 04时02分44秒] [Epoch=055/300] [Need: 04:16:45] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [055][000/391]   Time 0.262 (0.262)   Data 0.112 (0.112)   Loss 0.5416 (0.5416)   Prec@1 83.594 (83.594)   Prec@5 100.000 (100.000)   [2018-11-22 04时02分45秒]
+  Epoch: [055][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.8385 (0.5811)   Prec@1 67.969 (79.839)   Prec@5 99.219 (99.056)   [2018-11-22 04时03分14秒]
+  **Train** Prec@1 79.908 Prec@5 99.010 Error@1 20.092
+  **Test** Prec@1 69.430 Prec@5 98.270 Error@1 30.570
+
+==>>[2018-11-22 04时03分47秒] [Epoch=056/300] [Need: 04:15:39] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [056][000/391]   Time 0.249 (0.249)   Data 0.099 (0.099)   Loss 0.4878 (0.4878)   Prec@1 85.938 (85.938)   Prec@5 98.438 (98.438)   [2018-11-22 04时03分47秒]
+  Epoch: [056][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.7795 (0.5705)   Prec@1 74.219 (80.329)   Prec@5 99.219 (98.919)   [2018-11-22 04时04分17秒]
+  **Train** Prec@1 80.192 Prec@5 98.930 Error@1 19.808
+  **Test** Prec@1 72.040 Prec@5 98.100 Error@1 27.960
+
+==>>[2018-11-22 04时04分49秒] [Epoch=057/300] [Need: 04:14:34] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [057][000/391]   Time 0.265 (0.265)   Data 0.114 (0.114)   Loss 0.5586 (0.5586)   Prec@1 79.688 (79.688)   Prec@5 98.438 (98.438)   [2018-11-22 04时04分49秒]
+  Epoch: [057][200/391]   Time 0.150 (0.150)   Data 0.000 (0.001)   Loss 0.6385 (0.5746)   Prec@1 77.344 (79.971)   Prec@5 98.438 (99.087)   [2018-11-22 04时05分19秒]
+  **Train** Prec@1 79.802 Prec@5 99.034 Error@1 20.198
+  **Test** Prec@1 74.670 Prec@5 98.690 Error@1 25.330
+
+==>>[2018-11-22 04时05分52秒] [Epoch=058/300] [Need: 04:13:30] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [058][000/391]   Time 0.252 (0.252)   Data 0.101 (0.101)   Loss 0.6596 (0.6596)   Prec@1 78.125 (78.125)   Prec@5 100.000 (100.000)   [2018-11-22 04时05分52秒]
+  Epoch: [058][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5824 (0.5699)   Prec@1 79.688 (80.294)   Prec@5 100.000 (99.052)   [2018-11-22 04时06分21秒]
+  **Train** Prec@1 79.966 Prec@5 99.018 Error@1 20.034
+  **Test** Prec@1 67.390 Prec@5 97.560 Error@1 32.610
+
+==>>[2018-11-22 04时06分54秒] [Epoch=059/300] [Need: 04:12:24] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [059][000/391]   Time 0.248 (0.248)   Data 0.099 (0.099)   Loss 0.5174 (0.5174)   Prec@1 80.469 (80.469)   Prec@5 100.000 (100.000)   [2018-11-22 04时06分54秒]
+  Epoch: [059][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5773 (0.5765)   Prec@1 81.250 (79.956)   Prec@5 99.219 (99.021)   [2018-11-22 04时07分24秒]
+  **Train** Prec@1 79.918 Prec@5 99.028 Error@1 20.082
+  **Test** Prec@1 76.350 Prec@5 98.170 Error@1 23.650
+
+==>>[2018-11-22 04时07分56秒] [Epoch=060/300] [Need: 04:11:20] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [060][000/391]   Time 0.253 (0.253)   Data 0.102 (0.102)   Loss 0.5405 (0.5405)   Prec@1 82.812 (82.812)   Prec@5 99.219 (99.219)   [2018-11-22 04时07分57秒]
+  Epoch: [060][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6062 (0.5652)   Prec@1 78.125 (80.092)   Prec@5 99.219 (99.102)   [2018-11-22 04时08分26秒]
+  **Train** Prec@1 80.004 Prec@5 99.032 Error@1 19.996
+  **Test** Prec@1 72.120 Prec@5 97.650 Error@1 27.880
+
+==>>[2018-11-22 04时08分59秒] [Epoch=061/300] [Need: 04:10:16] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [061][000/391]   Time 0.266 (0.266)   Data 0.117 (0.117)   Loss 0.5191 (0.5191)   Prec@1 82.812 (82.812)   Prec@5 98.438 (98.438)   [2018-11-22 04时08分59秒]
+  Epoch: [061][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6884 (0.5741)   Prec@1 77.344 (79.995)   Prec@5 99.219 (99.001)   [2018-11-22 04时09分29秒]
+  **Train** Prec@1 80.130 Prec@5 98.982 Error@1 19.870
+  **Test** Prec@1 72.580 Prec@5 98.490 Error@1 27.420
+
+==>>[2018-11-22 04时10分01秒] [Epoch=062/300] [Need: 04:09:11] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [062][000/391]   Time 0.258 (0.258)   Data 0.109 (0.109)   Loss 0.5281 (0.5281)   Prec@1 84.375 (84.375)   Prec@5 99.219 (99.219)   [2018-11-22 04时10分01秒]
+  Epoch: [062][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6330 (0.5684)   Prec@1 77.344 (79.928)   Prec@5 98.438 (99.110)   [2018-11-22 04时10分31秒]
+  **Train** Prec@1 79.738 Prec@5 99.018 Error@1 20.262
+  **Test** Prec@1 69.910 Prec@5 96.040 Error@1 30.090
+
+==>>[2018-11-22 04时11分04秒] [Epoch=063/300] [Need: 04:08:07] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [063][000/391]   Time 0.249 (0.249)   Data 0.100 (0.100)   Loss 0.4457 (0.4457)   Prec@1 88.281 (88.281)   Prec@5 99.219 (99.219)   [2018-11-22 04时11分04秒]
+  Epoch: [063][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.8727 (0.5786)   Prec@1 72.656 (79.719)   Prec@5 97.656 (99.024)   [2018-11-22 04时11分34秒]
+  **Train** Prec@1 79.404 Prec@5 98.978 Error@1 20.596
+  **Test** Prec@1 77.240 Prec@5 98.730 Error@1 22.760
+
+==>>[2018-11-22 04时12分06秒] [Epoch=064/300] [Need: 04:07:02] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [064][000/391]   Time 0.260 (0.260)   Data 0.112 (0.112)   Loss 0.6212 (0.6212)   Prec@1 77.344 (77.344)   Prec@5 98.438 (98.438)   [2018-11-22 04时12分06秒]
+  Epoch: [064][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5639 (0.5751)   Prec@1 78.125 (80.169)   Prec@5 99.219 (99.036)   [2018-11-22 04时12分36秒]
+  **Train** Prec@1 79.900 Prec@5 99.012 Error@1 20.100
+  **Test** Prec@1 66.930 Prec@5 94.820 Error@1 33.070
+
+==>>[2018-11-22 04时13分08秒] [Epoch=065/300] [Need: 04:05:57] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [065][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.4137 (0.4137)   Prec@1 81.250 (81.250)   Prec@5 99.219 (99.219)   [2018-11-22 04时13分08秒]
+  Epoch: [065][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6243 (0.5695)   Prec@1 75.781 (80.224)   Prec@5 100.000 (98.989)   [2018-11-22 04时13分38秒]
+  **Train** Prec@1 79.986 Prec@5 98.946 Error@1 20.014
+  **Test** Prec@1 65.910 Prec@5 98.150 Error@1 34.090
+
+==>>[2018-11-22 04时14分11秒] [Epoch=066/300] [Need: 04:04:54] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [066][000/391]   Time 0.259 (0.259)   Data 0.110 (0.110)   Loss 0.4860 (0.4860)   Prec@1 83.594 (83.594)   Prec@5 98.438 (98.438)   [2018-11-22 04时14分11秒]
+  Epoch: [066][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.7531 (0.5647)   Prec@1 71.875 (80.267)   Prec@5 96.875 (99.013)   [2018-11-22 04时14分41秒]
+  **Train** Prec@1 79.940 Prec@5 98.990 Error@1 20.060
+  **Test** Prec@1 75.190 Prec@5 98.490 Error@1 24.810
+
+==>>[2018-11-22 04时15分13秒] [Epoch=067/300] [Need: 04:03:49] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [067][000/391]   Time 0.251 (0.251)   Data 0.102 (0.102)   Loss 0.5888 (0.5888)   Prec@1 80.469 (80.469)   Prec@5 98.438 (98.438)   [2018-11-22 04时15分13秒]
+  Epoch: [067][200/391]   Time 0.150 (0.149)   Data 0.000 (0.001)   Loss 0.7038 (0.5721)   Prec@1 78.906 (80.162)   Prec@5 98.438 (99.013)   [2018-11-22 04时15分43秒]
+  **Train** Prec@1 80.156 Prec@5 99.010 Error@1 19.844
+  **Test** Prec@1 63.810 Prec@5 95.610 Error@1 36.190
+
+==>>[2018-11-22 04时16分15秒] [Epoch=068/300] [Need: 04:02:44] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [068][000/391]   Time 0.259 (0.259)   Data 0.110 (0.110)   Loss 0.6450 (0.6450)   Prec@1 80.469 (80.469)   Prec@5 97.656 (97.656)   [2018-11-22 04时16分15秒]
+  Epoch: [068][200/391]   Time 0.151 (0.149)   Data 0.001 (0.001)   Loss 0.5922 (0.5649)   Prec@1 81.250 (80.488)   Prec@5 99.219 (99.001)   [2018-11-22 04时16分45秒]
+  **Train** Prec@1 80.368 Prec@5 99.006 Error@1 19.632
+  **Test** Prec@1 70.540 Prec@5 97.790 Error@1 29.460
+
+==>>[2018-11-22 04时17分18秒] [Epoch=069/300] [Need: 04:01:41] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [069][000/391]   Time 0.246 (0.246)   Data 0.098 (0.098)   Loss 0.4900 (0.4900)   Prec@1 82.812 (82.812)   Prec@5 99.219 (99.219)   [2018-11-22 04时17分18秒]
+  Epoch: [069][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.5999 (0.5731)   Prec@1 78.906 (80.026)   Prec@5 99.219 (99.044)   [2018-11-22 04时17分48秒]
+  **Train** Prec@1 80.040 Prec@5 99.008 Error@1 19.960
+  **Test** Prec@1 72.650 Prec@5 98.420 Error@1 27.350
+
+==>>[2018-11-22 04时18分20秒] [Epoch=070/300] [Need: 04:00:36] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [070][000/391]   Time 0.254 (0.254)   Data 0.106 (0.106)   Loss 0.5867 (0.5867)   Prec@1 82.812 (82.812)   Prec@5 99.219 (99.219)   [2018-11-22 04时18分20秒]
+  Epoch: [070][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6295 (0.5674)   Prec@1 80.469 (80.259)   Prec@5 97.656 (98.997)   [2018-11-22 04时18分50秒]
+  **Train** Prec@1 80.084 Prec@5 98.930 Error@1 19.916
+  **Test** Prec@1 74.080 Prec@5 98.360 Error@1 25.920
+
+==>>[2018-11-22 04时19分22秒] [Epoch=071/300] [Need: 03:59:32] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [071][000/391]   Time 0.267 (0.267)   Data 0.118 (0.118)   Loss 0.5411 (0.5411)   Prec@1 82.031 (82.031)   Prec@5 99.219 (99.219)   [2018-11-22 04时19分23秒]
+  Epoch: [071][200/391]   Time 0.151 (0.150)   Data 0.000 (0.001)   Loss 0.6711 (0.5804)   Prec@1 78.125 (79.886)   Prec@5 98.438 (98.888)   [2018-11-22 04时19分52秒]
+  **Train** Prec@1 79.704 Prec@5 98.918 Error@1 20.296
+  **Test** Prec@1 76.880 Prec@5 98.760 Error@1 23.120
+
+==>>[2018-11-22 04时20分25秒] [Epoch=072/300] [Need: 03:58:29] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [072][000/391]   Time 0.259 (0.259)   Data 0.110 (0.110)   Loss 0.6467 (0.6467)   Prec@1 77.344 (77.344)   Prec@5 99.219 (99.219)   [2018-11-22 04时20分25秒]
+  Epoch: [072][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6151 (0.5740)   Prec@1 73.438 (79.890)   Prec@5 100.000 (98.974)   [2018-11-22 04时20分55秒]
+  **Train** Prec@1 80.224 Prec@5 98.982 Error@1 19.776
+  **Test** Prec@1 74.880 Prec@5 98.750 Error@1 25.120
+
+==>>[2018-11-22 04时21分27秒] [Epoch=073/300] [Need: 03:57:24] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [073][000/391]   Time 0.264 (0.264)   Data 0.115 (0.115)   Loss 0.4580 (0.4580)   Prec@1 82.031 (82.031)   Prec@5 99.219 (99.219)   [2018-11-22 04时21分27秒]
+  Epoch: [073][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6314 (0.5686)   Prec@1 82.031 (80.434)   Prec@5 99.219 (99.102)   [2018-11-22 04时21分57秒]
+  **Train** Prec@1 80.166 Prec@5 99.012 Error@1 19.834
+  **Test** Prec@1 72.980 Prec@5 98.040 Error@1 27.020
+
+==>>[2018-11-22 04时22分29秒] [Epoch=074/300] [Need: 03:56:20] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [074][000/391]   Time 0.255 (0.255)   Data 0.107 (0.107)   Loss 0.4438 (0.4438)   Prec@1 87.500 (87.500)   Prec@5 100.000 (100.000)   [2018-11-22 04时22分30秒]
+  Epoch: [074][200/391]   Time 0.151 (0.150)   Data 0.001 (0.001)   Loss 0.5288 (0.5719)   Prec@1 83.594 (80.360)   Prec@5 99.219 (98.982)   [2018-11-22 04时22分59秒]
+  **Train** Prec@1 80.238 Prec@5 98.980 Error@1 19.762
+  **Test** Prec@1 71.640 Prec@5 97.050 Error@1 28.360
+
+==>>[2018-11-22 04时23分32秒] [Epoch=075/300] [Need: 03:55:17] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [075][000/391]   Time 0.259 (0.259)   Data 0.109 (0.109)   Loss 0.5908 (0.5908)   Prec@1 76.562 (76.562)   Prec@5 96.875 (96.875)   [2018-11-22 04时23分32秒]
+  Epoch: [075][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6333 (0.5840)   Prec@1 73.438 (79.520)   Prec@5 99.219 (99.036)   [2018-11-22 04时24分02秒]
+  **Train** Prec@1 79.934 Prec@5 99.080 Error@1 20.066
+  **Test** Prec@1 70.470 Prec@5 97.050 Error@1 29.530
+
+==>>[2018-11-22 04时24分34秒] [Epoch=076/300] [Need: 03:54:12] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [076][000/391]   Time 0.249 (0.249)   Data 0.100 (0.100)   Loss 0.5482 (0.5482)   Prec@1 82.812 (82.812)   Prec@5 97.656 (97.656)   [2018-11-22 04时24分34秒]
+  Epoch: [076][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5624 (0.5711)   Prec@1 80.469 (80.096)   Prec@5 99.219 (98.997)   [2018-11-22 04时25分04秒]
+  **Train** Prec@1 80.100 Prec@5 98.972 Error@1 19.900
+  **Test** Prec@1 77.240 Prec@5 98.640 Error@1 22.760
+
+==>>[2018-11-22 04时25分36秒] [Epoch=077/300] [Need: 03:53:08] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [077][000/391]   Time 0.248 (0.248)   Data 0.099 (0.099)   Loss 0.5480 (0.5480)   Prec@1 82.031 (82.031)   Prec@5 98.438 (98.438)   [2018-11-22 04时25分36秒]
+  Epoch: [077][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.5578 (0.5684)   Prec@1 82.031 (80.562)   Prec@5 100.000 (98.962)   [2018-11-22 04时26分06秒]
+  **Train** Prec@1 80.286 Prec@5 98.914 Error@1 19.714
+  **Test** Prec@1 75.250 Prec@5 98.730 Error@1 24.750
+
+==>>[2018-11-22 04时26分39秒] [Epoch=078/300] [Need: 03:52:05] [learning_rate=0.1000] [Best : Accuracy=78.64, Error=21.36]
+  Epoch: [078][000/391]   Time 0.246 (0.246)   Data 0.098 (0.098)   Loss 0.6072 (0.6072)   Prec@1 78.125 (78.125)   Prec@5 98.438 (98.438)   [2018-11-22 04时26分39秒]
+  Epoch: [078][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.7406 (0.5680)   Prec@1 75.000 (80.648)   Prec@5 98.438 (98.908)   [2018-11-22 04时27分09秒]
+  **Train** Prec@1 80.570 Prec@5 99.006 Error@1 19.430
+  **Test** Prec@1 79.310 Prec@5 98.870 Error@1 20.690
+
+==>>[2018-11-22 04时27分41秒] [Epoch=079/300] [Need: 03:51:01] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [079][000/391]   Time 0.248 (0.248)   Data 0.099 (0.099)   Loss 0.6623 (0.6623)   Prec@1 80.469 (80.469)   Prec@5 97.656 (97.656)   [2018-11-22 04时27分41秒]
+  Epoch: [079][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.7459 (0.5736)   Prec@1 74.219 (80.107)   Prec@5 99.219 (99.009)   [2018-11-22 04时28分11秒]
+  **Train** Prec@1 80.280 Prec@5 99.002 Error@1 19.720
+  **Test** Prec@1 69.550 Prec@5 96.870 Error@1 30.450
+
+==>>[2018-11-22 04时28分43秒] [Epoch=080/300] [Need: 03:49:57] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [080][000/391]   Time 0.257 (0.257)   Data 0.106 (0.106)   Loss 0.5476 (0.5476)   Prec@1 87.500 (87.500)   Prec@5 99.219 (99.219)   [2018-11-22 04时28分44秒]
+  Epoch: [080][200/391]   Time 0.149 (0.150)   Data 0.001 (0.001)   Loss 0.5894 (0.5550)   Prec@1 77.344 (81.079)   Prec@5 98.438 (99.017)   [2018-11-22 04时29分13秒]
+  **Train** Prec@1 80.444 Prec@5 99.010 Error@1 19.556
+  **Test** Prec@1 70.100 Prec@5 97.360 Error@1 29.900
+
+==>>[2018-11-22 04时29分46秒] [Epoch=081/300] [Need: 03:48:53] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [081][000/391]   Time 0.254 (0.254)   Data 0.106 (0.106)   Loss 0.5128 (0.5128)   Prec@1 82.031 (82.031)   Prec@5 98.438 (98.438)   [2018-11-22 04时29分46秒]
+  Epoch: [081][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6303 (0.5695)   Prec@1 79.688 (80.138)   Prec@5 99.219 (98.951)   [2018-11-22 04时30分16秒]
+  **Train** Prec@1 80.272 Prec@5 98.952 Error@1 19.728
+  **Test** Prec@1 71.680 Prec@5 98.400 Error@1 28.320
+
+==>>[2018-11-22 04时30分48秒] [Epoch=082/300] [Need: 03:47:49] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [082][000/391]   Time 0.260 (0.260)   Data 0.111 (0.111)   Loss 0.4212 (0.4212)   Prec@1 83.594 (83.594)   Prec@5 99.219 (99.219)   [2018-11-22 04时30分48秒]
+  Epoch: [082][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.5607 (0.5741)   Prec@1 82.812 (80.010)   Prec@5 99.219 (99.024)   [2018-11-22 04时31分18秒]
+  **Train** Prec@1 80.138 Prec@5 99.020 Error@1 19.862
+  **Test** Prec@1 74.230 Prec@5 97.890 Error@1 25.770
+
+==>>[2018-11-22 04时31分50秒] [Epoch=083/300] [Need: 03:46:46] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [083][000/391]   Time 0.270 (0.270)   Data 0.115 (0.115)   Loss 0.4650 (0.4650)   Prec@1 85.938 (85.938)   Prec@5 99.219 (99.219)   [2018-11-22 04时31分51秒]
+  Epoch: [083][200/391]   Time 0.148 (0.150)   Data 0.001 (0.001)   Loss 0.5393 (0.5581)   Prec@1 82.812 (80.904)   Prec@5 99.219 (99.021)   [2018-11-22 04时32分20秒]
+  **Train** Prec@1 80.506 Prec@5 99.012 Error@1 19.494
+  **Test** Prec@1 71.560 Prec@5 97.760 Error@1 28.440
+
+==>>[2018-11-22 04时32分53秒] [Epoch=084/300] [Need: 03:45:42] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [084][000/391]   Time 0.259 (0.259)   Data 0.110 (0.110)   Loss 0.4836 (0.4836)   Prec@1 82.812 (82.812)   Prec@5 99.219 (99.219)   [2018-11-22 04时32分53秒]
+  Epoch: [084][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6263 (0.5638)   Prec@1 74.219 (80.616)   Prec@5 98.438 (98.939)   [2018-11-22 04时33分23秒]
+  **Train** Prec@1 80.510 Prec@5 98.998 Error@1 19.490
+  **Test** Prec@1 37.780 Prec@5 80.020 Error@1 62.220
+
+==>>[2018-11-22 04时33分55秒] [Epoch=085/300] [Need: 03:44:38] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [085][000/391]   Time 0.256 (0.256)   Data 0.107 (0.107)   Loss 0.7043 (0.7043)   Prec@1 75.000 (75.000)   Prec@5 98.438 (98.438)   [2018-11-22 04时33分55秒]
+  Epoch: [085][200/391]   Time 0.149 (0.149)   Data 0.001 (0.001)   Loss 0.6248 (0.5628)   Prec@1 77.344 (80.504)   Prec@5 100.000 (99.184)   [2018-11-22 04时34分25秒]
+  **Train** Prec@1 80.392 Prec@5 99.106 Error@1 19.608
+  **Test** Prec@1 74.480 Prec@5 98.280 Error@1 25.520
+
+==>>[2018-11-22 04时34分57秒] [Epoch=086/300] [Need: 03:43:35] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [086][000/391]   Time 0.242 (0.242)   Data 0.088 (0.088)   Loss 0.4709 (0.4709)   Prec@1 85.156 (85.156)   Prec@5 98.438 (98.438)   [2018-11-22 04时34分58秒]
+  Epoch: [086][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5515 (0.5683)   Prec@1 82.812 (80.558)   Prec@5 99.219 (99.013)   [2018-11-22 04时35分27秒]
+  **Train** Prec@1 80.566 Prec@5 99.016 Error@1 19.434
+  **Test** Prec@1 73.250 Prec@5 98.560 Error@1 26.750
+
+==>>[2018-11-22 04时36分00秒] [Epoch=087/300] [Need: 03:42:32] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [087][000/391]   Time 0.246 (0.246)   Data 0.096 (0.096)   Loss 0.6773 (0.6773)   Prec@1 76.562 (76.562)   Prec@5 96.875 (96.875)   [2018-11-22 04时36分00秒]
+  Epoch: [087][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5990 (0.5717)   Prec@1 75.000 (80.317)   Prec@5 100.000 (99.063)   [2018-11-22 04时36分30秒]
+  **Train** Prec@1 80.208 Prec@5 99.016 Error@1 19.792
+  **Test** Prec@1 74.060 Prec@5 98.060 Error@1 25.940
+
+==>>[2018-11-22 04时37分02秒] [Epoch=088/300] [Need: 03:41:28] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [088][000/391]   Time 0.237 (0.237)   Data 0.087 (0.087)   Loss 0.6241 (0.6241)   Prec@1 79.688 (79.688)   Prec@5 98.438 (98.438)   [2018-11-22 04时37分02秒]
+  Epoch: [088][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6455 (0.5502)   Prec@1 78.125 (81.021)   Prec@5 100.000 (99.048)   [2018-11-22 04时37分32秒]
+  **Train** Prec@1 80.478 Prec@5 99.056 Error@1 19.522
+  **Test** Prec@1 73.990 Prec@5 98.390 Error@1 26.010
+
+==>>[2018-11-22 04时38分04秒] [Epoch=089/300] [Need: 03:40:25] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [089][000/391]   Time 0.252 (0.252)   Data 0.102 (0.102)   Loss 0.4831 (0.4831)   Prec@1 81.250 (81.250)   Prec@5 99.219 (99.219)   [2018-11-22 04时38分05秒]
+  Epoch: [089][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5621 (0.5675)   Prec@1 81.250 (80.410)   Prec@5 100.000 (99.036)   [2018-11-22 04时38分34秒]
+  **Train** Prec@1 80.176 Prec@5 99.030 Error@1 19.824
+  **Test** Prec@1 71.940 Prec@5 98.050 Error@1 28.060
+
+==>>[2018-11-22 04时39分07秒] [Epoch=090/300] [Need: 03:39:21] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [090][000/391]   Time 0.251 (0.251)   Data 0.103 (0.103)   Loss 0.7481 (0.7481)   Prec@1 75.000 (75.000)   Prec@5 96.875 (96.875)   [2018-11-22 04时39分07秒]
+  Epoch: [090][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5228 (0.5795)   Prec@1 79.688 (79.726)   Prec@5 100.000 (98.986)   [2018-11-22 04时39分37秒]
+  **Train** Prec@1 79.972 Prec@5 98.970 Error@1 20.028
+  **Test** Prec@1 74.000 Prec@5 98.030 Error@1 26.000
+
+==>>[2018-11-22 04时40分09秒] [Epoch=091/300] [Need: 03:38:17] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [091][000/391]   Time 0.258 (0.258)   Data 0.108 (0.108)   Loss 0.5527 (0.5527)   Prec@1 81.250 (81.250)   Prec@5 100.000 (100.000)   [2018-11-22 04时40分09秒]
+  Epoch: [091][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.4439 (0.5613)   Prec@1 83.594 (80.616)   Prec@5 99.219 (99.067)   [2018-11-22 04时40分39秒]
+  **Train** Prec@1 80.208 Prec@5 98.990 Error@1 19.792
+  **Test** Prec@1 69.080 Prec@5 98.430 Error@1 30.920
+
+==>>[2018-11-22 04时41分11秒] [Epoch=092/300] [Need: 03:37:14] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [092][000/391]   Time 0.256 (0.256)   Data 0.107 (0.107)   Loss 0.5275 (0.5275)   Prec@1 80.469 (80.469)   Prec@5 98.438 (98.438)   [2018-11-22 04时41分12秒]
+  Epoch: [092][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.6017 (0.5702)   Prec@1 81.250 (80.251)   Prec@5 99.219 (99.141)   [2018-11-22 04时41分41秒]
+  **Train** Prec@1 80.102 Prec@5 99.050 Error@1 19.898
+  **Test** Prec@1 73.000 Prec@5 98.660 Error@1 27.000
+
+==>>[2018-11-22 04时42分14秒] [Epoch=093/300] [Need: 03:36:10] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [093][000/391]   Time 0.258 (0.258)   Data 0.110 (0.110)   Loss 0.5080 (0.5080)   Prec@1 79.688 (79.688)   Prec@5 99.219 (99.219)   [2018-11-22 04时42分14秒]
+  Epoch: [093][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5819 (0.5882)   Prec@1 80.469 (79.567)   Prec@5 98.438 (98.842)   [2018-11-22 04时42分44秒]
+  **Train** Prec@1 79.806 Prec@5 98.932 Error@1 20.194
+  **Test** Prec@1 69.490 Prec@5 97.740 Error@1 30.510
+
+==>>[2018-11-22 04时43分16秒] [Epoch=094/300] [Need: 03:35:07] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [094][000/391]   Time 0.246 (0.246)   Data 0.097 (0.097)   Loss 0.4759 (0.4759)   Prec@1 78.125 (78.125)   Prec@5 100.000 (100.000)   [2018-11-22 04时43分16秒]
+  Epoch: [094][200/391]   Time 0.150 (0.149)   Data 0.001 (0.001)   Loss 0.6522 (0.5718)   Prec@1 76.562 (80.138)   Prec@5 100.000 (98.997)   [2018-11-22 04时43分46秒]
+  **Train** Prec@1 80.062 Prec@5 98.974 Error@1 19.938
+  **Test** Prec@1 76.760 Prec@5 98.740 Error@1 23.240
+
+==>>[2018-11-22 04时44分18秒] [Epoch=095/300] [Need: 03:34:04] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [095][000/391]   Time 0.257 (0.257)   Data 0.109 (0.109)   Loss 0.4886 (0.4886)   Prec@1 84.375 (84.375)   Prec@5 97.656 (97.656)   [2018-11-22 04时44分19秒]
+  Epoch: [095][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6208 (0.5603)   Prec@1 75.781 (80.457)   Prec@5 99.219 (99.129)   [2018-11-22 04时44分48秒]
+  **Train** Prec@1 80.226 Prec@5 99.092 Error@1 19.774
+  **Test** Prec@1 77.780 Prec@5 98.970 Error@1 22.220
+
+==>>[2018-11-22 04时45分21秒] [Epoch=096/300] [Need: 03:33:00] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [096][000/391]   Time 0.261 (0.261)   Data 0.112 (0.112)   Loss 0.5108 (0.5108)   Prec@1 81.250 (81.250)   Prec@5 100.000 (100.000)   [2018-11-22 04时45分21秒]
+  Epoch: [096][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.7475 (0.5561)   Prec@1 72.656 (80.811)   Prec@5 99.219 (99.032)   [2018-11-22 04时45分50秒]
+  **Train** Prec@1 80.640 Prec@5 99.018 Error@1 19.360
+  **Test** Prec@1 73.120 Prec@5 98.680 Error@1 26.880
+
+==>>[2018-11-22 04时46分23秒] [Epoch=097/300] [Need: 03:31:56] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [097][000/391]   Time 0.265 (0.265)   Data 0.117 (0.117)   Loss 0.5179 (0.5179)   Prec@1 84.375 (84.375)   Prec@5 100.000 (100.000)   [2018-11-22 04时46分23秒]
+  Epoch: [097][200/391]   Time 0.150 (0.150)   Data 0.000 (0.001)   Loss 0.6477 (0.5671)   Prec@1 79.688 (80.492)   Prec@5 97.656 (99.036)   [2018-11-22 04时46分53秒]
+  **Train** Prec@1 80.292 Prec@5 99.052 Error@1 19.708
+  **Test** Prec@1 73.920 Prec@5 98.140 Error@1 26.080
+
+==>>[2018-11-22 04时47分25秒] [Epoch=098/300] [Need: 03:30:53] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [098][000/391]   Time 0.253 (0.253)   Data 0.105 (0.105)   Loss 0.4843 (0.4843)   Prec@1 83.594 (83.594)   Prec@5 97.656 (97.656)   [2018-11-22 04时47分25秒]
+  Epoch: [098][200/391]   Time 0.147 (0.149)   Data 0.000 (0.001)   Loss 0.6281 (0.5614)   Prec@1 77.344 (80.434)   Prec@5 100.000 (99.056)   [2018-11-22 04时47分55秒]
+  **Train** Prec@1 80.340 Prec@5 99.018 Error@1 19.660
+  **Test** Prec@1 76.170 Prec@5 98.620 Error@1 23.830
+
+==>>[2018-11-22 04时48分27秒] [Epoch=099/300] [Need: 03:29:50] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [099][000/391]   Time 0.254 (0.254)   Data 0.105 (0.105)   Loss 0.5893 (0.5893)   Prec@1 78.125 (78.125)   Prec@5 97.656 (97.656)   [2018-11-22 04时48分28秒]
+  Epoch: [099][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.4932 (0.5537)   Prec@1 85.156 (80.819)   Prec@5 99.219 (99.067)   [2018-11-22 04时48分57秒]
+  **Train** Prec@1 80.490 Prec@5 99.074 Error@1 19.510
+  **Test** Prec@1 75.430 Prec@5 98.580 Error@1 24.570
+
+==>>[2018-11-22 04时49分29秒] [Epoch=100/300] [Need: 03:28:46] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [100][000/391]   Time 0.264 (0.264)   Data 0.115 (0.115)   Loss 0.4855 (0.4855)   Prec@1 82.812 (82.812)   Prec@5 98.438 (98.438)   [2018-11-22 04时49分30秒]
+  Epoch: [100][200/391]   Time 0.151 (0.150)   Data 0.001 (0.001)   Loss 0.5214 (0.5748)   Prec@1 81.250 (79.979)   Prec@5 99.219 (98.970)   [2018-11-22 04时50分00秒]
+  **Train** Prec@1 80.094 Prec@5 98.976 Error@1 19.906
+  **Test** Prec@1 77.020 Prec@5 98.500 Error@1 22.980
+
+==>>[2018-11-22 04时50分32秒] [Epoch=101/300] [Need: 03:27:43] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [101][000/391]   Time 0.248 (0.248)   Data 0.099 (0.099)   Loss 0.5084 (0.5084)   Prec@1 82.812 (82.812)   Prec@5 100.000 (100.000)   [2018-11-22 04时50分32秒]
+  Epoch: [101][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5573 (0.5555)   Prec@1 78.906 (80.756)   Prec@5 100.000 (99.114)   [2018-11-22 04时51分02秒]
+  **Train** Prec@1 80.648 Prec@5 99.040 Error@1 19.352
+  **Test** Prec@1 76.510 Prec@5 98.610 Error@1 23.490
+
+==>>[2018-11-22 04时51分34秒] [Epoch=102/300] [Need: 03:26:40] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [102][000/391]   Time 0.261 (0.261)   Data 0.112 (0.112)   Loss 0.5110 (0.5110)   Prec@1 81.250 (81.250)   Prec@5 100.000 (100.000)   [2018-11-22 04时51分34秒]
+  Epoch: [102][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.5865 (0.5620)   Prec@1 81.250 (80.473)   Prec@5 100.000 (98.997)   [2018-11-22 04时52分04秒]
+  **Train** Prec@1 80.584 Prec@5 99.032 Error@1 19.416
+  **Test** Prec@1 75.560 Prec@5 98.510 Error@1 24.440
+
+==>>[2018-11-22 04时52分36秒] [Epoch=103/300] [Need: 03:25:36] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [103][000/391]   Time 0.262 (0.262)   Data 0.114 (0.114)   Loss 0.5355 (0.5355)   Prec@1 82.812 (82.812)   Prec@5 99.219 (99.219)   [2018-11-22 04时52分37秒]
+  Epoch: [103][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.5032 (0.5422)   Prec@1 85.156 (81.044)   Prec@5 96.875 (99.017)   [2018-11-22 04时53分06秒]
+  **Train** Prec@1 80.492 Prec@5 98.984 Error@1 19.508
+  **Test** Prec@1 62.660 Prec@5 97.710 Error@1 37.340
+
+==>>[2018-11-22 04时53分39秒] [Epoch=104/300] [Need: 03:24:33] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [104][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.5143 (0.5143)   Prec@1 80.469 (80.469)   Prec@5 99.219 (99.219)   [2018-11-22 04时53分39秒]
+  Epoch: [104][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.4438 (0.5545)   Prec@1 84.375 (80.780)   Prec@5 99.219 (99.087)   [2018-11-22 04时54分09秒]
+  **Train** Prec@1 80.382 Prec@5 99.044 Error@1 19.618
+  **Test** Prec@1 77.940 Prec@5 98.840 Error@1 22.060
+
+==>>[2018-11-22 04时54分41秒] [Epoch=105/300] [Need: 03:23:30] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [105][000/391]   Time 0.249 (0.249)   Data 0.100 (0.100)   Loss 0.5453 (0.5453)   Prec@1 82.031 (82.031)   Prec@5 98.438 (98.438)   [2018-11-22 04时54分41秒]
+  Epoch: [105][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.4642 (0.5589)   Prec@1 85.938 (80.403)   Prec@5 99.219 (99.153)   [2018-11-22 04时55分11秒]
+  **Train** Prec@1 80.368 Prec@5 99.104 Error@1 19.632
+  **Test** Prec@1 70.930 Prec@5 98.690 Error@1 29.070
+
+==>>[2018-11-22 04时55分43秒] [Epoch=106/300] [Need: 03:22:27] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [106][000/391]   Time 0.265 (0.265)   Data 0.114 (0.114)   Loss 0.4835 (0.4835)   Prec@1 84.375 (84.375)   Prec@5 98.438 (98.438)   [2018-11-22 04时55分44秒]
+  Epoch: [106][200/391]   Time 0.149 (0.150)   Data 0.001 (0.001)   Loss 0.5492 (0.5530)   Prec@1 81.250 (80.787)   Prec@5 99.219 (99.048)   [2018-11-22 04时56分13秒]
+  **Train** Prec@1 80.730 Prec@5 98.996 Error@1 19.270
+  **Test** Prec@1 64.410 Prec@5 96.080 Error@1 35.590
+
+==>>[2018-11-22 04时56分46秒] [Epoch=107/300] [Need: 03:21:24] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [107][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.5479 (0.5479)   Prec@1 79.688 (79.688)   Prec@5 99.219 (99.219)   [2018-11-22 04时56分46秒]
+  Epoch: [107][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6706 (0.5706)   Prec@1 77.344 (80.375)   Prec@5 97.656 (99.001)   [2018-11-22 04时57分16秒]
+  **Train** Prec@1 80.482 Prec@5 99.020 Error@1 19.518
+  **Test** Prec@1 63.660 Prec@5 94.990 Error@1 36.340
+
+==>>[2018-11-22 04时57分48秒] [Epoch=108/300] [Need: 03:20:20] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [108][000/391]   Time 0.255 (0.255)   Data 0.106 (0.106)   Loss 0.5593 (0.5593)   Prec@1 84.375 (84.375)   Prec@5 98.438 (98.438)   [2018-11-22 04时57分48秒]
+  Epoch: [108][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5548 (0.5521)   Prec@1 79.688 (80.962)   Prec@5 99.219 (99.110)   [2018-11-22 04时58分18秒]
+  **Train** Prec@1 80.714 Prec@5 99.056 Error@1 19.286
+  **Test** Prec@1 73.430 Prec@5 97.840 Error@1 26.570
+
+==>>[2018-11-22 04时58分50秒] [Epoch=109/300] [Need: 03:19:17] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [109][000/391]   Time 0.259 (0.259)   Data 0.107 (0.107)   Loss 0.6280 (0.6280)   Prec@1 75.000 (75.000)   Prec@5 100.000 (100.000)   [2018-11-22 04时58分50秒]
+  Epoch: [109][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6175 (0.5634)   Prec@1 75.000 (80.395)   Prec@5 100.000 (99.032)   [2018-11-22 04时59分20秒]
+  **Train** Prec@1 79.952 Prec@5 99.022 Error@1 20.048
+  **Test** Prec@1 68.290 Prec@5 98.090 Error@1 31.710
+
+==>>[2018-11-22 04时59分52秒] [Epoch=110/300] [Need: 03:18:14] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [110][000/391]   Time 0.237 (0.237)   Data 0.087 (0.087)   Loss 0.4722 (0.4722)   Prec@1 81.250 (81.250)   Prec@5 99.219 (99.219)   [2018-11-22 04时59分53秒]
+  Epoch: [110][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.6318 (0.5772)   Prec@1 79.688 (80.018)   Prec@5 97.656 (98.982)   [2018-11-22 05时00分22秒]
+  **Train** Prec@1 80.030 Prec@5 98.960 Error@1 19.970
+  **Test** Prec@1 76.540 Prec@5 98.710 Error@1 23.460
+
+==>>[2018-11-22 05时00分55秒] [Epoch=111/300] [Need: 03:17:11] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [111][000/391]   Time 0.258 (0.258)   Data 0.109 (0.109)   Loss 0.5277 (0.5277)   Prec@1 84.375 (84.375)   Prec@5 99.219 (99.219)   [2018-11-22 05时00分55秒]
+  Epoch: [111][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.4685 (0.5625)   Prec@1 85.938 (80.519)   Prec@5 100.000 (99.052)   [2018-11-22 05时01分24秒]
+  **Train** Prec@1 80.462 Prec@5 99.036 Error@1 19.538
+  **Test** Prec@1 75.550 Prec@5 98.130 Error@1 24.450
+
+==>>[2018-11-22 05时01分57秒] [Epoch=112/300] [Need: 03:16:08] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [112][000/391]   Time 0.247 (0.247)   Data 0.097 (0.097)   Loss 0.4750 (0.4750)   Prec@1 77.344 (77.344)   Prec@5 100.000 (100.000)   [2018-11-22 05时01分57秒]
+  Epoch: [112][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5064 (0.5702)   Prec@1 85.938 (80.189)   Prec@5 99.219 (99.005)   [2018-11-22 05时02分27秒]
+  **Train** Prec@1 80.436 Prec@5 99.018 Error@1 19.564
+  **Test** Prec@1 75.590 Prec@5 98.470 Error@1 24.410
+
+==>>[2018-11-22 05时02分59秒] [Epoch=113/300] [Need: 03:15:05] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [113][000/391]   Time 0.259 (0.259)   Data 0.110 (0.110)   Loss 0.4661 (0.4661)   Prec@1 82.812 (82.812)   Prec@5 100.000 (100.000)   [2018-11-22 05时02分59秒]
+  Epoch: [113][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6197 (0.5513)   Prec@1 79.688 (81.188)   Prec@5 99.219 (99.059)   [2018-11-22 05时03分29秒]
+  **Train** Prec@1 80.700 Prec@5 99.040 Error@1 19.300
+  **Test** Prec@1 75.140 Prec@5 98.360 Error@1 24.860
+
+==>>[2018-11-22 05时04分01秒] [Epoch=114/300] [Need: 03:14:01] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [114][000/391]   Time 0.251 (0.251)   Data 0.103 (0.103)   Loss 0.5646 (0.5646)   Prec@1 76.562 (76.562)   Prec@5 100.000 (100.000)   [2018-11-22 05时04分02秒]
+  Epoch: [114][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5959 (0.5669)   Prec@1 84.375 (80.162)   Prec@5 97.656 (99.036)   [2018-11-22 05时04分31秒]
+  **Train** Prec@1 80.190 Prec@5 99.004 Error@1 19.810
+  **Test** Prec@1 70.120 Prec@5 97.510 Error@1 29.880
+
+==>>[2018-11-22 05时05分04秒] [Epoch=115/300] [Need: 03:12:58] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [115][000/391]   Time 0.262 (0.262)   Data 0.113 (0.113)   Loss 0.4386 (0.4386)   Prec@1 85.938 (85.938)   Prec@5 99.219 (99.219)   [2018-11-22 05时05分04秒]
+  Epoch: [115][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5546 (0.5540)   Prec@1 78.125 (80.706)   Prec@5 99.219 (99.087)   [2018-11-22 05时05分34秒]
+  **Train** Prec@1 80.642 Prec@5 99.026 Error@1 19.358
+  **Test** Prec@1 69.160 Prec@5 98.110 Error@1 30.840
+
+==>>[2018-11-22 05时06分06秒] [Epoch=116/300] [Need: 03:11:55] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [116][000/391]   Time 0.242 (0.242)   Data 0.094 (0.094)   Loss 0.4828 (0.4828)   Prec@1 81.250 (81.250)   Prec@5 100.000 (100.000)   [2018-11-22 05时06分06秒]
+  Epoch: [116][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5937 (0.5524)   Prec@1 77.344 (80.430)   Prec@5 98.438 (99.036)   [2018-11-22 05时06分36秒]
+  **Train** Prec@1 80.356 Prec@5 99.048 Error@1 19.644
+  **Test** Prec@1 73.300 Prec@5 98.260 Error@1 26.700
+
+==>>[2018-11-22 05时07分08秒] [Epoch=117/300] [Need: 03:10:52] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [117][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.5218 (0.5218)   Prec@1 82.031 (82.031)   Prec@5 100.000 (100.000)   [2018-11-22 05时07分08秒]
+  Epoch: [117][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5348 (0.5595)   Prec@1 82.812 (80.613)   Prec@5 98.438 (99.063)   [2018-11-22 05时07分38秒]
+  **Train** Prec@1 80.360 Prec@5 99.058 Error@1 19.640
+  **Test** Prec@1 75.750 Prec@5 98.460 Error@1 24.250
+
+==>>[2018-11-22 05时08分11秒] [Epoch=118/300] [Need: 03:09:49] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [118][000/391]   Time 0.250 (0.250)   Data 0.102 (0.102)   Loss 0.4079 (0.4079)   Prec@1 86.719 (86.719)   Prec@5 100.000 (100.000)   [2018-11-22 05时08分11秒]
+  Epoch: [118][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.7713 (0.5595)   Prec@1 75.781 (80.430)   Prec@5 99.219 (99.013)   [2018-11-22 05时08分41秒]
+  **Train** Prec@1 80.192 Prec@5 98.984 Error@1 19.808
+  **Test** Prec@1 74.670 Prec@5 97.700 Error@1 25.330
+
+==>>[2018-11-22 05时09分13秒] [Epoch=119/300] [Need: 03:08:46] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [119][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.6859 (0.6859)   Prec@1 77.344 (77.344)   Prec@5 98.438 (98.438)   [2018-11-22 05时09分13秒]
+  Epoch: [119][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.4964 (0.5561)   Prec@1 85.938 (80.838)   Prec@5 99.219 (99.013)   [2018-11-22 05时09分43秒]
+  **Train** Prec@1 80.698 Prec@5 99.056 Error@1 19.302
+  **Test** Prec@1 72.410 Prec@5 98.380 Error@1 27.590
+
+==>>[2018-11-22 05时10分15秒] [Epoch=120/300] [Need: 03:07:43] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [120][000/391]   Time 0.261 (0.261)   Data 0.111 (0.111)   Loss 0.6771 (0.6771)   Prec@1 74.219 (74.219)   Prec@5 98.438 (98.438)   [2018-11-22 05时10分15秒]
+  Epoch: [120][200/391]   Time 0.150 (0.149)   Data 0.000 (0.001)   Loss 0.6133 (0.5586)   Prec@1 78.125 (80.465)   Prec@5 99.219 (99.048)   [2018-11-22 05时10分45秒]
+  **Train** Prec@1 80.726 Prec@5 99.036 Error@1 19.274
+  **Test** Prec@1 75.340 Prec@5 97.930 Error@1 24.660
+
+==>>[2018-11-22 05时11分17秒] [Epoch=121/300] [Need: 03:06:40] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [121][000/391]   Time 0.260 (0.260)   Data 0.110 (0.110)   Loss 0.6648 (0.6648)   Prec@1 80.469 (80.469)   Prec@5 97.656 (97.656)   [2018-11-22 05时11分18秒]
+  Epoch: [121][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.5133 (0.5559)   Prec@1 82.031 (80.966)   Prec@5 100.000 (99.017)   [2018-11-22 05时11分47秒]
+  **Train** Prec@1 80.500 Prec@5 99.010 Error@1 19.500
+  **Test** Prec@1 73.380 Prec@5 98.160 Error@1 26.620
+
+==>>[2018-11-22 05时12分20秒] [Epoch=122/300] [Need: 03:05:37] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [122][000/391]   Time 0.241 (0.241)   Data 0.092 (0.092)   Loss 0.4638 (0.4638)   Prec@1 82.031 (82.031)   Prec@5 100.000 (100.000)   [2018-11-22 05时12分20秒]
+  Epoch: [122][200/391]   Time 0.149 (0.148)   Data 0.000 (0.001)   Loss 0.6859 (0.5595)   Prec@1 75.781 (80.601)   Prec@5 98.438 (99.122)   [2018-11-22 05时12分49秒]
+  **Train** Prec@1 80.242 Prec@5 99.034 Error@1 19.758
+  **Test** Prec@1 76.330 Prec@5 98.650 Error@1 23.670
+
+==>>[2018-11-22 05时13分22秒] [Epoch=123/300] [Need: 03:04:34] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [123][000/391]   Time 0.261 (0.261)   Data 0.113 (0.113)   Loss 0.5647 (0.5647)   Prec@1 76.562 (76.562)   Prec@5 99.219 (99.219)   [2018-11-22 05时13分22秒]
+  Epoch: [123][200/391]   Time 0.149 (0.149)   Data 0.001 (0.001)   Loss 0.5307 (0.5562)   Prec@1 80.469 (80.442)   Prec@5 99.219 (99.017)   [2018-11-22 05时13分52秒]
+  **Train** Prec@1 80.220 Prec@5 98.928 Error@1 19.780
+  **Test** Prec@1 75.630 Prec@5 98.350 Error@1 24.370
+
+==>>[2018-11-22 05时14分24秒] [Epoch=124/300] [Need: 03:03:31] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [124][000/391]   Time 0.260 (0.260)   Data 0.111 (0.111)   Loss 0.6169 (0.6169)   Prec@1 79.688 (79.688)   Prec@5 99.219 (99.219)   [2018-11-22 05时14分24秒]
+  Epoch: [124][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6198 (0.5546)   Prec@1 77.344 (80.978)   Prec@5 100.000 (99.098)   [2018-11-22 05时14分54秒]
+  **Train** Prec@1 80.794 Prec@5 98.998 Error@1 19.206
+  **Test** Prec@1 69.270 Prec@5 96.530 Error@1 30.730
+
+==>>[2018-11-22 05时15分26秒] [Epoch=125/300] [Need: 03:02:28] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [125][000/391]   Time 0.257 (0.257)   Data 0.109 (0.109)   Loss 0.5171 (0.5171)   Prec@1 83.594 (83.594)   Prec@5 99.219 (99.219)   [2018-11-22 05时15分27秒]
+  Epoch: [125][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5838 (0.5564)   Prec@1 82.031 (80.718)   Prec@5 97.656 (99.087)   [2018-11-22 05时15分56秒]
+  **Train** Prec@1 80.590 Prec@5 99.114 Error@1 19.410
+  **Test** Prec@1 75.270 Prec@5 98.480 Error@1 24.730
+
+==>>[2018-11-22 05时16分29秒] [Epoch=126/300] [Need: 03:01:25] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [126][000/391]   Time 0.245 (0.245)   Data 0.096 (0.096)   Loss 0.3769 (0.3769)   Prec@1 85.938 (85.938)   Prec@5 100.000 (100.000)   [2018-11-22 05时16分29秒]
+  Epoch: [126][200/391]   Time 0.151 (0.150)   Data 0.000 (0.001)   Loss 0.6154 (0.5547)   Prec@1 78.906 (80.904)   Prec@5 99.219 (99.056)   [2018-11-22 05时16分59秒]
+  **Train** Prec@1 80.876 Prec@5 99.040 Error@1 19.124
+  **Test** Prec@1 77.520 Prec@5 98.730 Error@1 22.480
+
+==>>[2018-11-22 05时17分31秒] [Epoch=127/300] [Need: 03:00:22] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [127][000/391]   Time 0.262 (0.262)   Data 0.113 (0.113)   Loss 0.5785 (0.5785)   Prec@1 79.688 (79.688)   Prec@5 100.000 (100.000)   [2018-11-22 05时17分31秒]
+  Epoch: [127][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5839 (0.5512)   Prec@1 80.469 (80.791)   Prec@5 98.438 (99.153)   [2018-11-22 05时18分01秒]
+  **Train** Prec@1 80.520 Prec@5 99.036 Error@1 19.480
+  **Test** Prec@1 75.450 Prec@5 98.550 Error@1 24.550
+
+==>>[2018-11-22 05时18分33秒] [Epoch=128/300] [Need: 02:59:19] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [128][000/391]   Time 0.256 (0.256)   Data 0.108 (0.108)   Loss 0.5093 (0.5093)   Prec@1 84.375 (84.375)   Prec@5 99.219 (99.219)   [2018-11-22 05时18分33秒]
+  Epoch: [128][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.7167 (0.5568)   Prec@1 74.219 (80.469)   Prec@5 98.438 (99.063)   [2018-11-22 05时19分03秒]
+  **Train** Prec@1 80.558 Prec@5 99.012 Error@1 19.442
+  **Test** Prec@1 73.530 Prec@5 98.220 Error@1 26.470
+
+==>>[2018-11-22 05时19分35秒] [Epoch=129/300] [Need: 02:58:16] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [129][000/391]   Time 0.251 (0.251)   Data 0.100 (0.100)   Loss 0.6111 (0.6111)   Prec@1 79.688 (79.688)   Prec@5 98.438 (98.438)   [2018-11-22 05时19分35秒]
+  Epoch: [129][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.5163 (0.5566)   Prec@1 81.250 (80.492)   Prec@5 99.219 (99.017)   [2018-11-22 05时20分05秒]
+  **Train** Prec@1 80.640 Prec@5 98.998 Error@1 19.360
+  **Test** Prec@1 73.200 Prec@5 98.490 Error@1 26.800
+
+==>>[2018-11-22 05时20分38秒] [Epoch=130/300] [Need: 02:57:13] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [130][000/391]   Time 0.236 (0.236)   Data 0.087 (0.087)   Loss 0.5148 (0.5148)   Prec@1 79.688 (79.688)   Prec@5 100.000 (100.000)   [2018-11-22 05时20分38秒]
+  Epoch: [130][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.4923 (0.5534)   Prec@1 82.812 (80.842)   Prec@5 100.000 (99.160)   [2018-11-22 05时21分08秒]
+  **Train** Prec@1 80.794 Prec@5 99.140 Error@1 19.206
+  **Test** Prec@1 69.390 Prec@5 97.620 Error@1 30.610
+
+==>>[2018-11-22 05时21分40秒] [Epoch=131/300] [Need: 02:56:10] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [131][000/391]   Time 0.238 (0.238)   Data 0.088 (0.088)   Loss 0.6727 (0.6727)   Prec@1 77.344 (77.344)   Prec@5 97.656 (97.656)   [2018-11-22 05时21分40秒]
+  Epoch: [131][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.6382 (0.5524)   Prec@1 76.562 (80.733)   Prec@5 100.000 (99.110)   [2018-11-22 05时22分10秒]
+  **Train** Prec@1 80.622 Prec@5 99.118 Error@1 19.378
+  **Test** Prec@1 77.840 Prec@5 98.680 Error@1 22.160
+
+==>>[2018-11-22 05时22分42秒] [Epoch=132/300] [Need: 02:55:07] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [132][000/391]   Time 0.264 (0.264)   Data 0.113 (0.113)   Loss 0.5698 (0.5698)   Prec@1 77.344 (77.344)   Prec@5 99.219 (99.219)   [2018-11-22 05时22分42秒]
+  Epoch: [132][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.5344 (0.5565)   Prec@1 82.031 (80.698)   Prec@5 100.000 (99.028)   [2018-11-22 05时23分12秒]
+  **Train** Prec@1 80.730 Prec@5 99.046 Error@1 19.270
+  **Test** Prec@1 71.360 Prec@5 97.150 Error@1 28.640
+
+==>>[2018-11-22 05时23分44秒] [Epoch=133/300] [Need: 02:54:04] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [133][000/391]   Time 0.258 (0.258)   Data 0.109 (0.109)   Loss 0.5410 (0.5410)   Prec@1 81.250 (81.250)   Prec@5 99.219 (99.219)   [2018-11-22 05时23分45秒]
+  Epoch: [133][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.6383 (0.5553)   Prec@1 78.906 (80.675)   Prec@5 99.219 (99.044)   [2018-11-22 05时24分14秒]
+  **Train** Prec@1 80.618 Prec@5 98.984 Error@1 19.382
+  **Test** Prec@1 69.800 Prec@5 96.970 Error@1 30.200
+
+==>>[2018-11-22 05时24分46秒] [Epoch=134/300] [Need: 02:53:01] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [134][000/391]   Time 0.262 (0.262)   Data 0.113 (0.113)   Loss 0.6685 (0.6685)   Prec@1 79.688 (79.688)   Prec@5 98.438 (98.438)   [2018-11-22 05时24分47秒]
+  Epoch: [134][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.4288 (0.5407)   Prec@1 84.375 (81.126)   Prec@5 100.000 (99.180)   [2018-11-22 05时25分16秒]
+  **Train** Prec@1 80.704 Prec@5 99.102 Error@1 19.296
+  **Test** Prec@1 74.430 Prec@5 98.350 Error@1 25.570
+
+==>>[2018-11-22 05时25分49秒] [Epoch=135/300] [Need: 02:51:58] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [135][000/391]   Time 0.264 (0.264)   Data 0.114 (0.114)   Loss 0.5401 (0.5401)   Prec@1 76.562 (76.562)   Prec@5 99.219 (99.219)   [2018-11-22 05时25分49秒]
+  Epoch: [135][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.4604 (0.5514)   Prec@1 82.031 (80.648)   Prec@5 99.219 (99.118)   [2018-11-22 05时26分19秒]
+  **Train** Prec@1 80.818 Prec@5 99.046 Error@1 19.182
+  **Test** Prec@1 73.700 Prec@5 97.480 Error@1 26.300
+
+==>>[2018-11-22 05时26分51秒] [Epoch=136/300] [Need: 02:50:55] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [136][000/391]   Time 0.259 (0.259)   Data 0.110 (0.110)   Loss 0.4373 (0.4373)   Prec@1 79.688 (79.688)   Prec@5 100.000 (100.000)   [2018-11-22 05时26分51秒]
+  Epoch: [136][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.4981 (0.5445)   Prec@1 85.156 (81.075)   Prec@5 100.000 (99.083)   [2018-11-22 05时27分21秒]
+  **Train** Prec@1 80.752 Prec@5 99.034 Error@1 19.248
+  **Test** Prec@1 74.780 Prec@5 98.630 Error@1 25.220
+
+==>>[2018-11-22 05时27分53秒] [Epoch=137/300] [Need: 02:49:52] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [137][000/391]   Time 0.251 (0.251)   Data 0.101 (0.101)   Loss 0.5425 (0.5425)   Prec@1 82.031 (82.031)   Prec@5 98.438 (98.438)   [2018-11-22 05时27分53秒]
+  Epoch: [137][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5367 (0.5625)   Prec@1 82.812 (80.671)   Prec@5 100.000 (99.056)   [2018-11-22 05时28分23秒]
+  **Train** Prec@1 80.640 Prec@5 99.032 Error@1 19.360
+  **Test** Prec@1 68.040 Prec@5 96.110 Error@1 31.960
+
+==>>[2018-11-22 05时28分56秒] [Epoch=138/300] [Need: 02:48:50] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [138][000/391]   Time 0.243 (0.243)   Data 0.093 (0.093)   Loss 0.5273 (0.5273)   Prec@1 80.469 (80.469)   Prec@5 100.000 (100.000)   [2018-11-22 05时28分56秒]
+  Epoch: [138][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.5177 (0.5589)   Prec@1 81.250 (80.683)   Prec@5 99.219 (99.075)   [2018-11-22 05时29分26秒]
+  **Train** Prec@1 80.774 Prec@5 99.090 Error@1 19.226
+  **Test** Prec@1 72.780 Prec@5 98.410 Error@1 27.220
+
+==>>[2018-11-22 05时29分58秒] [Epoch=139/300] [Need: 02:47:47] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [139][000/391]   Time 0.245 (0.245)   Data 0.096 (0.096)   Loss 0.5726 (0.5726)   Prec@1 76.562 (76.562)   Prec@5 100.000 (100.000)   [2018-11-22 05时29分58秒]
+  Epoch: [139][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.4243 (0.5449)   Prec@1 82.812 (81.110)   Prec@5 100.000 (99.211)   [2018-11-22 05时30分28秒]
+  **Train** Prec@1 80.862 Prec@5 99.066 Error@1 19.138
+  **Test** Prec@1 74.000 Prec@5 98.320 Error@1 26.000
+
+==>>[2018-11-22 05时31分00秒] [Epoch=140/300] [Need: 02:46:44] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [140][000/391]   Time 0.259 (0.259)   Data 0.111 (0.111)   Loss 0.4614 (0.4614)   Prec@1 84.375 (84.375)   Prec@5 98.438 (98.438)   [2018-11-22 05时31分00秒]
+  Epoch: [140][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5753 (0.5471)   Prec@1 79.688 (80.986)   Prec@5 99.219 (99.160)   [2018-11-22 05时31分30秒]
+  **Train** Prec@1 80.702 Prec@5 99.036 Error@1 19.298
+  **Test** Prec@1 72.010 Prec@5 98.230 Error@1 27.990
+
+==>>[2018-11-22 05时32分02秒] [Epoch=141/300] [Need: 02:45:41] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [141][000/391]   Time 0.263 (0.263)   Data 0.115 (0.115)   Loss 0.5568 (0.5568)   Prec@1 79.688 (79.688)   Prec@5 98.438 (98.438)   [2018-11-22 05时32分03秒]
+  Epoch: [141][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5916 (0.5491)   Prec@1 81.250 (80.943)   Prec@5 98.438 (99.063)   [2018-11-22 05时32分32秒]
+  **Train** Prec@1 80.514 Prec@5 99.056 Error@1 19.486
+  **Test** Prec@1 68.540 Prec@5 97.480 Error@1 31.460
+
+==>>[2018-11-22 05时33分04秒] [Epoch=142/300] [Need: 02:44:38] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [142][000/391]   Time 0.254 (0.254)   Data 0.105 (0.105)   Loss 0.4679 (0.4679)   Prec@1 85.938 (85.938)   Prec@5 100.000 (100.000)   [2018-11-22 05时33分05秒]
+  Epoch: [142][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.5642 (0.5684)   Prec@1 80.469 (80.492)   Prec@5 98.438 (98.997)   [2018-11-22 05时33分34秒]
+  **Train** Prec@1 80.222 Prec@5 99.036 Error@1 19.778
+  **Test** Prec@1 71.200 Prec@5 97.890 Error@1 28.800
+
+==>>[2018-11-22 05时34分07秒] [Epoch=143/300] [Need: 02:43:35] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [143][000/391]   Time 0.251 (0.251)   Data 0.103 (0.103)   Loss 0.6000 (0.6000)   Prec@1 79.688 (79.688)   Prec@5 99.219 (99.219)   [2018-11-22 05时34分07秒]
+  Epoch: [143][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.6830 (0.5633)   Prec@1 78.125 (80.628)   Prec@5 99.219 (98.943)   [2018-11-22 05时34分36秒]
+  **Train** Prec@1 80.578 Prec@5 98.968 Error@1 19.422
+  **Test** Prec@1 73.280 Prec@5 98.250 Error@1 26.720
+
+==>>[2018-11-22 05时35分09秒] [Epoch=144/300] [Need: 02:42:33] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [144][000/391]   Time 0.259 (0.259)   Data 0.110 (0.110)   Loss 0.6536 (0.6536)   Prec@1 75.000 (75.000)   Prec@5 99.219 (99.219)   [2018-11-22 05时35分09秒]
+  Epoch: [144][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5676 (0.5699)   Prec@1 80.469 (80.228)   Prec@5 99.219 (99.040)   [2018-11-22 05时35分39秒]
+  **Train** Prec@1 80.340 Prec@5 99.022 Error@1 19.660
+  **Test** Prec@1 72.190 Prec@5 98.230 Error@1 27.810
+
+==>>[2018-11-22 05时36分11秒] [Epoch=145/300] [Need: 02:41:30] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [145][000/391]   Time 0.264 (0.264)   Data 0.116 (0.116)   Loss 0.6736 (0.6736)   Prec@1 79.688 (79.688)   Prec@5 98.438 (98.438)   [2018-11-22 05时36分11秒]
+  Epoch: [145][200/391]   Time 0.147 (0.149)   Data 0.000 (0.001)   Loss 0.6586 (0.5653)   Prec@1 74.219 (80.500)   Prec@5 99.219 (99.063)   [2018-11-22 05时36分41秒]
+  **Train** Prec@1 80.168 Prec@5 98.998 Error@1 19.832
+  **Test** Prec@1 76.880 Prec@5 98.790 Error@1 23.120
+
+==>>[2018-11-22 05时37分13秒] [Epoch=146/300] [Need: 02:40:27] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [146][000/391]   Time 0.254 (0.254)   Data 0.105 (0.105)   Loss 0.5333 (0.5333)   Prec@1 83.594 (83.594)   Prec@5 99.219 (99.219)   [2018-11-22 05时37分13秒]
+  Epoch: [146][200/391]   Time 0.150 (0.149)   Data 0.000 (0.001)   Loss 0.4122 (0.5653)   Prec@1 86.719 (80.445)   Prec@5 99.219 (98.997)   [2018-11-22 05时37分43秒]
+  **Train** Prec@1 80.262 Prec@5 98.986 Error@1 19.738
+  **Test** Prec@1 69.790 Prec@5 97.770 Error@1 30.210
+
+==>>[2018-11-22 05时38分16秒] [Epoch=147/300] [Need: 02:39:24] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [147][000/391]   Time 0.249 (0.249)   Data 0.101 (0.101)   Loss 0.4559 (0.4559)   Prec@1 85.938 (85.938)   Prec@5 100.000 (100.000)   [2018-11-22 05时38分16秒]
+  Epoch: [147][200/391]   Time 0.148 (0.148)   Data 0.001 (0.001)   Loss 0.4359 (0.5657)   Prec@1 85.156 (80.449)   Prec@5 99.219 (99.001)   [2018-11-22 05时38分45秒]
+  **Train** Prec@1 80.568 Prec@5 99.006 Error@1 19.432
+  **Test** Prec@1 73.150 Prec@5 98.290 Error@1 26.850
+
+==>>[2018-11-22 05时39分18秒] [Epoch=148/300] [Need: 02:38:21] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [148][000/391]   Time 0.263 (0.263)   Data 0.114 (0.114)   Loss 0.4284 (0.4284)   Prec@1 85.156 (85.156)   Prec@5 100.000 (100.000)   [2018-11-22 05时39分18秒]
+  Epoch: [148][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.5061 (0.5522)   Prec@1 80.469 (80.846)   Prec@5 99.219 (99.048)   [2018-11-22 05时39分48秒]
+  **Train** Prec@1 80.652 Prec@5 99.100 Error@1 19.348
+  **Test** Prec@1 77.660 Prec@5 98.530 Error@1 22.340
+
+==>>[2018-11-22 05时40分20秒] [Epoch=149/300] [Need: 02:37:18] [learning_rate=0.1000] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [149][000/391]   Time 0.254 (0.254)   Data 0.105 (0.105)   Loss 0.4588 (0.4588)   Prec@1 82.812 (82.812)   Prec@5 100.000 (100.000)   [2018-11-22 05时40分20秒]
+  Epoch: [149][200/391]   Time 0.149 (0.150)   Data 0.000 (0.001)   Loss 0.6422 (0.5603)   Prec@1 79.688 (80.675)   Prec@5 98.438 (98.919)   [2018-11-22 05时40分50秒]
+  **Train** Prec@1 80.572 Prec@5 99.022 Error@1 19.428
+  **Test** Prec@1 73.920 Prec@5 98.150 Error@1 26.080
+
+==>>[2018-11-22 05时41分22秒] [Epoch=150/300] [Need: 02:36:16] [learning_rate=0.0100] [Best : Accuracy=79.31, Error=20.69]
+  Epoch: [150][000/391]   Time 0.258 (0.258)   Data 0.110 (0.110)   Loss 0.4736 (0.4736)   Prec@1 83.594 (83.594)   Prec@5 100.000 (100.000)   [2018-11-22 05时41分23秒]
+  Epoch: [150][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2584 (0.4241)   Prec@1 90.625 (85.409)   Prec@5 100.000 (99.491)   [2018-11-22 05时41分52秒]
+  **Train** Prec@1 86.316 Prec@5 99.512 Error@1 13.684
+  **Test** Prec@1 86.570 Prec@5 99.570 Error@1 13.430
+
+==>>[2018-11-22 05时42分24秒] [Epoch=151/300] [Need: 02:35:13] [learning_rate=0.0100] [Best : Accuracy=86.57, Error=13.43]
+  Epoch: [151][000/391]   Time 0.253 (0.253)   Data 0.105 (0.105)   Loss 0.3789 (0.3789)   Prec@1 86.719 (86.719)   Prec@5 98.438 (98.438)   [2018-11-22 05时42分25秒]
+  Epoch: [151][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.3370 (0.3419)   Prec@1 89.062 (88.200)   Prec@5 99.219 (99.674)   [2018-11-22 05时42分54秒]
+  **Train** Prec@1 88.292 Prec@5 99.638 Error@1 11.708
+  **Test** Prec@1 87.390 Prec@5 99.580 Error@1 12.610
+
+==>>[2018-11-22 05时43分27秒] [Epoch=152/300] [Need: 02:34:10] [learning_rate=0.0100] [Best : Accuracy=87.39, Error=12.61]
+  Epoch: [152][000/391]   Time 0.256 (0.256)   Data 0.107 (0.107)   Loss 0.2993 (0.2993)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2018-11-22 05时43分27秒]
+  Epoch: [152][200/391]   Time 0.150 (0.150)   Data 0.000 (0.001)   Loss 0.3616 (0.3103)   Prec@1 85.156 (89.401)   Prec@5 100.000 (99.740)   [2018-11-22 05时43分57秒]
+  **Train** Prec@1 89.184 Prec@5 99.694 Error@1 10.816
+  **Test** Prec@1 87.650 Prec@5 99.640 Error@1 12.350
+
+==>>[2018-11-22 05时44分29秒] [Epoch=153/300] [Need: 02:33:07] [learning_rate=0.0100] [Best : Accuracy=87.65, Error=12.35]
+  Epoch: [153][000/391]   Time 0.264 (0.264)   Data 0.115 (0.115)   Loss 0.3811 (0.3811)   Prec@1 84.375 (84.375)   Prec@5 99.219 (99.219)   [2018-11-22 05时44分29秒]
+  Epoch: [153][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2606 (0.3041)   Prec@1 89.844 (89.541)   Prec@5 100.000 (99.720)   [2018-11-22 05时44分59秒]
+  **Train** Prec@1 89.546 Prec@5 99.684 Error@1 10.454
+  **Test** Prec@1 87.840 Prec@5 99.590 Error@1 12.160
+
+==>>[2018-11-22 05时45分31秒] [Epoch=154/300] [Need: 02:32:04] [learning_rate=0.0100] [Best : Accuracy=87.84, Error=12.16]
+  Epoch: [154][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.3013 (0.3013)   Prec@1 85.156 (85.156)   Prec@5 100.000 (100.000)   [2018-11-22 05时45分31秒]
+  Epoch: [154][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.3517 (0.2909)   Prec@1 85.938 (89.797)   Prec@5 100.000 (99.728)   [2018-11-22 05时46分01秒]
+  **Train** Prec@1 89.850 Prec@5 99.722 Error@1 10.150
+  **Test** Prec@1 88.240 Prec@5 99.660 Error@1 11.760
+
+==>>[2018-11-22 05时46分33秒] [Epoch=155/300] [Need: 02:31:02] [learning_rate=0.0100] [Best : Accuracy=88.24, Error=11.76]
+  Epoch: [155][000/391]   Time 0.246 (0.246)   Data 0.098 (0.098)   Loss 0.2945 (0.2945)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2018-11-22 05时46分33秒]
+  Epoch: [155][200/391]   Time 0.148 (0.150)   Data 0.001 (0.001)   Loss 0.2354 (0.2822)   Prec@1 92.969 (90.299)   Prec@5 100.000 (99.747)   [2018-11-22 05时47分03秒]
+  **Train** Prec@1 90.100 Prec@5 99.778 Error@1 9.900
+  **Test** Prec@1 88.220 Prec@5 99.660 Error@1 11.780
+
+==>>[2018-11-22 05时47分36秒] [Epoch=156/300] [Need: 02:29:59] [learning_rate=0.0100] [Best : Accuracy=88.24, Error=11.76]
+  Epoch: [156][000/391]   Time 0.258 (0.258)   Data 0.108 (0.108)   Loss 0.2786 (0.2786)   Prec@1 89.062 (89.062)   Prec@5 100.000 (100.000)   [2018-11-22 05时47分36秒]
+  Epoch: [156][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.1172 (0.2722)   Prec@1 96.094 (90.470)   Prec@5 100.000 (99.767)   [2018-11-22 05时48分06秒]
+  **Train** Prec@1 90.480 Prec@5 99.774 Error@1 9.520
+  **Test** Prec@1 88.450 Prec@5 99.660 Error@1 11.550
+
+==>>[2018-11-22 05时48分38秒] [Epoch=157/300] [Need: 02:28:56] [learning_rate=0.0100] [Best : Accuracy=88.45, Error=11.55]
+  Epoch: [157][000/391]   Time 0.250 (0.250)   Data 0.100 (0.100)   Loss 0.2866 (0.2866)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2018-11-22 05时48分38秒]
+  Epoch: [157][200/391]   Time 0.147 (0.148)   Data 0.000 (0.001)   Loss 0.2522 (0.2657)   Prec@1 90.625 (90.792)   Prec@5 100.000 (99.775)   [2018-11-22 05时49分08秒]
+  **Train** Prec@1 90.698 Prec@5 99.766 Error@1 9.302
+  **Test** Prec@1 88.430 Prec@5 99.640 Error@1 11.570
+
+==>>[2018-11-22 05时49分40秒] [Epoch=158/300] [Need: 02:27:53] [learning_rate=0.0100] [Best : Accuracy=88.45, Error=11.55]
+  Epoch: [158][000/391]   Time 0.259 (0.259)   Data 0.105 (0.105)   Loss 0.2169 (0.2169)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2018-11-22 05时49分40秒]
+  Epoch: [158][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.2356 (0.2589)   Prec@1 90.625 (90.905)   Prec@5 100.000 (99.794)   [2018-11-22 05时50分10秒]
+  **Train** Prec@1 90.878 Prec@5 99.800 Error@1 9.122
+  **Test** Prec@1 88.320 Prec@5 99.690 Error@1 11.680
+
+==>>[2018-11-22 05时50分42秒] [Epoch=159/300] [Need: 02:26:51] [learning_rate=0.0100] [Best : Accuracy=88.45, Error=11.55]
+  Epoch: [159][000/391]   Time 0.262 (0.262)   Data 0.113 (0.113)   Loss 0.2684 (0.2684)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2018-11-22 05时50分43秒]
+  Epoch: [159][200/391]   Time 0.148 (0.148)   Data 0.001 (0.001)   Loss 0.2761 (0.2517)   Prec@1 89.844 (91.363)   Prec@5 100.000 (99.802)   [2018-11-22 05时51分12秒]
+  **Train** Prec@1 91.154 Prec@5 99.822 Error@1 8.846
+  **Test** Prec@1 88.040 Prec@5 99.670 Error@1 11.960
+
+==>>[2018-11-22 05时51分44秒] [Epoch=160/300] [Need: 02:25:48] [learning_rate=0.0100] [Best : Accuracy=88.45, Error=11.55]
+  Epoch: [160][000/391]   Time 0.257 (0.257)   Data 0.109 (0.109)   Loss 0.3354 (0.3354)   Prec@1 89.062 (89.062)   Prec@5 100.000 (100.000)   [2018-11-22 05时51分45秒]
+  Epoch: [160][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.2732 (0.2494)   Prec@1 92.188 (91.290)   Prec@5 100.000 (99.817)   [2018-11-22 05时52分14秒]
+  **Train** Prec@1 91.176 Prec@5 99.800 Error@1 8.824
+  **Test** Prec@1 88.790 Prec@5 99.700 Error@1 11.210
+
+==>>[2018-11-22 05时52分47秒] [Epoch=161/300] [Need: 02:24:45] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [161][000/391]   Time 0.263 (0.263)   Data 0.113 (0.113)   Loss 0.2665 (0.2665)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2018-11-22 05时52分47秒]
+  Epoch: [161][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2619 (0.2443)   Prec@1 89.844 (91.430)   Prec@5 100.000 (99.856)   [2018-11-22 05时53分17秒]
+  **Train** Prec@1 91.326 Prec@5 99.836 Error@1 8.674
+  **Test** Prec@1 88.470 Prec@5 99.700 Error@1 11.530
+
+==>>[2018-11-22 05时53分49秒] [Epoch=162/300] [Need: 02:23:43] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [162][000/391]   Time 0.261 (0.261)   Data 0.113 (0.113)   Loss 0.3181 (0.3181)   Prec@1 89.844 (89.844)   Prec@5 99.219 (99.219)   [2018-11-22 05时53分49秒]
+  Epoch: [162][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2032 (0.2391)   Prec@1 92.188 (91.651)   Prec@5 100.000 (99.841)   [2018-11-22 05时54分19秒]
+  **Train** Prec@1 91.456 Prec@5 99.814 Error@1 8.544
+  **Test** Prec@1 88.340 Prec@5 99.590 Error@1 11.660
+
+==>>[2018-11-22 05时54分51秒] [Epoch=163/300] [Need: 02:22:40] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [163][000/391]   Time 0.240 (0.240)   Data 0.092 (0.092)   Loss 0.3697 (0.3697)   Prec@1 88.281 (88.281)   Prec@5 100.000 (100.000)   [2018-11-22 05时54分51秒]
+  Epoch: [163][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2352 (0.2336)   Prec@1 89.062 (91.822)   Prec@5 100.000 (99.856)   [2018-11-22 05时55分21秒]
+  **Train** Prec@1 91.516 Prec@5 99.830 Error@1 8.484
+  **Test** Prec@1 88.760 Prec@5 99.670 Error@1 11.240
+
+==>>[2018-11-22 05时55分53秒] [Epoch=164/300] [Need: 02:21:37] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [164][000/391]   Time 0.244 (0.244)   Data 0.093 (0.093)   Loss 0.1814 (0.1814)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2018-11-22 05时55分53秒]
+  Epoch: [164][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.1752 (0.2300)   Prec@1 91.406 (92.044)   Prec@5 100.000 (99.821)   [2018-11-22 05时56分23秒]
+  **Train** Prec@1 91.666 Prec@5 99.830 Error@1 8.334
+  **Test** Prec@1 88.650 Prec@5 99.610 Error@1 11.350
+
+==>>[2018-11-22 05时56分55秒] [Epoch=165/300] [Need: 02:20:34] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [165][000/391]   Time 0.260 (0.260)   Data 0.112 (0.112)   Loss 0.1866 (0.1866)   Prec@1 92.969 (92.969)   Prec@5 100.000 (100.000)   [2018-11-22 05时56分56秒]
+  Epoch: [165][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2511 (0.2286)   Prec@1 92.188 (91.974)   Prec@5 99.219 (99.810)   [2018-11-22 05时57分25秒]
+  **Train** Prec@1 91.762 Prec@5 99.822 Error@1 8.238
+  **Test** Prec@1 88.460 Prec@5 99.670 Error@1 11.540
+
+==>>[2018-11-22 05时57分58秒] [Epoch=166/300] [Need: 02:19:32] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [166][000/391]   Time 0.247 (0.247)   Data 0.096 (0.096)   Loss 0.4189 (0.4189)   Prec@1 85.156 (85.156)   Prec@5 100.000 (100.000)   [2018-11-22 05时57分58秒]
+  Epoch: [166][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.3266 (0.2296)   Prec@1 89.062 (92.145)   Prec@5 99.219 (99.872)   [2018-11-22 05时58分27秒]
+  **Train** Prec@1 91.924 Prec@5 99.852 Error@1 8.076
+  **Test** Prec@1 88.400 Prec@5 99.660 Error@1 11.600
+
+==>>[2018-11-22 05时59分00秒] [Epoch=167/300] [Need: 02:18:29] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [167][000/391]   Time 0.270 (0.270)   Data 0.113 (0.113)   Loss 0.3392 (0.3392)   Prec@1 87.500 (87.500)   Prec@5 100.000 (100.000)   [2018-11-22 05时59分00秒]
+  Epoch: [167][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2814 (0.2354)   Prec@1 86.719 (91.795)   Prec@5 100.000 (99.845)   [2018-11-22 05时59分30秒]
+  **Train** Prec@1 91.816 Prec@5 99.836 Error@1 8.184
+  **Test** Prec@1 88.050 Prec@5 99.580 Error@1 11.950
+
+==>>[2018-11-22 06时00分02秒] [Epoch=168/300] [Need: 02:17:26] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [168][000/391]   Time 0.241 (0.241)   Data 0.091 (0.091)   Loss 0.1935 (0.1935)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2018-11-22 06时00分02秒]
+  Epoch: [168][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2025 (0.2262)   Prec@1 93.750 (92.102)   Prec@5 100.000 (99.860)   [2018-11-22 06时00分32秒]
+  **Train** Prec@1 91.984 Prec@5 99.852 Error@1 8.016
+  **Test** Prec@1 88.560 Prec@5 99.630 Error@1 11.440
+
+==>>[2018-11-22 06时01分04秒] [Epoch=169/300] [Need: 02:16:24] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [169][000/391]   Time 0.236 (0.236)   Data 0.088 (0.088)   Loss 0.2299 (0.2299)   Prec@1 89.062 (89.062)   Prec@5 100.000 (100.000)   [2018-11-22 06时01分04秒]
+  Epoch: [169][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.1799 (0.2280)   Prec@1 95.312 (92.153)   Prec@5 100.000 (99.833)   [2018-11-22 06时01分34秒]
+  **Train** Prec@1 92.000 Prec@5 99.848 Error@1 8.000
+  **Test** Prec@1 88.130 Prec@5 99.660 Error@1 11.870
+
+==>>[2018-11-22 06时02分07秒] [Epoch=170/300] [Need: 02:15:21] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [170][000/391]   Time 0.254 (0.254)   Data 0.104 (0.104)   Loss 0.2108 (0.2108)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2018-11-22 06时02分07秒]
+  Epoch: [170][200/391]   Time 0.147 (0.148)   Data 0.000 (0.001)   Loss 0.2191 (0.2246)   Prec@1 89.844 (92.067)   Prec@5 100.000 (99.864)   [2018-11-22 06时02分37秒]
+  **Train** Prec@1 91.840 Prec@5 99.870 Error@1 8.160
+  **Test** Prec@1 87.980 Prec@5 99.640 Error@1 12.020
+
+==>>[2018-11-22 06时03分09秒] [Epoch=171/300] [Need: 02:14:18] [learning_rate=0.0100] [Best : Accuracy=88.79, Error=11.21]
+  Epoch: [171][000/391]   Time 0.247 (0.247)   Data 0.098 (0.098)   Loss 0.1604 (0.1604)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时03分09秒]
+  Epoch: [171][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2616 (0.2275)   Prec@1 89.844 (92.090)   Prec@5 100.000 (99.852)   [2018-11-22 06时03分39秒]
+  **Train** Prec@1 91.912 Prec@5 99.852 Error@1 8.088
+  **Test** Prec@1 89.020 Prec@5 99.620 Error@1 10.980
+
+==>>[2018-11-22 06时04分11秒] [Epoch=172/300] [Need: 02:13:16] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [172][000/391]   Time 0.257 (0.257)   Data 0.109 (0.109)   Loss 0.2285 (0.2285)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2018-11-22 06时04分11秒]
+  Epoch: [172][200/391]   Time 0.150 (0.149)   Data 0.001 (0.001)   Loss 0.1983 (0.2271)   Prec@1 90.625 (92.032)   Prec@5 100.000 (99.907)   [2018-11-22 06时04分41秒]
+  **Train** Prec@1 91.862 Prec@5 99.866 Error@1 8.138
+  **Test** Prec@1 87.380 Prec@5 99.580 Error@1 12.620
+
+==>>[2018-11-22 06时05分13秒] [Epoch=173/300] [Need: 02:12:13] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [173][000/391]   Time 0.249 (0.249)   Data 0.099 (0.099)   Loss 0.1718 (0.1718)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时05分14秒]
+  Epoch: [173][200/391]   Time 0.149 (0.148)   Data 0.000 (0.001)   Loss 0.4266 (0.2237)   Prec@1 83.594 (92.339)   Prec@5 100.000 (99.891)   [2018-11-22 06时05分43秒]
+  **Train** Prec@1 92.136 Prec@5 99.892 Error@1 7.864
+  **Test** Prec@1 88.130 Prec@5 99.600 Error@1 11.870
+
+==>>[2018-11-22 06时06分15秒] [Epoch=174/300] [Need: 02:11:10] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [174][000/391]   Time 0.248 (0.248)   Data 0.100 (0.100)   Loss 0.1552 (0.1552)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 06时06分16秒]
+  Epoch: [174][200/391]   Time 0.149 (0.148)   Data 0.000 (0.001)   Loss 0.2212 (0.2246)   Prec@1 95.312 (92.106)   Prec@5 100.000 (99.911)   [2018-11-22 06时06分45秒]
+  **Train** Prec@1 91.860 Prec@5 99.864 Error@1 8.140
+  **Test** Prec@1 87.610 Prec@5 99.710 Error@1 12.390
+
+==>>[2018-11-22 06时07分17秒] [Epoch=175/300] [Need: 02:10:08] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [175][000/391]   Time 0.263 (0.263)   Data 0.113 (0.113)   Loss 0.1819 (0.1819)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时07分18秒]
+  Epoch: [175][200/391]   Time 0.150 (0.149)   Data 0.001 (0.001)   Loss 0.1994 (0.2182)   Prec@1 92.188 (92.460)   Prec@5 100.000 (99.895)   [2018-11-22 06时07分47秒]
+  **Train** Prec@1 92.058 Prec@5 99.868 Error@1 7.942
+  **Test** Prec@1 88.810 Prec@5 99.610 Error@1 11.190
+
+==>>[2018-11-22 06时08分20秒] [Epoch=176/300] [Need: 02:09:05] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [176][000/391]   Time 0.261 (0.261)   Data 0.113 (0.113)   Loss 0.1984 (0.1984)   Prec@1 92.969 (92.969)   Prec@5 100.000 (100.000)   [2018-11-22 06时08分20秒]
+  Epoch: [176][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2310 (0.2265)   Prec@1 92.969 (92.055)   Prec@5 100.000 (99.860)   [2018-11-22 06时08分50秒]
+  **Train** Prec@1 91.974 Prec@5 99.864 Error@1 8.026
+  **Test** Prec@1 88.190 Prec@5 99.570 Error@1 11.810
+
+==>>[2018-11-22 06时09分22秒] [Epoch=177/300] [Need: 02:08:02] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [177][000/391]   Time 0.249 (0.249)   Data 0.100 (0.100)   Loss 0.2272 (0.2272)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 06时09分22秒]
+  Epoch: [177][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.1706 (0.2176)   Prec@1 96.094 (92.421)   Prec@5 100.000 (99.899)   [2018-11-22 06时09分52秒]
+  **Train** Prec@1 92.024 Prec@5 99.864 Error@1 7.976
+  **Test** Prec@1 88.280 Prec@5 99.610 Error@1 11.720
+
+==>>[2018-11-22 06时10分24秒] [Epoch=178/300] [Need: 02:07:00] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [178][000/391]   Time 0.254 (0.254)   Data 0.106 (0.106)   Loss 0.3346 (0.3346)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2018-11-22 06时10分24秒]
+  Epoch: [178][200/391]   Time 0.150 (0.150)   Data 0.001 (0.001)   Loss 0.1749 (0.2244)   Prec@1 93.750 (92.024)   Prec@5 100.000 (99.872)   [2018-11-22 06时10分54秒]
+  **Train** Prec@1 91.960 Prec@5 99.858 Error@1 8.040
+  **Test** Prec@1 88.520 Prec@5 99.720 Error@1 11.480
+
+==>>[2018-11-22 06时11分27秒] [Epoch=179/300] [Need: 02:05:57] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [179][000/391]   Time 0.252 (0.252)   Data 0.105 (0.105)   Loss 0.2260 (0.2260)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2018-11-22 06时11分27秒]
+  Epoch: [179][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2323 (0.2194)   Prec@1 91.406 (92.327)   Prec@5 100.000 (99.880)   [2018-11-22 06时11分56秒]
+  **Train** Prec@1 92.096 Prec@5 99.836 Error@1 7.904
+  **Test** Prec@1 88.370 Prec@5 99.660 Error@1 11.630
+
+==>>[2018-11-22 06时12分29秒] [Epoch=180/300] [Need: 02:04:55] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [180][000/391]   Time 0.267 (0.267)   Data 0.118 (0.118)   Loss 0.2448 (0.2448)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2018-11-22 06时12分29秒]
+  Epoch: [180][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.3005 (0.2214)   Prec@1 89.844 (92.413)   Prec@5 99.219 (99.880)   [2018-11-22 06时12分59秒]
+  **Train** Prec@1 92.072 Prec@5 99.870 Error@1 7.928
+  **Test** Prec@1 87.940 Prec@5 99.560 Error@1 12.060
+
+==>>[2018-11-22 06时13分31秒] [Epoch=181/300] [Need: 02:03:52] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [181][000/391]   Time 0.254 (0.254)   Data 0.105 (0.105)   Loss 0.2158 (0.2158)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2018-11-22 06时13分31秒]
+  Epoch: [181][200/391]   Time 0.148 (0.150)   Data 0.001 (0.001)   Loss 0.1297 (0.2129)   Prec@1 96.875 (92.685)   Prec@5 100.000 (99.907)   [2018-11-22 06时14分01秒]
+  **Train** Prec@1 92.264 Prec@5 99.884 Error@1 7.736
+  **Test** Prec@1 88.380 Prec@5 99.620 Error@1 11.620
+
+==>>[2018-11-22 06时14分33秒] [Epoch=182/300] [Need: 02:02:49] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [182][000/391]   Time 0.258 (0.258)   Data 0.109 (0.109)   Loss 0.2143 (0.2143)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2018-11-22 06时14分33秒]
+  Epoch: [182][200/391]   Time 0.147 (0.149)   Data 0.000 (0.001)   Loss 0.1860 (0.2194)   Prec@1 90.625 (92.327)   Prec@5 100.000 (99.887)   [2018-11-22 06时15分03秒]
+  **Train** Prec@1 92.180 Prec@5 99.896 Error@1 7.820
+  **Test** Prec@1 87.660 Prec@5 99.640 Error@1 12.340
+
+==>>[2018-11-22 06时15分35秒] [Epoch=183/300] [Need: 02:01:47] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [183][000/391]   Time 0.239 (0.239)   Data 0.090 (0.090)   Loss 0.2266 (0.2266)   Prec@1 92.969 (92.969)   Prec@5 100.000 (100.000)   [2018-11-22 06时15分36秒]
+  Epoch: [183][200/391]   Time 0.147 (0.148)   Data 0.000 (0.001)   Loss 0.1997 (0.2138)   Prec@1 92.188 (92.634)   Prec@5 100.000 (99.918)   [2018-11-22 06时16分05秒]
+  **Train** Prec@1 92.216 Prec@5 99.912 Error@1 7.784
+  **Test** Prec@1 88.210 Prec@5 99.670 Error@1 11.790
+
+==>>[2018-11-22 06时16分37秒] [Epoch=184/300] [Need: 02:00:44] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [184][000/391]   Time 0.244 (0.244)   Data 0.094 (0.094)   Loss 0.2563 (0.2563)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2018-11-22 06时16分38秒]
+  Epoch: [184][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.1545 (0.2156)   Prec@1 93.750 (92.596)   Prec@5 99.219 (99.829)   [2018-11-22 06时17分08秒]
+  **Train** Prec@1 92.332 Prec@5 99.848 Error@1 7.668
+  **Test** Prec@1 87.880 Prec@5 99.640 Error@1 12.120
+
+==>>[2018-11-22 06时17分40秒] [Epoch=185/300] [Need: 01:59:42] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [185][000/391]   Time 0.238 (0.238)   Data 0.088 (0.088)   Loss 0.2599 (0.2599)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2018-11-22 06时17分40秒]
+  Epoch: [185][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2178 (0.2192)   Prec@1 92.969 (92.386)   Prec@5 100.000 (99.883)   [2018-11-22 06时18分10秒]
+  **Train** Prec@1 92.218 Prec@5 99.880 Error@1 7.782
+  **Test** Prec@1 87.730 Prec@5 99.590 Error@1 12.270
+
+==>>[2018-11-22 06时18分42秒] [Epoch=186/300] [Need: 01:58:39] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [186][000/391]   Time 0.248 (0.248)   Data 0.099 (0.099)   Loss 0.1688 (0.1688)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2018-11-22 06时18分42秒]
+  Epoch: [186][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.1862 (0.2218)   Prec@1 93.750 (92.351)   Prec@5 100.000 (99.880)   [2018-11-22 06时19分12秒]
+  **Train** Prec@1 92.174 Prec@5 99.880 Error@1 7.826
+  **Test** Prec@1 88.110 Prec@5 99.560 Error@1 11.890
+
+==>>[2018-11-22 06时19分44秒] [Epoch=187/300] [Need: 01:57:36] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [187][000/391]   Time 0.251 (0.251)   Data 0.101 (0.101)   Loss 0.2560 (0.2560)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2018-11-22 06时19分44秒]
+  Epoch: [187][200/391]   Time 0.149 (0.150)   Data 0.000 (0.001)   Loss 0.2460 (0.2168)   Prec@1 89.844 (92.428)   Prec@5 100.000 (99.880)   [2018-11-22 06时20分14秒]
+  **Train** Prec@1 92.356 Prec@5 99.892 Error@1 7.644
+  **Test** Prec@1 87.830 Prec@5 99.600 Error@1 12.170
+
+==>>[2018-11-22 06时20分46秒] [Epoch=188/300] [Need: 01:56:34] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [188][000/391]   Time 0.262 (0.262)   Data 0.114 (0.114)   Loss 0.1353 (0.1353)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 06时20分47秒]
+  Epoch: [188][200/391]   Time 0.149 (0.149)   Data 0.001 (0.001)   Loss 0.2647 (0.2193)   Prec@1 89.062 (92.261)   Prec@5 99.219 (99.899)   [2018-11-22 06时21分16秒]
+  **Train** Prec@1 92.248 Prec@5 99.900 Error@1 7.752
+  **Test** Prec@1 88.170 Prec@5 99.590 Error@1 11.830
+
+==>>[2018-11-22 06时21分49秒] [Epoch=189/300] [Need: 01:55:31] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [189][000/391]   Time 0.254 (0.254)   Data 0.106 (0.106)   Loss 0.1758 (0.1758)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时21分49秒]
+  Epoch: [189][200/391]   Time 0.149 (0.148)   Data 0.001 (0.001)   Loss 0.1920 (0.2160)   Prec@1 95.312 (92.475)   Prec@5 100.000 (99.895)   [2018-11-22 06时22分18秒]
+  **Train** Prec@1 92.242 Prec@5 99.882 Error@1 7.758
+  **Test** Prec@1 87.420 Prec@5 99.560 Error@1 12.580
+
+==>>[2018-11-22 06时22分51秒] [Epoch=190/300] [Need: 01:54:28] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [190][000/391]   Time 0.253 (0.253)   Data 0.103 (0.103)   Loss 0.1741 (0.1741)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时22分51秒]
+  Epoch: [190][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2074 (0.2173)   Prec@1 92.188 (92.495)   Prec@5 100.000 (99.887)   [2018-11-22 06时23分21秒]
+  **Train** Prec@1 92.206 Prec@5 99.876 Error@1 7.794
+  **Test** Prec@1 87.080 Prec@5 99.560 Error@1 12.920
+
+==>>[2018-11-22 06时23分53秒] [Epoch=191/300] [Need: 01:53:26] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [191][000/391]   Time 0.250 (0.250)   Data 0.101 (0.101)   Loss 0.1960 (0.1960)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 06时23分53秒]
+  Epoch: [191][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.1634 (0.2203)   Prec@1 92.188 (92.164)   Prec@5 100.000 (99.922)   [2018-11-22 06时24分23秒]
+  **Train** Prec@1 91.918 Prec@5 99.870 Error@1 8.082
+  **Test** Prec@1 87.410 Prec@5 99.640 Error@1 12.590
+
+==>>[2018-11-22 06时24分55秒] [Epoch=192/300] [Need: 01:52:23] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [192][000/391]   Time 0.265 (0.265)   Data 0.116 (0.116)   Loss 0.2507 (0.2507)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2018-11-22 06时24分55秒]
+  Epoch: [192][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.1850 (0.2133)   Prec@1 93.750 (92.666)   Prec@5 100.000 (99.907)   [2018-11-22 06时25分25秒]
+  **Train** Prec@1 92.268 Prec@5 99.862 Error@1 7.732
+  **Test** Prec@1 87.910 Prec@5 99.620 Error@1 12.090
+
+==>>[2018-11-22 06时25分58秒] [Epoch=193/300] [Need: 01:51:21] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [193][000/391]   Time 0.262 (0.262)   Data 0.108 (0.108)   Loss 0.2131 (0.2131)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2018-11-22 06时25分58秒]
+  Epoch: [193][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2059 (0.2153)   Prec@1 92.188 (92.331)   Prec@5 100.000 (99.895)   [2018-11-22 06时26分27秒]
+  **Train** Prec@1 92.290 Prec@5 99.878 Error@1 7.710
+  **Test** Prec@1 87.390 Prec@5 99.590 Error@1 12.610
+
+==>>[2018-11-22 06时27分00秒] [Epoch=194/300] [Need: 01:50:18] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [194][000/391]   Time 0.261 (0.261)   Data 0.112 (0.112)   Loss 0.1593 (0.1593)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 06时27分00秒]
+  Epoch: [194][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.1837 (0.2098)   Prec@1 92.969 (92.561)   Prec@5 100.000 (99.864)   [2018-11-22 06时27分30秒]
+  **Train** Prec@1 92.258 Prec@5 99.868 Error@1 7.742
+  **Test** Prec@1 87.890 Prec@5 99.420 Error@1 12.110
+
+==>>[2018-11-22 06时28分02秒] [Epoch=195/300] [Need: 01:49:16] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [195][000/391]   Time 0.258 (0.258)   Data 0.109 (0.109)   Loss 0.1635 (0.1635)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时28分02秒]
+  Epoch: [195][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2716 (0.2081)   Prec@1 86.719 (92.782)   Prec@5 100.000 (99.899)   [2018-11-22 06时28分32秒]
+  **Train** Prec@1 92.448 Prec@5 99.892 Error@1 7.552
+  **Test** Prec@1 87.880 Prec@5 99.690 Error@1 12.120
+
+==>>[2018-11-22 06时29分04秒] [Epoch=196/300] [Need: 01:48:13] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [196][000/391]   Time 0.261 (0.261)   Data 0.112 (0.112)   Loss 0.2130 (0.2130)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 06时29分05秒]
+  Epoch: [196][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.3141 (0.2259)   Prec@1 86.719 (92.032)   Prec@5 100.000 (99.895)   [2018-11-22 06时29分34秒]
+  **Train** Prec@1 92.146 Prec@5 99.890 Error@1 7.854
+  **Test** Prec@1 87.390 Prec@5 99.620 Error@1 12.610
+
+==>>[2018-11-22 06时30分06秒] [Epoch=197/300] [Need: 01:47:11] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [197][000/391]   Time 0.260 (0.260)   Data 0.111 (0.111)   Loss 0.3215 (0.3215)   Prec@1 88.281 (88.281)   Prec@5 100.000 (100.000)   [2018-11-22 06时30分07秒]
+  Epoch: [197][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2329 (0.2150)   Prec@1 94.531 (92.588)   Prec@5 100.000 (99.911)   [2018-11-22 06时30分36秒]
+  **Train** Prec@1 92.316 Prec@5 99.900 Error@1 7.684
+  **Test** Prec@1 88.240 Prec@5 99.660 Error@1 11.760
+
+==>>[2018-11-22 06时31分09秒] [Epoch=198/300] [Need: 01:46:08] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [198][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.2300 (0.2300)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2018-11-22 06时31分09秒]
+  Epoch: [198][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.1532 (0.2149)   Prec@1 96.094 (92.378)   Prec@5 100.000 (99.895)   [2018-11-22 06时31分38秒]
+  **Train** Prec@1 92.198 Prec@5 99.906 Error@1 7.802
+  **Test** Prec@1 87.690 Prec@5 99.680 Error@1 12.310
+
+==>>[2018-11-22 06时32分11秒] [Epoch=199/300] [Need: 01:45:06] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [199][000/391]   Time 0.241 (0.241)   Data 0.092 (0.092)   Loss 0.1496 (0.1496)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 06时32分11秒]
+  Epoch: [199][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2220 (0.2145)   Prec@1 92.969 (92.502)   Prec@5 100.000 (99.903)   [2018-11-22 06时32分41秒]
+  **Train** Prec@1 92.258 Prec@5 99.890 Error@1 7.742
+  **Test** Prec@1 88.100 Prec@5 99.580 Error@1 11.900
+
+==>>[2018-11-22 06时33分13秒] [Epoch=200/300] [Need: 01:44:03] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [200][000/391]   Time 0.256 (0.256)   Data 0.107 (0.107)   Loss 0.2279 (0.2279)   Prec@1 89.844 (89.844)   Prec@5 100.000 (100.000)   [2018-11-22 06时33分13秒]
+  Epoch: [200][200/391]   Time 0.147 (0.148)   Data 0.000 (0.001)   Loss 0.1531 (0.2111)   Prec@1 94.531 (92.720)   Prec@5 100.000 (99.934)   [2018-11-22 06时33分43秒]
+  **Train** Prec@1 92.406 Prec@5 99.916 Error@1 7.594
+  **Test** Prec@1 88.450 Prec@5 99.600 Error@1 11.550
+
+==>>[2018-11-22 06时34分15秒] [Epoch=201/300] [Need: 01:43:00] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [201][000/391]   Time 0.266 (0.266)   Data 0.118 (0.118)   Loss 0.2212 (0.2212)   Prec@1 92.969 (92.969)   Prec@5 100.000 (100.000)   [2018-11-22 06时34分15秒]
+  Epoch: [201][200/391]   Time 0.150 (0.149)   Data 0.000 (0.001)   Loss 0.1508 (0.2097)   Prec@1 94.531 (92.498)   Prec@5 100.000 (99.899)   [2018-11-22 06时34分45秒]
+  **Train** Prec@1 92.230 Prec@5 99.888 Error@1 7.770
+  **Test** Prec@1 87.320 Prec@5 99.370 Error@1 12.680
+
+==>>[2018-11-22 06时35分18秒] [Epoch=202/300] [Need: 01:41:58] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [202][000/391]   Time 0.263 (0.263)   Data 0.113 (0.113)   Loss 0.1945 (0.1945)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 06时35分18秒]
+  Epoch: [202][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.1736 (0.2113)   Prec@1 93.750 (92.662)   Prec@5 100.000 (99.914)   [2018-11-22 06时35分47秒]
+  **Train** Prec@1 92.374 Prec@5 99.894 Error@1 7.626
+  **Test** Prec@1 87.790 Prec@5 99.620 Error@1 12.210
+
+==>>[2018-11-22 06时36分20秒] [Epoch=203/300] [Need: 01:40:55] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [203][000/391]   Time 0.262 (0.262)   Data 0.113 (0.113)   Loss 0.2432 (0.2432)   Prec@1 90.625 (90.625)   Prec@5 99.219 (99.219)   [2018-11-22 06时36分20秒]
+  Epoch: [203][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.1219 (0.2058)   Prec@1 95.312 (92.794)   Prec@5 100.000 (99.911)   [2018-11-22 06时36分50秒]
+  **Train** Prec@1 92.598 Prec@5 99.912 Error@1 7.402
+  **Test** Prec@1 85.550 Prec@5 99.580 Error@1 14.450
+
+==>>[2018-11-22 06时37分22秒] [Epoch=204/300] [Need: 01:39:53] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [204][000/391]   Time 0.255 (0.255)   Data 0.106 (0.106)   Loss 0.2317 (0.2317)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2018-11-22 06时37分22秒]
+  Epoch: [204][200/391]   Time 0.150 (0.149)   Data 0.001 (0.001)   Loss 0.2073 (0.2078)   Prec@1 92.969 (92.860)   Prec@5 100.000 (99.907)   [2018-11-22 06时37分52秒]
+  **Train** Prec@1 92.514 Prec@5 99.894 Error@1 7.486
+  **Test** Prec@1 88.500 Prec@5 99.640 Error@1 11.500
+
+==>>[2018-11-22 06时38分24秒] [Epoch=205/300] [Need: 01:38:50] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [205][000/391]   Time 0.261 (0.261)   Data 0.112 (0.112)   Loss 0.1320 (0.1320)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时38分24秒]
+  Epoch: [205][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.1515 (0.2154)   Prec@1 96.094 (92.394)   Prec@5 100.000 (99.872)   [2018-11-22 06时38分54秒]
+  **Train** Prec@1 92.292 Prec@5 99.868 Error@1 7.708
+  **Test** Prec@1 88.050 Prec@5 99.640 Error@1 11.950
+
+==>>[2018-11-22 06时39分26秒] [Epoch=206/300] [Need: 01:37:48] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [206][000/391]   Time 0.254 (0.254)   Data 0.105 (0.105)   Loss 0.2114 (0.2114)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2018-11-22 06时39分27秒]
+  Epoch: [206][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2711 (0.2118)   Prec@1 89.844 (92.631)   Prec@5 99.219 (99.864)   [2018-11-22 06时39分56秒]
+  **Train** Prec@1 92.486 Prec@5 99.882 Error@1 7.514
+  **Test** Prec@1 86.330 Prec@5 99.520 Error@1 13.670
+
+==>>[2018-11-22 06时40分29秒] [Epoch=207/300] [Need: 01:36:45] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [207][000/391]   Time 0.242 (0.242)   Data 0.093 (0.093)   Loss 0.1780 (0.1780)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2018-11-22 06时40分29秒]
+  Epoch: [207][200/391]   Time 0.150 (0.150)   Data 0.001 (0.001)   Loss 0.2387 (0.2101)   Prec@1 93.750 (92.634)   Prec@5 99.219 (99.864)   [2018-11-22 06时40分59秒]
+  **Train** Prec@1 92.558 Prec@5 99.870 Error@1 7.442
+  **Test** Prec@1 86.990 Prec@5 99.520 Error@1 13.010
+
+==>>[2018-11-22 06时41分31秒] [Epoch=208/300] [Need: 01:35:43] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [208][000/391]   Time 0.262 (0.262)   Data 0.114 (0.114)   Loss 0.0925 (0.0925)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2018-11-22 06时41分31秒]
+  Epoch: [208][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2183 (0.2046)   Prec@1 91.406 (92.802)   Prec@5 100.000 (99.903)   [2018-11-22 06时42分01秒]
+  **Train** Prec@1 92.530 Prec@5 99.894 Error@1 7.470
+  **Test** Prec@1 87.540 Prec@5 99.600 Error@1 12.460
+
+==>>[2018-11-22 06时42分34秒] [Epoch=209/300] [Need: 01:34:41] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [209][000/391]   Time 0.251 (0.251)   Data 0.102 (0.102)   Loss 0.1542 (0.1542)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时42分34秒]
+  Epoch: [209][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.1704 (0.2111)   Prec@1 93.750 (92.580)   Prec@5 100.000 (99.860)   [2018-11-22 06时43分04秒]
+  **Train** Prec@1 92.414 Prec@5 99.866 Error@1 7.586
+  **Test** Prec@1 86.690 Prec@5 99.560 Error@1 13.310
+
+==>>[2018-11-22 06时43分36秒] [Epoch=210/300] [Need: 01:33:38] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [210][000/391]   Time 0.237 (0.237)   Data 0.089 (0.089)   Loss 0.2337 (0.2337)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2018-11-22 06时43分37秒]
+  Epoch: [210][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.2316 (0.2039)   Prec@1 91.406 (92.821)   Prec@5 100.000 (99.922)   [2018-11-22 06时44分07秒]
+  **Train** Prec@1 92.582 Prec@5 99.908 Error@1 7.418
+  **Test** Prec@1 87.720 Prec@5 99.690 Error@1 12.280
+
+==>>[2018-11-22 06时44分39秒] [Epoch=211/300] [Need: 01:32:36] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [211][000/391]   Time 0.251 (0.251)   Data 0.104 (0.104)   Loss 0.2184 (0.2184)   Prec@1 92.188 (92.188)   Prec@5 100.000 (100.000)   [2018-11-22 06时44分39秒]
+  Epoch: [211][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2014 (0.2044)   Prec@1 94.531 (92.938)   Prec@5 100.000 (99.883)   [2018-11-22 06时45分09秒]
+  **Train** Prec@1 92.556 Prec@5 99.886 Error@1 7.444
+  **Test** Prec@1 86.820 Prec@5 99.400 Error@1 13.180
+
+==>>[2018-11-22 06时45分41秒] [Epoch=212/300] [Need: 01:31:33] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [212][000/391]   Time 0.252 (0.252)   Data 0.104 (0.104)   Loss 0.1799 (0.1799)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时45分41秒]
+  Epoch: [212][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2611 (0.2098)   Prec@1 90.625 (92.673)   Prec@5 100.000 (99.899)   [2018-11-22 06时46分11秒]
+  **Train** Prec@1 92.592 Prec@5 99.892 Error@1 7.408
+  **Test** Prec@1 86.870 Prec@5 99.530 Error@1 13.130
+
+==>>[2018-11-22 06时46分43秒] [Epoch=213/300] [Need: 01:30:31] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [213][000/391]   Time 0.249 (0.249)   Data 0.099 (0.099)   Loss 0.2402 (0.2402)   Prec@1 91.406 (91.406)   Prec@5 100.000 (100.000)   [2018-11-22 06时46分43秒]
+  Epoch: [213][200/391]   Time 0.147 (0.150)   Data 0.000 (0.001)   Loss 0.1789 (0.2069)   Prec@1 92.969 (92.736)   Prec@5 99.219 (99.911)   [2018-11-22 06时47分13秒]
+  **Train** Prec@1 92.578 Prec@5 99.908 Error@1 7.422
+  **Test** Prec@1 87.510 Prec@5 99.660 Error@1 12.490
+
+==>>[2018-11-22 06时47分45秒] [Epoch=214/300] [Need: 01:29:28] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [214][000/391]   Time 0.255 (0.255)   Data 0.107 (0.107)   Loss 0.1776 (0.1776)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 06时47分46秒]
+  Epoch: [214][200/391]   Time 0.148 (0.148)   Data 0.001 (0.001)   Loss 0.2528 (0.2055)   Prec@1 92.188 (92.914)   Prec@5 99.219 (99.914)   [2018-11-22 06时48分15秒]
+  **Train** Prec@1 92.766 Prec@5 99.916 Error@1 7.234
+  **Test** Prec@1 87.370 Prec@5 99.600 Error@1 12.630
+
+==>>[2018-11-22 06时48分47秒] [Epoch=215/300] [Need: 01:28:26] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [215][000/391]   Time 0.246 (0.246)   Data 0.098 (0.098)   Loss 0.1492 (0.1492)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2018-11-22 06时48分48秒]
+  Epoch: [215][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.1867 (0.2010)   Prec@1 92.188 (93.105)   Prec@5 100.000 (99.922)   [2018-11-22 06时49分17秒]
+  **Train** Prec@1 92.698 Prec@5 99.914 Error@1 7.302
+  **Test** Prec@1 87.530 Prec@5 99.680 Error@1 12.470
+
+==>>[2018-11-22 06时49分50秒] [Epoch=216/300] [Need: 01:27:23] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [216][000/391]   Time 0.255 (0.255)   Data 0.105 (0.105)   Loss 0.2204 (0.2204)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2018-11-22 06时49分50秒]
+  Epoch: [216][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.2216 (0.1974)   Prec@1 93.750 (93.357)   Prec@5 100.000 (99.914)   [2018-11-22 06时50分20秒]
+  **Train** Prec@1 92.870 Prec@5 99.904 Error@1 7.130
+  **Test** Prec@1 87.270 Prec@5 99.500 Error@1 12.730
+
+==>>[2018-11-22 06时50分52秒] [Epoch=217/300] [Need: 01:26:21] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [217][000/391]   Time 0.245 (0.245)   Data 0.097 (0.097)   Loss 0.2288 (0.2288)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2018-11-22 06时50分52秒]
+  Epoch: [217][200/391]   Time 0.147 (0.148)   Data 0.000 (0.001)   Loss 0.2275 (0.2162)   Prec@1 92.188 (92.553)   Prec@5 100.000 (99.880)   [2018-11-22 06时51分22秒]
+  **Train** Prec@1 92.770 Prec@5 99.892 Error@1 7.230
+  **Test** Prec@1 87.180 Prec@5 99.430 Error@1 12.820
+
+==>>[2018-11-22 06时51分54秒] [Epoch=218/300] [Need: 01:25:18] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [218][000/391]   Time 0.246 (0.246)   Data 0.099 (0.099)   Loss 0.2440 (0.2440)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2018-11-22 06时51分54秒]
+  Epoch: [218][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.2326 (0.2016)   Prec@1 92.188 (92.942)   Prec@5 100.000 (99.911)   [2018-11-22 06时52分24秒]
+  **Train** Prec@1 92.660 Prec@5 99.904 Error@1 7.340
+  **Test** Prec@1 88.050 Prec@5 99.590 Error@1 11.950
+
+==>>[2018-11-22 06时52分56秒] [Epoch=219/300] [Need: 01:24:16] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [219][000/391]   Time 0.250 (0.250)   Data 0.098 (0.098)   Loss 0.3061 (0.3061)   Prec@1 90.625 (90.625)   Prec@5 100.000 (100.000)   [2018-11-22 06时52分56秒]
+  Epoch: [219][200/391]   Time 0.147 (0.149)   Data 0.000 (0.001)   Loss 0.2619 (0.2022)   Prec@1 89.062 (92.887)   Prec@5 100.000 (99.914)   [2018-11-22 06时53分26秒]
+  **Train** Prec@1 92.710 Prec@5 99.900 Error@1 7.290
+  **Test** Prec@1 87.130 Prec@5 99.560 Error@1 12.870
+
+==>>[2018-11-22 06时53分58秒] [Epoch=220/300] [Need: 01:23:13] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [220][000/391]   Time 0.259 (0.259)   Data 0.110 (0.110)   Loss 0.1336 (0.1336)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2018-11-22 06时53分59秒]
+  Epoch: [220][200/391]   Time 0.147 (0.149)   Data 0.000 (0.001)   Loss 0.2268 (0.2006)   Prec@1 94.531 (93.070)   Prec@5 100.000 (99.911)   [2018-11-22 06时54分28秒]
+  **Train** Prec@1 92.906 Prec@5 99.896 Error@1 7.094
+  **Test** Prec@1 88.420 Prec@5 99.580 Error@1 11.580
+
+==>>[2018-11-22 06时55分00秒] [Epoch=221/300] [Need: 01:22:11] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [221][000/391]   Time 0.249 (0.249)   Data 0.101 (0.101)   Loss 0.1667 (0.1667)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 06时55分01秒]
+  Epoch: [221][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.1772 (0.2000)   Prec@1 94.531 (93.116)   Prec@5 100.000 (99.880)   [2018-11-22 06时55分30秒]
+  **Train** Prec@1 92.810 Prec@5 99.872 Error@1 7.190
+  **Test** Prec@1 88.180 Prec@5 99.580 Error@1 11.820
+
+==>>[2018-11-22 06时56分03秒] [Epoch=222/300] [Need: 01:21:08] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [222][000/391]   Time 0.251 (0.251)   Data 0.102 (0.102)   Loss 0.1971 (0.1971)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 06时56分03秒]
+  Epoch: [222][200/391]   Time 0.149 (0.148)   Data 0.000 (0.001)   Loss 0.1557 (0.1932)   Prec@1 92.969 (93.303)   Prec@5 100.000 (99.949)   [2018-11-22 06时56分33秒]
+  **Train** Prec@1 92.886 Prec@5 99.920 Error@1 7.114
+  **Test** Prec@1 87.670 Prec@5 99.580 Error@1 12.330
+
+==>>[2018-11-22 06时57分05秒] [Epoch=223/300] [Need: 01:20:06] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [223][000/391]   Time 0.259 (0.259)   Data 0.111 (0.111)   Loss 0.1710 (0.1710)   Prec@1 93.750 (93.750)   Prec@5 100.000 (100.000)   [2018-11-22 06时57分05秒]
+  Epoch: [223][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.1975 (0.2008)   Prec@1 93.750 (93.101)   Prec@5 100.000 (99.926)   [2018-11-22 06时57分35秒]
+  **Train** Prec@1 92.878 Prec@5 99.906 Error@1 7.122
+  **Test** Prec@1 88.900 Prec@5 99.630 Error@1 11.100
+
+==>>[2018-11-22 06时58分08秒] [Epoch=224/300] [Need: 01:19:03] [learning_rate=0.0100] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [224][000/391]   Time 0.245 (0.245)   Data 0.097 (0.097)   Loss 0.1506 (0.1506)   Prec@1 95.312 (95.312)   Prec@5 100.000 (100.000)   [2018-11-22 06时58分08秒]
+  Epoch: [224][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.3317 (0.2030)   Prec@1 88.281 (92.852)   Prec@5 100.000 (99.918)   [2018-11-22 06时58分38秒]
+  **Train** Prec@1 92.726 Prec@5 99.902 Error@1 7.274
+  **Test** Prec@1 88.160 Prec@5 99.670 Error@1 11.840
+
+==>>[2018-11-22 06时59分10秒] [Epoch=225/300] [Need: 01:18:01] [learning_rate=0.0010] [Best : Accuracy=89.02, Error=10.98]
+  Epoch: [225][000/391]   Time 0.257 (0.257)   Data 0.109 (0.109)   Loss 0.1149 (0.1149)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2018-11-22 06时59分11秒]
+  Epoch: [225][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.1625 (0.1570)   Prec@1 92.188 (94.753)   Prec@5 100.000 (99.946)   [2018-11-22 06时59分40秒]
+  **Train** Prec@1 95.248 Prec@5 99.948 Error@1 4.752
+  **Test** Prec@1 90.900 Prec@5 99.770 Error@1 9.100
+
+==>>[2018-11-22 07时00分13秒] [Epoch=226/300] [Need: 01:16:58] [learning_rate=0.0010] [Best : Accuracy=90.90, Error=9.10]
+  Epoch: [226][000/391]   Time 0.251 (0.251)   Data 0.102 (0.102)   Loss 0.1675 (0.1675)   Prec@1 95.312 (95.312)   Prec@5 99.219 (99.219)   [2018-11-22 07时00分13秒]
+  Epoch: [226][200/391]   Time 0.149 (0.150)   Data 0.000 (0.001)   Loss 0.0930 (0.1203)   Prec@1 96.875 (96.144)   Prec@5 100.000 (99.949)   [2018-11-22 07时00分43秒]
+  **Train** Prec@1 96.326 Prec@5 99.958 Error@1 3.674
+  **Test** Prec@1 91.070 Prec@5 99.810 Error@1 8.930
+
+==>>[2018-11-22 07时01分15秒] [Epoch=227/300] [Need: 01:15:56] [learning_rate=0.0010] [Best : Accuracy=91.07, Error=8.93]
+  Epoch: [227][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.1004 (0.1004)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2018-11-22 07时01分16秒]
+  Epoch: [227][200/391]   Time 0.150 (0.151)   Data 0.001 (0.001)   Loss 0.0940 (0.1080)   Prec@1 97.656 (96.514)   Prec@5 100.000 (99.988)   [2018-11-22 07时01分46秒]
+  **Train** Prec@1 96.632 Prec@5 99.982 Error@1 3.368
+  **Test** Prec@1 91.170 Prec@5 99.760 Error@1 8.830
+
+==>>[2018-11-22 07时02分18秒] [Epoch=228/300] [Need: 01:14:54] [learning_rate=0.0010] [Best : Accuracy=91.17, Error=8.83]
+  Epoch: [228][000/391]   Time 0.254 (0.254)   Data 0.107 (0.107)   Loss 0.1124 (0.1124)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 07时02分19秒]
+  Epoch: [228][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.1118 (0.1005)   Prec@1 96.875 (96.840)   Prec@5 100.000 (99.988)   [2018-11-22 07时02分48秒]
+  **Train** Prec@1 96.816 Prec@5 99.990 Error@1 3.184
+  **Test** Prec@1 91.230 Prec@5 99.780 Error@1 8.770
+
+==>>[2018-11-22 07时03分21秒] [Epoch=229/300] [Need: 01:13:51] [learning_rate=0.0010] [Best : Accuracy=91.23, Error=8.77]
+  Epoch: [229][000/391]   Time 0.238 (0.238)   Data 0.090 (0.090)   Loss 0.0827 (0.0827)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时03分21秒]
+  Epoch: [229][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.0477 (0.0936)   Prec@1 98.438 (97.112)   Prec@5 100.000 (99.977)   [2018-11-22 07时03分51秒]
+  **Train** Prec@1 97.002 Prec@5 99.980 Error@1 2.998
+  **Test** Prec@1 91.290 Prec@5 99.800 Error@1 8.710
+
+==>>[2018-11-22 07时04分23秒] [Epoch=230/300] [Need: 01:12:49] [learning_rate=0.0010] [Best : Accuracy=91.29, Error=8.71]
+  Epoch: [230][000/391]   Time 0.243 (0.243)   Data 0.096 (0.096)   Loss 0.0404 (0.0404)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时04分23秒]
+  Epoch: [230][200/391]   Time 0.150 (0.152)   Data 0.001 (0.001)   Loss 0.1048 (0.0913)   Prec@1 97.656 (97.120)   Prec@5 100.000 (99.992)   [2018-11-22 07时04分54秒]
+  **Train** Prec@1 97.140 Prec@5 99.978 Error@1 2.860
+  **Test** Prec@1 90.930 Prec@5 99.810 Error@1 9.070
+
+==>>[2018-11-22 07时05分26秒] [Epoch=231/300] [Need: 01:11:47] [learning_rate=0.0010] [Best : Accuracy=91.29, Error=8.71]
+  Epoch: [231][000/391]   Time 0.245 (0.245)   Data 0.098 (0.098)   Loss 0.0338 (0.0338)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时05分26秒]
+  Epoch: [231][200/391]   Time 0.149 (0.150)   Data 0.001 (0.001)   Loss 0.1017 (0.0871)   Prec@1 98.438 (97.384)   Prec@5 100.000 (100.000)   [2018-11-22 07时05分56秒]
+  **Train** Prec@1 97.312 Prec@5 99.992 Error@1 2.688
+  **Test** Prec@1 91.380 Prec@5 99.750 Error@1 8.620
+
+==>>[2018-11-22 07时06分29秒] [Epoch=232/300] [Need: 01:10:44] [learning_rate=0.0010] [Best : Accuracy=91.38, Error=8.62]
+  Epoch: [232][000/391]   Time 0.248 (0.248)   Data 0.100 (0.100)   Loss 0.0846 (0.0846)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2018-11-22 07时06分29秒]
+  Epoch: [232][200/391]   Time 0.149 (0.149)   Data 0.001 (0.001)   Loss 0.1042 (0.0856)   Prec@1 96.094 (97.450)   Prec@5 100.000 (99.988)   [2018-11-22 07时06分59秒]
+  **Train** Prec@1 97.352 Prec@5 99.986 Error@1 2.648
+  **Test** Prec@1 91.200 Prec@5 99.750 Error@1 8.800
+
+==>>[2018-11-22 07时07分31秒] [Epoch=233/300] [Need: 01:09:42] [learning_rate=0.0010] [Best : Accuracy=91.38, Error=8.62]
+  Epoch: [233][000/391]   Time 0.255 (0.255)   Data 0.107 (0.107)   Loss 0.0823 (0.0823)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 07时07分32秒]
+  Epoch: [233][200/391]   Time 0.148 (0.151)   Data 0.000 (0.001)   Loss 0.0825 (0.0850)   Prec@1 97.656 (97.345)   Prec@5 100.000 (99.988)   [2018-11-22 07时08分02秒]
+  **Train** Prec@1 97.398 Prec@5 99.990 Error@1 2.602
+  **Test** Prec@1 91.200 Prec@5 99.800 Error@1 8.800
+
+==>>[2018-11-22 07时08分34秒] [Epoch=234/300] [Need: 01:08:40] [learning_rate=0.0010] [Best : Accuracy=91.38, Error=8.62]
+  Epoch: [234][000/391]   Time 0.258 (0.258)   Data 0.108 (0.108)   Loss 0.0827 (0.0827)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2018-11-22 07时08分34秒]
+  Epoch: [234][200/391]   Time 0.151 (0.149)   Data 0.001 (0.001)   Loss 0.0968 (0.0811)   Prec@1 95.312 (97.505)   Prec@5 100.000 (99.988)   [2018-11-22 07时09分04秒]
+  **Train** Prec@1 97.562 Prec@5 99.990 Error@1 2.438
+  **Test** Prec@1 91.410 Prec@5 99.740 Error@1 8.590
+
+==>>[2018-11-22 07时09分37秒] [Epoch=235/300] [Need: 01:07:37] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [235][000/391]   Time 0.251 (0.251)   Data 0.102 (0.102)   Loss 0.0537 (0.0537)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时09分37秒]
+  Epoch: [235][200/391]   Time 0.150 (0.149)   Data 0.001 (0.001)   Loss 0.1092 (0.0754)   Prec@1 96.875 (97.753)   Prec@5 100.000 (99.981)   [2018-11-22 07时10分07秒]
+  **Train** Prec@1 97.624 Prec@5 99.986 Error@1 2.376
+  **Test** Prec@1 91.170 Prec@5 99.780 Error@1 8.830
+
+==>>[2018-11-22 07时10分39秒] [Epoch=236/300] [Need: 01:06:35] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [236][000/391]   Time 0.255 (0.255)   Data 0.098 (0.098)   Loss 0.0618 (0.0618)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 07时10分39秒]
+  Epoch: [236][200/391]   Time 0.148 (0.151)   Data 0.001 (0.001)   Loss 0.1128 (0.0779)   Prec@1 96.094 (97.606)   Prec@5 100.000 (99.996)   [2018-11-22 07时11分09秒]
+  **Train** Prec@1 97.664 Prec@5 99.992 Error@1 2.336
+  **Test** Prec@1 91.260 Prec@5 99.780 Error@1 8.740
+
+==>>[2018-11-22 07时11分42秒] [Epoch=237/300] [Need: 01:05:33] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [237][000/391]   Time 0.247 (0.247)   Data 0.099 (0.099)   Loss 0.0458 (0.0458)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时11分42秒]
+  Epoch: [237][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.0886 (0.0727)   Prec@1 97.656 (97.917)   Prec@5 100.000 (99.984)   [2018-11-22 07时12分12秒]
+  **Train** Prec@1 97.688 Prec@5 99.990 Error@1 2.312
+  **Test** Prec@1 91.140 Prec@5 99.760 Error@1 8.860
+
+==>>[2018-11-22 07时12分44秒] [Epoch=238/300] [Need: 01:04:30] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [238][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.1130 (0.1130)   Prec@1 96.094 (96.094)   Prec@5 100.000 (100.000)   [2018-11-22 07时12分45秒]
+  Epoch: [238][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.1088 (0.0739)   Prec@1 96.875 (97.750)   Prec@5 100.000 (99.996)   [2018-11-22 07时13分14秒]
+  **Train** Prec@1 97.692 Prec@5 99.994 Error@1 2.308
+  **Test** Prec@1 91.370 Prec@5 99.780 Error@1 8.630
+
+==>>[2018-11-22 07时13分47秒] [Epoch=239/300] [Need: 01:03:28] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [239][000/391]   Time 0.253 (0.253)   Data 0.104 (0.104)   Loss 0.0810 (0.0810)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 07时13分47秒]
+  Epoch: [239][200/391]   Time 0.156 (0.150)   Data 0.001 (0.001)   Loss 0.0503 (0.0714)   Prec@1 97.656 (97.816)   Prec@5 100.000 (99.996)   [2018-11-22 07时14分17秒]
+  **Train** Prec@1 97.798 Prec@5 99.996 Error@1 2.202
+  **Test** Prec@1 91.170 Prec@5 99.740 Error@1 8.830
+
+==>>[2018-11-22 07时14分49秒] [Epoch=240/300] [Need: 01:02:25] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [240][000/391]   Time 0.235 (0.235)   Data 0.087 (0.087)   Loss 0.0405 (0.0405)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时14分49秒]
+  Epoch: [240][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.1165 (0.0720)   Prec@1 96.094 (97.730)   Prec@5 100.000 (99.996)   [2018-11-22 07时15分19秒]
+  **Train** Prec@1 97.822 Prec@5 99.994 Error@1 2.178
+  **Test** Prec@1 91.270 Prec@5 99.740 Error@1 8.730
+
+==>>[2018-11-22 07时15分52秒] [Epoch=241/300] [Need: 01:01:23] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [241][000/391]   Time 0.242 (0.242)   Data 0.091 (0.091)   Loss 0.0734 (0.0734)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2018-11-22 07时15分52秒]
+  Epoch: [241][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.0704 (0.0692)   Prec@1 98.438 (97.777)   Prec@5 100.000 (99.984)   [2018-11-22 07时16分22秒]
+  **Train** Prec@1 97.802 Prec@5 99.988 Error@1 2.198
+  **Test** Prec@1 91.400 Prec@5 99.750 Error@1 8.600
+
+==>>[2018-11-22 07时16分55秒] [Epoch=242/300] [Need: 01:00:21] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [242][000/391]   Time 0.246 (0.246)   Data 0.096 (0.096)   Loss 0.0578 (0.0578)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时16分55秒]
+  Epoch: [242][200/391]   Time 0.148 (0.150)   Data 0.001 (0.001)   Loss 0.0899 (0.0675)   Prec@1 97.656 (97.979)   Prec@5 100.000 (99.988)   [2018-11-22 07时17分25秒]
+  **Train** Prec@1 97.930 Prec@5 99.988 Error@1 2.070
+  **Test** Prec@1 91.270 Prec@5 99.780 Error@1 8.730
+
+==>>[2018-11-22 07时17分57秒] [Epoch=243/300] [Need: 00:59:18] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [243][000/391]   Time 0.256 (0.256)   Data 0.108 (0.108)   Loss 0.0795 (0.0795)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2018-11-22 07时17分57秒]
+  Epoch: [243][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.0822 (0.0691)   Prec@1 97.656 (97.847)   Prec@5 100.000 (99.992)   [2018-11-22 07时18分27秒]
+  **Train** Prec@1 97.958 Prec@5 99.992 Error@1 2.042
+  **Test** Prec@1 91.270 Prec@5 99.720 Error@1 8.730
+
+==>>[2018-11-22 07时19分00秒] [Epoch=244/300] [Need: 00:58:16] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [244][000/391]   Time 0.237 (0.237)   Data 0.087 (0.087)   Loss 0.0812 (0.0812)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 07时19分00秒]
+  Epoch: [244][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.0485 (0.0664)   Prec@1 99.219 (97.998)   Prec@5 100.000 (99.996)   [2018-11-22 07时19分30秒]
+  **Train** Prec@1 98.094 Prec@5 99.990 Error@1 1.906
+  **Test** Prec@1 91.140 Prec@5 99.760 Error@1 8.860
+
+==>>[2018-11-22 07时20分03秒] [Epoch=245/300] [Need: 00:57:13] [learning_rate=0.0010] [Best : Accuracy=91.41, Error=8.59]
+  Epoch: [245][000/391]   Time 0.236 (0.236)   Data 0.089 (0.089)   Loss 0.0587 (0.0587)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时20分03秒]
+  Epoch: [245][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.1031 (0.0651)   Prec@1 96.875 (98.045)   Prec@5 100.000 (99.996)   [2018-11-22 07时20分33秒]
+  **Train** Prec@1 98.030 Prec@5 99.994 Error@1 1.970
+  **Test** Prec@1 91.460 Prec@5 99.750 Error@1 8.540
+
+==>>[2018-11-22 07时21分05秒] [Epoch=246/300] [Need: 00:56:11] [learning_rate=0.0010] [Best : Accuracy=91.46, Error=8.54]
+  Epoch: [246][000/391]   Time 0.253 (0.253)   Data 0.105 (0.105)   Loss 0.0188 (0.0188)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时21分05秒]
+  Epoch: [246][200/391]   Time 0.147 (0.150)   Data 0.000 (0.001)   Loss 0.0565 (0.0603)   Prec@1 98.438 (98.200)   Prec@5 100.000 (100.000)   [2018-11-22 07时21分35秒]
+  **Train** Prec@1 98.092 Prec@5 99.994 Error@1 1.908
+  **Test** Prec@1 91.360 Prec@5 99.760 Error@1 8.640
+
+==>>[2018-11-22 07时22分08秒] [Epoch=247/300] [Need: 00:55:09] [learning_rate=0.0010] [Best : Accuracy=91.46, Error=8.54]
+  Epoch: [247][000/391]   Time 0.257 (0.257)   Data 0.109 (0.109)   Loss 0.0355 (0.0355)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时22分08秒]
+  Epoch: [247][200/391]   Time 0.149 (0.149)   Data 0.001 (0.001)   Loss 0.0716 (0.0653)   Prec@1 97.656 (98.025)   Prec@5 100.000 (99.992)   [2018-11-22 07时22分38秒]
+  **Train** Prec@1 98.072 Prec@5 99.990 Error@1 1.928
+  **Test** Prec@1 91.310 Prec@5 99.750 Error@1 8.690
+
+==>>[2018-11-22 07时23分11秒] [Epoch=248/300] [Need: 00:54:06] [learning_rate=0.0010] [Best : Accuracy=91.46, Error=8.54]
+  Epoch: [248][000/391]   Time 0.247 (0.247)   Data 0.100 (0.100)   Loss 0.0418 (0.0418)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时23分11秒]
+  Epoch: [248][200/391]   Time 0.149 (0.149)   Data 0.001 (0.001)   Loss 0.0709 (0.0601)   Prec@1 98.438 (98.150)   Prec@5 100.000 (99.992)   [2018-11-22 07时23分41秒]
+  **Train** Prec@1 98.056 Prec@5 99.994 Error@1 1.944
+  **Test** Prec@1 91.400 Prec@5 99.760 Error@1 8.600
+
+==>>[2018-11-22 07时24分13秒] [Epoch=249/300] [Need: 00:53:04] [learning_rate=0.0010] [Best : Accuracy=91.46, Error=8.54]
+  Epoch: [249][000/391]   Time 0.256 (0.256)   Data 0.108 (0.108)   Loss 0.0365 (0.0365)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时24分13秒]
+  Epoch: [249][200/391]   Time 0.150 (0.149)   Data 0.000 (0.001)   Loss 0.0559 (0.0599)   Prec@1 97.656 (98.364)   Prec@5 100.000 (100.000)   [2018-11-22 07时24分43秒]
+  **Train** Prec@1 98.206 Prec@5 100.000 Error@1 1.794
+  **Test** Prec@1 91.380 Prec@5 99.740 Error@1 8.620
+
+==>>[2018-11-22 07时25分15秒] [Epoch=250/300] [Need: 00:52:01] [learning_rate=0.0010] [Best : Accuracy=91.46, Error=8.54]
+  Epoch: [250][000/391]   Time 0.260 (0.260)   Data 0.112 (0.112)   Loss 0.0456 (0.0456)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时25分16秒]
+  Epoch: [250][200/391]   Time 0.152 (0.150)   Data 0.001 (0.001)   Loss 0.0652 (0.0604)   Prec@1 97.656 (98.212)   Prec@5 100.000 (99.992)   [2018-11-22 07时25分45秒]
+  **Train** Prec@1 98.208 Prec@5 99.996 Error@1 1.792
+  **Test** Prec@1 91.150 Prec@5 99.720 Error@1 8.850
+
+==>>[2018-11-22 07时26分18秒] [Epoch=251/300] [Need: 00:50:59] [learning_rate=0.0010] [Best : Accuracy=91.46, Error=8.54]
+  Epoch: [251][000/391]   Time 0.248 (0.248)   Data 0.101 (0.101)   Loss 0.0322 (0.0322)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时26分18秒]
+  Epoch: [251][200/391]   Time 0.150 (0.149)   Data 0.001 (0.001)   Loss 0.1224 (0.0572)   Prec@1 96.094 (98.434)   Prec@5 99.219 (99.984)   [2018-11-22 07时26分48秒]
+  **Train** Prec@1 98.374 Prec@5 99.990 Error@1 1.626
+  **Test** Prec@1 91.280 Prec@5 99.740 Error@1 8.720
+
+==>>[2018-11-22 07时27分20秒] [Epoch=252/300] [Need: 00:49:57] [learning_rate=0.0010] [Best : Accuracy=91.46, Error=8.54]
+  Epoch: [252][000/391]   Time 0.248 (0.248)   Data 0.100 (0.100)   Loss 0.0575 (0.0575)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时27分21秒]
+  Epoch: [252][200/391]   Time 0.150 (0.150)   Data 0.000 (0.001)   Loss 0.0477 (0.0590)   Prec@1 100.000 (98.317)   Prec@5 100.000 (99.996)   [2018-11-22 07时27分51秒]
+  **Train** Prec@1 98.296 Prec@5 99.998 Error@1 1.704
+  **Test** Prec@1 91.530 Prec@5 99.770 Error@1 8.470
+
+==>>[2018-11-22 07时28分23秒] [Epoch=253/300] [Need: 00:48:54] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [253][000/391]   Time 0.252 (0.252)   Data 0.103 (0.103)   Loss 0.0586 (0.0586)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时28分23秒]
+  Epoch: [253][200/391]   Time 0.150 (0.151)   Data 0.001 (0.001)   Loss 0.0726 (0.0582)   Prec@1 96.875 (98.235)   Prec@5 100.000 (100.000)   [2018-11-22 07时28分53秒]
+  **Train** Prec@1 98.276 Prec@5 99.998 Error@1 1.724
+  **Test** Prec@1 91.390 Prec@5 99.770 Error@1 8.610
+
+==>>[2018-11-22 07时29分26秒] [Epoch=254/300] [Need: 00:47:52] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [254][000/391]   Time 0.258 (0.258)   Data 0.109 (0.109)   Loss 0.0627 (0.0627)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时29分26秒]
+  Epoch: [254][200/391]   Time 0.154 (0.150)   Data 0.001 (0.001)   Loss 0.0355 (0.0583)   Prec@1 99.219 (98.333)   Prec@5 100.000 (99.996)   [2018-11-22 07时29分56秒]
+  **Train** Prec@1 98.360 Prec@5 99.994 Error@1 1.640
+  **Test** Prec@1 91.390 Prec@5 99.730 Error@1 8.610
+
+==>>[2018-11-22 07时30分29秒] [Epoch=255/300] [Need: 00:46:49] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [255][000/391]   Time 0.263 (0.263)   Data 0.114 (0.114)   Loss 0.0516 (0.0516)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时30分29秒]
+  Epoch: [255][200/391]   Time 0.149 (0.149)   Data 0.001 (0.001)   Loss 0.0312 (0.0544)   Prec@1 99.219 (98.410)   Prec@5 100.000 (100.000)   [2018-11-22 07时30分59秒]
+  **Train** Prec@1 98.406 Prec@5 99.998 Error@1 1.594
+  **Test** Prec@1 91.370 Prec@5 99.710 Error@1 8.630
+
+==>>[2018-11-22 07时31分31秒] [Epoch=256/300] [Need: 00:45:47] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [256][000/391]   Time 0.241 (0.241)   Data 0.093 (0.093)   Loss 0.1341 (0.1341)   Prec@1 94.531 (94.531)   Prec@5 100.000 (100.000)   [2018-11-22 07时31分32秒]
+  Epoch: [256][200/391]   Time 0.148 (0.151)   Data 0.000 (0.001)   Loss 0.0686 (0.0538)   Prec@1 97.656 (98.476)   Prec@5 100.000 (99.992)   [2018-11-22 07时32分02秒]
+  **Train** Prec@1 98.442 Prec@5 99.994 Error@1 1.558
+  **Test** Prec@1 91.260 Prec@5 99.750 Error@1 8.740
+
+==>>[2018-11-22 07时32分34秒] [Epoch=257/300] [Need: 00:44:45] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [257][000/391]   Time 0.255 (0.255)   Data 0.107 (0.107)   Loss 0.0584 (0.0584)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时32分35秒]
+  Epoch: [257][200/391]   Time 0.159 (0.150)   Data 0.001 (0.001)   Loss 0.1199 (0.0528)   Prec@1 95.312 (98.500)   Prec@5 100.000 (99.996)   [2018-11-22 07时33分05秒]
+  **Train** Prec@1 98.418 Prec@5 99.998 Error@1 1.582
+  **Test** Prec@1 91.350 Prec@5 99.760 Error@1 8.650
+
+==>>[2018-11-22 07时33分37秒] [Epoch=258/300] [Need: 00:43:42] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [258][000/391]   Time 0.262 (0.262)   Data 0.114 (0.114)   Loss 0.0440 (0.0440)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时33分37秒]
+  Epoch: [258][200/391]   Time 0.153 (0.151)   Data 0.001 (0.001)   Loss 0.0443 (0.0530)   Prec@1 99.219 (98.546)   Prec@5 100.000 (100.000)   [2018-11-22 07时34分07秒]
+  **Train** Prec@1 98.476 Prec@5 100.000 Error@1 1.524
+  **Test** Prec@1 91.210 Prec@5 99.770 Error@1 8.790
+
+==>>[2018-11-22 07时34分40秒] [Epoch=259/300] [Need: 00:42:40] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [259][000/391]   Time 0.247 (0.247)   Data 0.091 (0.091)   Loss 0.0310 (0.0310)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时34分40秒]
+  Epoch: [259][200/391]   Time 0.148 (0.150)   Data 0.001 (0.001)   Loss 0.0541 (0.0513)   Prec@1 99.219 (98.636)   Prec@5 100.000 (99.996)   [2018-11-22 07时35分10秒]
+  **Train** Prec@1 98.594 Prec@5 99.998 Error@1 1.406
+  **Test** Prec@1 91.380 Prec@5 99.720 Error@1 8.620
+
+==>>[2018-11-22 07时35分43秒] [Epoch=260/300] [Need: 00:41:37] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [260][000/391]   Time 0.247 (0.247)   Data 0.099 (0.099)   Loss 0.0823 (0.0823)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 07时35分43秒]
+  Epoch: [260][200/391]   Time 0.152 (0.151)   Data 0.000 (0.001)   Loss 0.0821 (0.0485)   Prec@1 96.875 (98.706)   Prec@5 100.000 (100.000)   [2018-11-22 07时36分13秒]
+  **Train** Prec@1 98.568 Prec@5 100.000 Error@1 1.432
+  **Test** Prec@1 91.210 Prec@5 99.800 Error@1 8.790
+
+==>>[2018-11-22 07时36分45秒] [Epoch=261/300] [Need: 00:40:35] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [261][000/391]   Time 0.259 (0.259)   Data 0.111 (0.111)   Loss 0.0449 (0.0449)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时36分46秒]
+  Epoch: [261][200/391]   Time 0.151 (0.149)   Data 0.000 (0.001)   Loss 0.0553 (0.0521)   Prec@1 97.656 (98.539)   Prec@5 100.000 (99.996)   [2018-11-22 07时37分15秒]
+  **Train** Prec@1 98.482 Prec@5 99.996 Error@1 1.518
+  **Test** Prec@1 91.450 Prec@5 99.760 Error@1 8.550
+
+==>>[2018-11-22 07时37分48秒] [Epoch=262/300] [Need: 00:39:33] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [262][000/391]   Time 0.257 (0.257)   Data 0.109 (0.109)   Loss 0.0742 (0.0742)   Prec@1 96.875 (96.875)   Prec@5 100.000 (100.000)   [2018-11-22 07时37分48秒]
+  Epoch: [262][200/391]   Time 0.150 (0.149)   Data 0.001 (0.001)   Loss 0.0403 (0.0518)   Prec@1 98.438 (98.453)   Prec@5 100.000 (99.992)   [2018-11-22 07时38分18秒]
+  **Train** Prec@1 98.430 Prec@5 99.994 Error@1 1.570
+  **Test** Prec@1 91.320 Prec@5 99.780 Error@1 8.680
+
+==>>[2018-11-22 07时38分50秒] [Epoch=263/300] [Need: 00:38:30] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [263][000/391]   Time 0.263 (0.263)   Data 0.115 (0.115)   Loss 0.0700 (0.0700)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时38分51秒]
+  Epoch: [263][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.0689 (0.0481)   Prec@1 97.656 (98.710)   Prec@5 100.000 (99.996)   [2018-11-22 07时39分20秒]
+  **Train** Prec@1 98.560 Prec@5 99.998 Error@1 1.440
+  **Test** Prec@1 91.220 Prec@5 99.690 Error@1 8.780
+
+==>>[2018-11-22 07时39分53秒] [Epoch=264/300] [Need: 00:37:28] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [264][000/391]   Time 0.257 (0.257)   Data 0.109 (0.109)   Loss 0.0456 (0.0456)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时39分53秒]
+  Epoch: [264][200/391]   Time 0.148 (0.150)   Data 0.001 (0.001)   Loss 0.0561 (0.0493)   Prec@1 98.438 (98.616)   Prec@5 100.000 (100.000)   [2018-11-22 07时40分23秒]
+  **Train** Prec@1 98.534 Prec@5 100.000 Error@1 1.466
+  **Test** Prec@1 91.400 Prec@5 99.710 Error@1 8.600
+
+==>>[2018-11-22 07时40分56秒] [Epoch=265/300] [Need: 00:36:25] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [265][000/391]   Time 0.250 (0.250)   Data 0.101 (0.101)   Loss 0.0830 (0.0830)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 07时40分56秒]
+  Epoch: [265][200/391]   Time 0.149 (0.150)   Data 0.001 (0.001)   Loss 0.0235 (0.0477)   Prec@1 100.000 (98.647)   Prec@5 100.000 (100.000)   [2018-11-22 07时41分26秒]
+  **Train** Prec@1 98.610 Prec@5 100.000 Error@1 1.390
+  **Test** Prec@1 91.240 Prec@5 99.720 Error@1 8.760
+
+==>>[2018-11-22 07时41分59秒] [Epoch=266/300] [Need: 00:35:23] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [266][000/391]   Time 0.257 (0.257)   Data 0.108 (0.108)   Loss 0.0606 (0.0606)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 07时41分59秒]
+  Epoch: [266][200/391]   Time 0.150 (0.150)   Data 0.000 (0.001)   Loss 0.0166 (0.0470)   Prec@1 100.000 (98.694)   Prec@5 100.000 (99.996)   [2018-11-22 07时42分29秒]
+  **Train** Prec@1 98.606 Prec@5 99.996 Error@1 1.394
+  **Test** Prec@1 91.510 Prec@5 99.720 Error@1 8.490
+
+==>>[2018-11-22 07时43分01秒] [Epoch=267/300] [Need: 00:34:20] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [267][000/391]   Time 0.258 (0.258)   Data 0.110 (0.110)   Loss 0.0510 (0.0510)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时43分01秒]
+  Epoch: [267][200/391]   Time 0.148 (0.148)   Data 0.001 (0.001)   Loss 0.0496 (0.0512)   Prec@1 98.438 (98.574)   Prec@5 100.000 (100.000)   [2018-11-22 07时43分31秒]
+  **Train** Prec@1 98.548 Prec@5 100.000 Error@1 1.452
+  **Test** Prec@1 91.320 Prec@5 99.760 Error@1 8.680
+
+==>>[2018-11-22 07时44分04秒] [Epoch=268/300] [Need: 00:33:18] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [268][000/391]   Time 0.265 (0.265)   Data 0.118 (0.118)   Loss 0.0428 (0.0428)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时44分04秒]
+  Epoch: [268][200/391]   Time 0.149 (0.148)   Data 0.000 (0.001)   Loss 0.0524 (0.0476)   Prec@1 99.219 (98.671)   Prec@5 100.000 (100.000)   [2018-11-22 07时44分34秒]
+  **Train** Prec@1 98.650 Prec@5 99.996 Error@1 1.350
+  **Test** Prec@1 91.230 Prec@5 99.720 Error@1 8.770
+
+==>>[2018-11-22 07时45分06秒] [Epoch=269/300] [Need: 00:32:16] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [269][000/391]   Time 0.250 (0.250)   Data 0.101 (0.101)   Loss 0.0155 (0.0155)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时45分07秒]
+  Epoch: [269][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.0536 (0.0480)   Prec@1 97.656 (98.671)   Prec@5 100.000 (100.000)   [2018-11-22 07时45分36秒]
+  **Train** Prec@1 98.694 Prec@5 99.998 Error@1 1.306
+  **Test** Prec@1 91.380 Prec@5 99.750 Error@1 8.620
+
+==>>[2018-11-22 07时46分09秒] [Epoch=270/300] [Need: 00:31:13] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [270][000/391]   Time 0.236 (0.236)   Data 0.087 (0.087)   Loss 0.0500 (0.0500)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时46分09秒]
+  Epoch: [270][200/391]   Time 0.149 (0.149)   Data 0.000 (0.001)   Loss 0.0274 (0.0445)   Prec@1 100.000 (98.803)   Prec@5 100.000 (100.000)   [2018-11-22 07时46分39秒]
+  **Train** Prec@1 98.704 Prec@5 100.000 Error@1 1.296
+  **Test** Prec@1 91.140 Prec@5 99.700 Error@1 8.860
+
+==>>[2018-11-22 07时47分19秒] [Epoch=271/300] [Need: 00:30:11] [learning_rate=0.0010] [Best : Accuracy=91.53, Error=8.47]
+  Epoch: [271][000/391]   Time 0.244 (0.244)   Data 0.095 (0.095)   Loss 0.0384 (0.0384)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时47分19秒]
+  Epoch: [271][200/391]   Time 0.150 (0.151)   Data 0.000 (0.001)   Loss 0.0576 (0.0449)   Prec@1 98.438 (98.706)   Prec@5 100.000 (100.000)   [2018-11-22 07时47分49秒]
+  **Train** Prec@1 98.662 Prec@5 100.000 Error@1 1.338
+  **Test** Prec@1 91.620 Prec@5 99.740 Error@1 8.380
+
+==>>[2018-11-22 07时48分21秒] [Epoch=272/300] [Need: 00:29:09] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [272][000/391]   Time 0.255 (0.255)   Data 0.106 (0.106)   Loss 0.0254 (0.0254)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时48分22秒]
+  Epoch: [272][200/391]   Time 0.151 (0.150)   Data 0.001 (0.001)   Loss 0.0458 (0.0437)   Prec@1 98.438 (98.791)   Prec@5 100.000 (99.996)   [2018-11-22 07时48分52秒]
+  **Train** Prec@1 98.664 Prec@5 99.998 Error@1 1.336
+  **Test** Prec@1 91.350 Prec@5 99.710 Error@1 8.650
+
+==>>[2018-11-22 07时49分24秒] [Epoch=273/300] [Need: 00:28:07] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [273][000/391]   Time 0.251 (0.251)   Data 0.102 (0.102)   Loss 0.0147 (0.0147)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时49分25秒]
+  Epoch: [273][200/391]   Time 0.154 (0.151)   Data 0.000 (0.001)   Loss 0.0652 (0.0450)   Prec@1 97.656 (98.702)   Prec@5 100.000 (100.000)   [2018-11-22 07时49分55秒]
+  **Train** Prec@1 98.656 Prec@5 100.000 Error@1 1.344
+  **Test** Prec@1 91.320 Prec@5 99.750 Error@1 8.680
+
+==>>[2018-11-22 07时50分28秒] [Epoch=274/300] [Need: 00:27:04] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [274][000/391]   Time 0.256 (0.256)   Data 0.107 (0.107)   Loss 0.0490 (0.0490)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时50分28秒]
+  Epoch: [274][200/391]   Time 0.149 (0.151)   Data 0.001 (0.001)   Loss 0.0615 (0.0431)   Prec@1 97.656 (98.826)   Prec@5 100.000 (100.000)   [2018-11-22 07时50分58秒]
+  **Train** Prec@1 98.716 Prec@5 100.000 Error@1 1.284
+  **Test** Prec@1 91.380 Prec@5 99.740 Error@1 8.620
+
+==>>[2018-11-22 07时51分30秒] [Epoch=275/300] [Need: 00:26:02] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [275][000/391]   Time 0.252 (0.252)   Data 0.104 (0.104)   Loss 0.0802 (0.0802)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 07时51分31秒]
+  Epoch: [275][200/391]   Time 0.149 (0.151)   Data 0.001 (0.001)   Loss 0.0361 (0.0459)   Prec@1 99.219 (98.702)   Prec@5 100.000 (100.000)   [2018-11-22 07时52分01秒]
+  **Train** Prec@1 98.722 Prec@5 99.998 Error@1 1.278
+  **Test** Prec@1 91.170 Prec@5 99.720 Error@1 8.830
+
+==>>[2018-11-22 07时52分34秒] [Epoch=276/300] [Need: 00:24:59] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [276][000/391]   Time 0.284 (0.284)   Data 0.125 (0.125)   Loss 0.0606 (0.0606)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时52分34秒]
+  Epoch: [276][200/391]   Time 0.148 (0.151)   Data 0.001 (0.001)   Loss 0.0360 (0.0426)   Prec@1 100.000 (98.923)   Prec@5 100.000 (100.000)   [2018-11-22 07时53分04秒]
+  **Train** Prec@1 98.878 Prec@5 100.000 Error@1 1.122
+  **Test** Prec@1 91.300 Prec@5 99.740 Error@1 8.700
+
+==>>[2018-11-22 07时53分36秒] [Epoch=277/300] [Need: 00:23:57] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [277][000/391]   Time 0.259 (0.259)   Data 0.111 (0.111)   Loss 0.0476 (0.0476)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 07时53分37秒]
+  Epoch: [277][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.0257 (0.0426)   Prec@1 99.219 (98.857)   Prec@5 100.000 (100.000)   [2018-11-22 07时54分06秒]
+  **Train** Prec@1 98.738 Prec@5 99.998 Error@1 1.262
+  **Test** Prec@1 91.380 Prec@5 99.730 Error@1 8.620
+
+==>>[2018-11-22 07时54分38秒] [Epoch=278/300] [Need: 00:22:54] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [278][000/391]   Time 0.253 (0.253)   Data 0.105 (0.105)   Loss 0.0609 (0.0609)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 07时54分39秒]
+  Epoch: [278][200/391]   Time 0.146 (0.152)   Data 0.000 (0.001)   Loss 0.0560 (0.0439)   Prec@1 98.438 (98.733)   Prec@5 100.000 (100.000)   [2018-11-22 07时55分09秒]
+  **Train** Prec@1 98.734 Prec@5 99.998 Error@1 1.266
+  **Test** Prec@1 91.340 Prec@5 99.710 Error@1 8.660
+
+==>>[2018-11-22 07时55分42秒] [Epoch=279/300] [Need: 00:21:52] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [279][000/391]   Time 0.243 (0.243)   Data 0.094 (0.094)   Loss 0.0267 (0.0267)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时55分42秒]
+  Epoch: [279][200/391]   Time 0.147 (0.149)   Data 0.000 (0.001)   Loss 0.0262 (0.0418)   Prec@1 99.219 (98.869)   Prec@5 100.000 (100.000)   [2018-11-22 07时56分12秒]
+  **Train** Prec@1 98.838 Prec@5 100.000 Error@1 1.162
+  **Test** Prec@1 91.330 Prec@5 99.690 Error@1 8.670
+
+==>>[2018-11-22 07时56分44秒] [Epoch=280/300] [Need: 00:20:49] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [280][000/391]   Time 0.255 (0.255)   Data 0.105 (0.105)   Loss 0.0286 (0.0286)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时56分45秒]
+  Epoch: [280][200/391]   Time 0.148 (0.149)   Data 0.001 (0.001)   Loss 0.0354 (0.0405)   Prec@1 98.438 (98.900)   Prec@5 100.000 (100.000)   [2018-11-22 07时57分14秒]
+  **Train** Prec@1 98.790 Prec@5 99.998 Error@1 1.210
+  **Test** Prec@1 91.270 Prec@5 99.690 Error@1 8.730
+
+==>>[2018-11-22 07时57分47秒] [Epoch=281/300] [Need: 00:19:47] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [281][000/391]   Time 0.255 (0.255)   Data 0.107 (0.107)   Loss 0.0307 (0.0307)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 07时57分47秒]
+  Epoch: [281][200/391]   Time 0.150 (0.149)   Data 0.000 (0.001)   Loss 0.0501 (0.0393)   Prec@1 98.438 (98.982)   Prec@5 100.000 (99.996)   [2018-11-22 07时58分17秒]
+  **Train** Prec@1 98.856 Prec@5 99.998 Error@1 1.144
+  **Test** Prec@1 91.340 Prec@5 99.740 Error@1 8.660
+
+==>>[2018-11-22 07时58分50秒] [Epoch=282/300] [Need: 00:18:44] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [282][000/391]   Time 0.245 (0.245)   Data 0.097 (0.097)   Loss 0.0311 (0.0311)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时58分50秒]
+  Epoch: [282][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.0408 (0.0424)   Prec@1 98.438 (98.888)   Prec@5 100.000 (100.000)   [2018-11-22 07时59分20秒]
+  **Train** Prec@1 98.862 Prec@5 100.000 Error@1 1.138
+  **Test** Prec@1 91.540 Prec@5 99.790 Error@1 8.460
+
+==>>[2018-11-22 07时59分52秒] [Epoch=283/300] [Need: 00:17:42] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [283][000/391]   Time 0.246 (0.246)   Data 0.097 (0.097)   Loss 0.0242 (0.0242)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 07时59分52秒]
+  Epoch: [283][200/391]   Time 0.148 (0.149)   Data 0.000 (0.001)   Loss 0.0429 (0.0403)   Prec@1 98.438 (98.927)   Prec@5 100.000 (99.988)   [2018-11-22 08时00分22秒]
+  **Train** Prec@1 98.890 Prec@5 99.994 Error@1 1.110
+  **Test** Prec@1 91.440 Prec@5 99.700 Error@1 8.560
+
+==>>[2018-11-22 08时00分54秒] [Epoch=284/300] [Need: 00:16:39] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [284][000/391]   Time 0.255 (0.255)   Data 0.107 (0.107)   Loss 0.0469 (0.0469)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 08时00分54秒]
+  Epoch: [284][200/391]   Time 0.148 (0.148)   Data 0.000 (0.001)   Loss 0.0251 (0.0416)   Prec@1 100.000 (98.850)   Prec@5 100.000 (100.000)   [2018-11-22 08时01分24秒]
+  **Train** Prec@1 98.924 Prec@5 99.998 Error@1 1.076
+  **Test** Prec@1 91.360 Prec@5 99.750 Error@1 8.640
+
+==>>[2018-11-22 08时01分56秒] [Epoch=285/300] [Need: 00:15:37] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [285][000/391]   Time 0.250 (0.250)   Data 0.101 (0.101)   Loss 0.0228 (0.0228)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 08时01分57秒]
+  Epoch: [285][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.0471 (0.0379)   Prec@1 96.875 (99.032)   Prec@5 100.000 (100.000)   [2018-11-22 08时02分26秒]
+  **Train** Prec@1 98.890 Prec@5 100.000 Error@1 1.110
+  **Test** Prec@1 91.400 Prec@5 99.720 Error@1 8.600
+
+==>>[2018-11-22 08时02分59秒] [Epoch=286/300] [Need: 00:14:34] [learning_rate=0.0010] [Best : Accuracy=91.62, Error=8.38]
+  Epoch: [286][000/391]   Time 0.251 (0.251)   Data 0.103 (0.103)   Loss 0.0166 (0.0166)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 08时02分59秒]
+  Epoch: [286][200/391]   Time 0.165 (0.150)   Data 0.001 (0.001)   Loss 0.0250 (0.0385)   Prec@1 99.219 (98.947)   Prec@5 100.000 (100.000)   [2018-11-22 08时03分29秒]
+  **Train** Prec@1 98.936 Prec@5 100.000 Error@1 1.064
+  **Test** Prec@1 91.670 Prec@5 99.690 Error@1 8.330
+
+==>>[2018-11-22 08时04分02秒] [Epoch=287/300] [Need: 00:13:32] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [287][000/391]   Time 0.250 (0.250)   Data 0.102 (0.102)   Loss 0.0541 (0.0541)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 08时04分02秒]
+  Epoch: [287][200/391]   Time 0.147 (0.149)   Data 0.000 (0.001)   Loss 0.0476 (0.0391)   Prec@1 97.656 (98.958)   Prec@5 100.000 (100.000)   [2018-11-22 08时04分32秒]
+  **Train** Prec@1 98.994 Prec@5 100.000 Error@1 1.006
+  **Test** Prec@1 91.660 Prec@5 99.640 Error@1 8.340
+
+==>>[2018-11-22 08时05分05秒] [Epoch=288/300] [Need: 00:12:29] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [288][000/391]   Time 0.253 (0.253)   Data 0.104 (0.104)   Loss 0.0544 (0.0544)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 08时05分05秒]
+  Epoch: [288][200/391]   Time 0.149 (0.149)   Data 0.001 (0.001)   Loss 0.0590 (0.0397)   Prec@1 99.219 (98.931)   Prec@5 100.000 (100.000)   [2018-11-22 08时05分35秒]
+  **Train** Prec@1 98.958 Prec@5 100.000 Error@1 1.042
+  **Test** Prec@1 91.400 Prec@5 99.650 Error@1 8.600
+
+==>>[2018-11-22 08时06分07秒] [Epoch=289/300] [Need: 00:11:27] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [289][000/391]   Time 0.256 (0.256)   Data 0.108 (0.108)   Loss 0.0207 (0.0207)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 08时06分07秒]
+  Epoch: [289][200/391]   Time 0.147 (0.148)   Data 0.000 (0.001)   Loss 0.0405 (0.0393)   Prec@1 98.438 (98.916)   Prec@5 100.000 (100.000)   [2018-11-22 08时06分36秒]
+  **Train** Prec@1 98.938 Prec@5 100.000 Error@1 1.062
+  **Test** Prec@1 91.300 Prec@5 99.690 Error@1 8.700
+
+==>>[2018-11-22 08时07分09秒] [Epoch=290/300] [Need: 00:10:24] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [290][000/391]   Time 0.247 (0.247)   Data 0.098 (0.098)   Loss 0.0458 (0.0458)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 08时07分09秒]
+  Epoch: [290][200/391]   Time 0.147 (0.149)   Data 0.001 (0.001)   Loss 0.0336 (0.0384)   Prec@1 100.000 (98.939)   Prec@5 100.000 (100.000)   [2018-11-22 08时07分39秒]
+  **Train** Prec@1 98.952 Prec@5 100.000 Error@1 1.048
+  **Test** Prec@1 91.340 Prec@5 99.730 Error@1 8.660
+
+==>>[2018-11-22 08时08分12秒] [Epoch=291/300] [Need: 00:09:22] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [291][000/391]   Time 0.246 (0.246)   Data 0.098 (0.098)   Loss 0.0449 (0.0449)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 08时08分12秒]
+  Epoch: [291][200/391]   Time 0.157 (0.151)   Data 0.001 (0.001)   Loss 0.0538 (0.0376)   Prec@1 97.656 (98.993)   Prec@5 100.000 (100.000)   [2018-11-22 08时08分42秒]
+  **Train** Prec@1 98.956 Prec@5 100.000 Error@1 1.044
+  **Test** Prec@1 91.210 Prec@5 99.760 Error@1 8.790
+
+==>>[2018-11-22 08时09分15秒] [Epoch=292/300] [Need: 00:08:19] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [292][000/391]   Time 0.236 (0.236)   Data 0.088 (0.088)   Loss 0.0271 (0.0271)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 08时09分15秒]
+  Epoch: [292][200/391]   Time 0.147 (0.149)   Data 0.001 (0.001)   Loss 0.0147 (0.0367)   Prec@1 100.000 (99.021)   Prec@5 100.000 (100.000)   [2018-11-22 08时09分45秒]
+  **Train** Prec@1 98.996 Prec@5 99.998 Error@1 1.004
+  **Test** Prec@1 91.260 Prec@5 99.750 Error@1 8.740
+
+==>>[2018-11-22 08时10分18秒] [Epoch=293/300] [Need: 00:07:17] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [293][000/391]   Time 0.260 (0.260)   Data 0.107 (0.107)   Loss 0.0222 (0.0222)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 08时10分18秒]
+  Epoch: [293][200/391]   Time 0.155 (0.151)   Data 0.001 (0.001)   Loss 0.0456 (0.0357)   Prec@1 99.219 (99.048)   Prec@5 100.000 (100.000)   [2018-11-22 08时10分48秒]
+  **Train** Prec@1 98.966 Prec@5 99.998 Error@1 1.034
+  **Test** Prec@1 91.210 Prec@5 99.690 Error@1 8.790
+
+==>>[2018-11-22 08时11分21秒] [Epoch=294/300] [Need: 00:06:14] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [294][000/391]   Time 0.261 (0.261)   Data 0.109 (0.109)   Loss 0.0314 (0.0314)   Prec@1 98.438 (98.438)   Prec@5 100.000 (100.000)   [2018-11-22 08时11分21秒]
+  Epoch: [294][200/391]   Time 0.155 (0.152)   Data 0.001 (0.001)   Loss 0.0399 (0.0367)   Prec@1 98.438 (98.989)   Prec@5 100.000 (100.000)   [2018-11-22 08时11分51秒]
+  **Train** Prec@1 98.978 Prec@5 100.000 Error@1 1.022
+  **Test** Prec@1 91.160 Prec@5 99.690 Error@1 8.840
+
+==>>[2018-11-22 08时12分24秒] [Epoch=295/300] [Need: 00:05:12] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [295][000/391]   Time 0.234 (0.234)   Data 0.087 (0.087)   Loss 0.0692 (0.0692)   Prec@1 97.656 (97.656)   Prec@5 100.000 (100.000)   [2018-11-22 08时12分24秒]
+  Epoch: [295][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.0343 (0.0369)   Prec@1 99.219 (99.005)   Prec@5 100.000 (100.000)   [2018-11-22 08时12分54秒]
+  **Train** Prec@1 98.998 Prec@5 100.000 Error@1 1.002
+  **Test** Prec@1 91.150 Prec@5 99.690 Error@1 8.850
+
+==>>[2018-11-22 08时13分27秒] [Epoch=296/300] [Need: 00:04:10] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [296][000/391]   Time 0.257 (0.257)   Data 0.102 (0.102)   Loss 0.0234 (0.0234)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 08时13分27秒]
+  Epoch: [296][200/391]   Time 0.147 (0.150)   Data 0.001 (0.001)   Loss 0.0316 (0.0351)   Prec@1 98.438 (99.094)   Prec@5 100.000 (100.000)   [2018-11-22 08时13分57秒]
+  **Train** Prec@1 99.102 Prec@5 100.000 Error@1 0.898
+  **Test** Prec@1 91.280 Prec@5 99.730 Error@1 8.720
+
+==>>[2018-11-22 08时14分29秒] [Epoch=297/300] [Need: 00:03:07] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [297][000/391]   Time 0.246 (0.246)   Data 0.094 (0.094)   Loss 0.0335 (0.0335)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 08时14分30秒]
+  Epoch: [297][200/391]   Time 0.149 (0.151)   Data 0.001 (0.001)   Loss 0.0268 (0.0358)   Prec@1 100.000 (99.071)   Prec@5 100.000 (100.000)   [2018-11-22 08时15分00秒]
+  **Train** Prec@1 99.046 Prec@5 100.000 Error@1 0.954
+  **Test** Prec@1 91.230 Prec@5 99.750 Error@1 8.770
+
+==>>[2018-11-22 08时15分32秒] [Epoch=298/300] [Need: 00:02:05] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [298][000/391]   Time 0.255 (0.255)   Data 0.107 (0.107)   Loss 0.0211 (0.0211)   Prec@1 100.000 (100.000)   Prec@5 100.000 (100.000)   [2018-11-22 08时15分33秒]
+  Epoch: [298][200/391]   Time 0.148 (0.150)   Data 0.000 (0.001)   Loss 0.0280 (0.0357)   Prec@1 100.000 (99.036)   Prec@5 100.000 (100.000)   [2018-11-22 08时16分03秒]
+  **Train** Prec@1 98.988 Prec@5 100.000 Error@1 1.012
+  **Test** Prec@1 91.190 Prec@5 99.730 Error@1 8.810
+
+==>>[2018-11-22 08时16分35秒] [Epoch=299/300] [Need: 00:01:02] [learning_rate=0.0010] [Best : Accuracy=91.67, Error=8.33]
+  Epoch: [299][000/391]   Time 0.264 (0.264)   Data 0.112 (0.112)   Loss 0.0263 (0.0263)   Prec@1 99.219 (99.219)   Prec@5 100.000 (100.000)   [2018-11-22 08时16分35秒]
+  Epoch: [299][200/391]   Time 0.151 (0.151)   Data 0.001 (0.001)   Loss 0.0478 (0.0349)   Prec@1 98.438 (99.110)   Prec@5 100.000 (100.000)   [2018-11-22 08时17分05秒]
+  **Train** Prec@1 99.050 Prec@5 100.000 Error@1 0.950
+  **Test** Prec@1 91.530 Prec@5 99.690 Error@1 8.470
