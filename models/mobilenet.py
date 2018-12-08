@@ -4,10 +4,12 @@ import torch.nn as nn
 import torch.backends.cudnn as cudnn
 import torchvision.models as models
 from torch.autograd import Variable
+from torch.nn import init
+import math
 
 class MobileNet(nn.Module):
     '''
-        1.0 MobileNet-224 实现，目前还没加宽度因子alpha,分辨力因子p
+        1.0 MobileNet-224 实现，加宽度因子alpha,分辨力因子p
     '''
     def __init__(self, alpha=1, p=224, num_classes=1000):
         self.alpha = alpha
@@ -109,6 +111,18 @@ class MobileNet(nn.Module):
             )
         self.fc = nn.Linear(int(1024*self.alpha), num_classes)
 
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
+                m.weight.data.normal_(0, math.sqrt(2. / n))
+                #m.bias.data.zero_()
+            elif isinstance(m, nn.BatchNorm2d):
+                m.weight.data.fill_(1)
+                m.bias.data.zero_()
+            elif isinstance(m, nn.Linear):
+                init.kaiming_normal(m.weight)
+                m.bias.data.zero_()
+
     def forward(self, x):
         x = self.model(x)
         x = x.view(-1, int(1024*self.alpha))
@@ -135,6 +149,22 @@ def mobilenet_0_25(alpha=0.25, p=224, num_classes=1000):
     model = MobileNet(alpha, p, num_classes)
     return model
 
+def mobilenet_1_0_224(num_classes=1000):
+    model = MobileNet(1, 224, num_classes)
+    return model
+
+def mobilenet_0_75_224(num_classes=1000):
+    model = MobileNet(1, 224, num_classes)
+    return model
+
+def mobilenet_0_5_224(num_classes=1000):
+    model = MobileNet(1, 224, num_classes)
+    return model
+
+def mobilenet_0_25_224(num_classes=1000):
+    model = MobileNet(1, 224, num_classes)
+    return model
+
 def speed(model, name, inputX, inputY):
     t0 = time.time()
     input = torch.rand(1,3,inputX,inputY).cuda()
@@ -149,22 +179,22 @@ def speed(model, name, inputX, inputY):
 if __name__ == '__main__':
     #cudnn.benchmark = True # This will make network slow ??
     #  mobilenet_1_0
-    mobilenet = mobilenet_1_0(1, 224, 1000).cuda()
-    print("=> mobilenet_1_0 :\n {}".format(mobilenet))
-    speed(mobilenet, 'mobilenet_224_1_0', 224, 224) # for 224x224
-
-    mobilenet = mobilenet_1_0(1, 192, 1000).cuda()
-    print("=> mobilenet_1_0 :\n {}".format(mobilenet))
-    speed(mobilenet, 'mobilenet_192_1_0', 192, 192) # for 192x192
-    
-    mobilenet = mobilenet_1_0(1, 160, 1000).cuda()
-    print("=> mobilenet_1_0 :\n {}".format(mobilenet))
-    speed(mobilenet, 'mobilenet_160_1_0', 160, 160) # for 160x160
-    
     mobilenet = mobilenet_1_0(1, 128, 1000).cuda()
     print("=> mobilenet_1_0 :\n {}".format(mobilenet))
-    speed(mobilenet, 'mobilenet_128_1_0', 128, 128) # for 128x128
-    print("=> mobilenet_1_0 param : {}".format(count_parameters(mobilenet)))
+    speed(mobilenet, 'mobilenet_224_1_0', 128, 128) # for 224x224
+
+    # mobilenet = mobilenet_1_0(1, 192, 1000).cuda()
+    # print("=> mobilenet_1_0 :\n {}".format(mobilenet))
+    # speed(mobilenet, 'mobilenet_192_1_0', 192, 192) # for 192x192
+    
+    # mobilenet = mobilenet_1_0(1, 160, 1000).cuda()
+    # print("=> mobilenet_1_0 :\n {}".format(mobilenet))
+    # speed(mobilenet, 'mobilenet_160_1_0', 160, 160) # for 160x160
+    
+    # mobilenet = mobilenet_1_0(1, 128, 1000).cuda()
+    # print("=> mobilenet_1_0 :\n {}".format(mobilenet))
+    # speed(mobilenet, 'mobilenet_128_1_0', 128, 128) # for 128x128
+    # print("=> mobilenet_1_0 param : {}".format(count_parameters(mobilenet)))
 
     # #  mobilenet_0_75
     # mobilenet = mobilenet_0_75(0.75, 224, 1000).cuda()
@@ -183,3 +213,8 @@ if __name__ == '__main__':
     # print("=> mobilenet_0_25 :\n {}".format(mobilenet))
     # speed(mobilenet, 'mobilenet_224_0_25', 224, 224)
     # print("=> mobilenet_0_25 param : {}".format(count_parameters(mobilenet)))
+
+    mobilenet = mobilenet_1_0_224(num_classes=1000).cuda()
+    print("=> mobilenet_1_0_224 :\n {}".format(mobilenet))
+    speed(mobilenet, 'mobilenet_224_1_0', 224, 224) # for 224x224
+    print("=> mobilenet_0_25 param : {}".format(count_parameters(mobilenet)))
