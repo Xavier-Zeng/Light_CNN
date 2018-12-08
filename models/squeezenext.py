@@ -1,8 +1,10 @@
 import torch
+import time
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn import init
 import math
+from torch.autograd import Variable
 
 
 class BasicBlock(nn.Module):
@@ -61,10 +63,12 @@ class SqueezeNext(nn.Module):
   def __init__(self, width_x, blocks, num_classes=10):
     super(SqueezeNext, self).__init__()
     self.in_channels = 64
-    
-    self.conv1  = nn.Conv2d(3, int(width_x * self.in_channels), 3, 1, 1, bias=True)     # For Cifar10
+
+    self.conv1  = nn.Conv2d(3, int(width_x * self.in_channels), 7, 2, 0, bias=True) # for 227x227
+    # self.conv1  = nn.Conv2d(3, int(width_x * self.in_channels), 3, 1, 1, bias=True)     # For Cifar10
     #self.conv1  = nn.Conv2d(3, int(width_x * self.in_channels), 3, 2, 1, bias=True)     # For Tiny-ImageNet
     self.bn1    = nn.BatchNorm2d(int(width_x * self.in_channels))
+    
     self.stage1 = self._make_layer(blocks[0], width_x, 32, 1)
     self.stage2 = self._make_layer(blocks[1], width_x, 64, 2)
     self.stage3 = self._make_layer(blocks[2], width_x, 128, 2)
@@ -97,33 +101,61 @@ class SqueezeNext(nn.Module):
     return nn.Sequential(*layers)
     
   def forward(self, input):
-    output = F.relu(self.bn1(self.conv1(input)))
-    output = self.stage1(output)
-    output = self.stage2(output)
-    output = self.stage3(output)
-    output = self.stage4(output)
-    output = F.relu(self.bn2(self.conv2(output)))
-    output = F.avg_pool2d(output, 4)
-    output = output.view(output.size(0), -1)
+    output = F.relu(self.bn1(self.conv1(input))) #111x111x64
+    output = F.max_pool2d(output,3, 2) # 55x55x64
+    output = self.stage1(output) # 55x55x32
+    output = self.stage2(output) # 28x28x64
+    output = self.stage3(output) # 14x14x128
+    output = self.stage4(output) # 7x7x256
+    output = F.relu(self.bn2(self.conv2(output))) # 7x7x128
+    output = F.avg_pool2d(output, 7) #1x1x128
+    # print("after avg_pool2d: {}".format(output.size()))
+    output = output.view(output.size(0), -1) 
+    # print("after view: {}".format(output.size()))
     output = self.linear(output)
     return output
 
 # 模型名字必须全部使用小写（在main.py中规定的）
-def cifar_sqnxt_23_1x(num_classes=10):
+def sqnxt_23_1x(num_classes=10):
   model = SqueezeNext(1.0, [6, 6, 8, 1], num_classes)
   return model
 
-def cifar_sqnxt_23_1x_v5(num_classes=10):
+def sqnxt_23_1x_v5(num_classes=10):
   model = SqueezeNext(1.0, [2, 4, 14, 1], num_classes)
   return model
 
-def cifar_sqnxt_23_2x(num_classes=10):
+def sqnxt_23_2x(num_classes=10):
   model = SqueezeNext(2.0, [6, 6, 8, 1], num_classes)
   return model
 
 
-def cifar_sqnxt_23_2x_v5(num_classes=10):
+def sqnxt_23_2x_v5(num_classes=10):
   model = SqueezeNext(2.0, [2, 4, 14, 1], num_classes)
   return model
 
 
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+def speed(model, name, inputX, inputY):
+    t0 = time.time()
+    input = torch.rand(1,3,inputX, inputY).cuda()
+    input = Variable(input, volatile = True)
+    t1 = time.time()
+
+    out = model(input)
+    t2 = time.time()
+    
+    print("=> output size = {}".format(out.size()))
+    print('=> {} cost: {}'.format(name, t2 - t1))
+    
+
+if __name__ == '__main__':
+    #cudnn.benchmark = True # This will make network slow ??
+    #  sqnxt_23_1x
+    net = sqnxt_23_1x(1000).cuda()
+    print("=> mobilenet_1_0 :\n {}".format(net))
+    speed(net, 'sqnxt_23_1x', 227, 227) # for 224x224
+    print("=> sqnxt_23_1x param : {}".format(count_parameters(net)))
+
+    
