@@ -11,13 +11,30 @@ Architecture refer to [ResNext-DenseNet](https://github.com/D-X-Y/ResNeXt-DenseN
 - [x] Train on CIFAR-10 and ImageNet(sample a small data) with sqnxt_23_1x, sqnxt_23_1x_v5, sqnxt_23_2x, sqnxt_23_2x_v5
 
 ## Usage
-To train on CIFAR-10 using 4 gpu:
-
+### To train on CIFAR-10(original CIFAR-10) using 1 gpu, initial learning_rate=0.1:
+- Use sqnxt_23_1x
 ```bash
-python main.py ./data --dataset cifar10 --arch sqnxt_23_1x --save_path ./snapshots/cifar10_sqnxt_23_1x_300 --epochs 300 --learning_rate 0.1 --schedule 150 225 --gammas 0.1 0.1 --batch_size 128 --workers 4 --ngpu 1
+python main_32.py ./data --dataset cifar10 --arch cifar_sqnxt_23_1x --save_path ./snapshots/cifar10_sqnxt_23_1x_300 --epochs 300 --learning_rate 0.1 --schedule 150 225 --gammas 0.1 0.1 --batch_size 128 --workers 4 --ngpu 1
 ```
-
-
+### To train on CIFAR-10(we resize it to 224x224) using 1 gpu, initial learning_rate=0.01: 
+- use mobilenet
+```bash
+python main_224.py ./data --dataset cifar10 --arch mobilenet_1_0_224 --save_path ./snapshots/cifar10_mobilenet_1_0_224_300 --epochs 300 --learning_rate 0.01 --schedule 150 225 --gammas 0.1 0.1 --batch_size 8 --workers 4 --ngpu 1
+```
+### To train on CIFAR-10(we resize it to 227x227, because in paper, squeezenext use input image size of 227x227) using 1 gpu, initial learning_rate=0.01: 
+- use sqnxt_23_1x
+```bash
+python main_227.py ./data --dataset cifar10 --arch sqnxt_23_1x --save_path ./snapshots/cifar10_sqnxt_23_1x_227_300 --epochs 300 --learning_rate 0.01 --schedule 150 225 --gammas 0.1 0.1 --batch_size 8 --workers 4 --ngpu 1
+```
+### To train on papcell datasets(train dataset:717, test dataset:200.) using 1 gpu, initial learning_rate=0.01: 
+- use mobilenet
+```bash
+python main_224.py ./data/pap_cell --dataset papcell --arch mobilenet_1_0_224 --save_path ./snapshots/papcell_mobilenet_1_0_224_300 --epochs 300 --learning_rate 0.01 --schedule 150 225 --gammas 0.1 0.1 --batch_size 8 --workers 4 --ngpu 1
+```
+- use sqnxt_23_1x
+```bash
+python main_227.py ./data/pap_cell --dataset papcell --arch sqnxt_23_1x --save_path ./snapshots/papcell_sqnxt_23_1x_227_300 --epochs 300 --learning_rate 0.01 --schedule 150 225 --gammas 0.1 0.1 --batch_size 8 --workers 4 --ngpu 1
+```
 ## Configurations
 
 ### 1.  prepare data of CIFAR-10 and ImageNet(sample a small data) and store data in folder `data`.
