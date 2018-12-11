@@ -1,3 +1,4 @@
+import time
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -64,6 +65,7 @@ class ShuffleUnit(nn.Module):
         self.grouped_conv = grouped_conv
         self.combine = combine
         self.groups = groups
+        # 第一个1x1 GConv的输出通道数设置为输出通道数的1/4,在论文3.3处有讲解
         self.bottleneck_channels = self.out_channels // 4
 
         # define the type of ShuffleUnit
@@ -73,7 +75,7 @@ class ShuffleUnit(nn.Module):
             self._combine_func = self._add
         elif self.combine == 'concat':
             # ShuffleUnit Figure 2c
-            self.depthwise_stride = 2
+            self.depthwise_stride = 2 # 3x3 DWConv 的stride=2
             self._combine_func = self._concat
             
             # ensure output of concat has the same channels as 
@@ -358,9 +360,48 @@ def test_group_conv_and_channel_shuffle():
 
 #     test_group_conv_and_channel_shuffle()
 
+
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+
+def speed(model, name, inputX, inputY):
+    t0 = time.time()
+    input = torch.rand(1,3,inputX,inputY).cuda()
+    input = Variable(input, volatile = True)
+    t1 = time.time()
+
+    model(input)
+    t2 = time.time()
+    
+    print('=> {} cost: {}'.format(name, t2 - t1))
+
+
 if __name__ == "__main__":
     """Testing
     """
-    model = ShuffleNet()
-    print("=> model:\n")
-    print(model)
+    model = ShuffleNet(num_classes=1000).cuda()
+    # print("=> ShuffleNet 1x(g=3) :\n {}".format(model))
+    speed(model, 'ShuffleNet 1x(g=3)', 224, 224) # for 224x224
+    print("=> ShuffleNet 1x(g=3) param : {}".format(count_parameters(model)))
+
+    model = ShuffleNet(groups=1, num_classes=1000).cuda()
+    # print("=> ShuffleNet 1x(g=3) :\n {}".format(model))
+    speed(model, 'ShuffleNet 1x(g=1)', 224, 224) # for 224x224
+    print("=> ShuffleNet 1x(g=1) param : {}".format(count_parameters(model)))
+
+
+    model = ShuffleNet(groups=2, num_classes=1000).cuda()
+    # print("=> ShuffleNet 1x(g=2) :\n {}".format(model))
+    speed(model, 'ShuffleNet 1x(g=2)', 224, 224) # for 224x224
+    print("=> ShuffleNet 1x(g=2) param : {}".format(count_parameters(model)))
+
+    model = ShuffleNet(groups=4, num_classes=1000).cuda()
+    # print("=> ShuffleNet 1x(g=2) :\n {}".format(model))
+    speed(model, 'ShuffleNet 1x(g=4)', 224, 224) # for 224x224
+    print("=> ShuffleNet 1x(g=4) param : {}".format(count_parameters(model)))
+
+    model = ShuffleNet(groups=8, num_classes=1000).cuda()
+    # print("=> ShuffleNet 1x(g=2) :\n {}".format(model))
+    speed(model, 'ShuffleNet 1x(g=8)', 224, 224) # for 224x224
+    print("=> ShuffleNet 1x(g=8) param : {}".format(count_parameters(model)))
