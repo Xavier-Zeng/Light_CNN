@@ -3,8 +3,8 @@ Architecture refer to [ResNext-DenseNet](https://github.com/D-X-Y/ResNeXt-DenseN
 - SqueezeNet (SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and <0.5MB model size)
 - SqueezeNext (SqueezeNext: Hardware-Aware Neural Network Design)
 - MobileNet (Mobilenets: Efficient convolutional neural networks for mobile vision applications)
-- MobileNet v2 (MobileNetV2: Inverted Residuals and Linear Bottlenecks) [Implement]((https://github.com/tonylins/pytorch-mobilenet-v2))
-- ShuffleNet (ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices) [Implement]((https://github.com/jaxony/ShuffleNet))
+- MobileNet v2 (MobileNetV2: Inverted Residuals and Linear Bottlenecks) [Implement](https://github.com/tonylins/pytorch-mobilenet-v2)
+- ShuffleNet (ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices) [Implement](https://github.com/jaxony/ShuffleNet)
 - ShuffleNet v2 (Shufflenet v2: Practical guidelines for efficient cnn architecture design)
 
 - [x] Train on CIFAR-10 and ImageNet(sample a small data) with SqueezeNet1.0, SqueezeNet1.1
