@@ -360,6 +360,25 @@ def test_group_conv_and_channel_shuffle():
 
 #     test_group_conv_and_channel_shuffle()
 
+def shufflenet_g_1(num_classes=1000):
+    model = ShuffleNet(1, 3, num_classes)
+    return model
+
+def shufflenet_g_2(num_classes=1000):
+    model = ShuffleNet(2, 3, num_classes)
+    return model
+
+def shufflenet_g_3(num_classes=1000):
+    model = ShuffleNet(3, 3, num_classes)
+    return model
+
+def shufflenet_g_4(num_classes=1000):
+    model = ShuffleNet(4, 3, num_classes)
+    return model
+
+def shufflenet_g_8(num_classes=1000):
+    model = ShuffleNet(8, 3, num_classes)
+    return model
 
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)

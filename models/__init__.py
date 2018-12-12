@@ -37,4 +37,8 @@ from .mobilenet import mobilenet_0_25_224, mobilenet_0_5_224, mobilenet_0_75_224
 #add squeezenext for 227x227
 from .squeezenext import sqnxt_23_1x, sqnxt_23_1x_v5 ,sqnxt_23_2x, sqnxt_23_2x_v5
 #add  squeezenext for 32x32
-from .cifar_squeezenext import cifar_sqnxt_23_1x, cifar_sqnxt_23_1x_v5, cifar_sqnxt_23_2x, cifar_sqnxt_23_2x_v5    
+from .cifar_squeezenext import cifar_sqnxt_23_1x, cifar_sqnxt_23_1x_v5, cifar_sqnxt_23_2x, cifar_sqnxt_23_2x_v5   
+
+#add  shufflenet for 224x224
+from .shufflenet import shufflenet_g_1, shufflenet_g_2, shufflenet_g_3, shufflenet_g_4, shufflenet_g_8   
+
