@@ -98,21 +98,24 @@ class MobileNetV2(nn.Module):
                 input_channel = output_channel
         # building last several layers
         self.features.append(conv_1x1_bn(input_channel, self.last_channel))
+        self.features.append(nn.AvgPool2d(input_size//32, input_size//32))
         # make it nn.Sequential
         self.features = nn.Sequential(*self.features)
 
         # building classifier
         self.classifier = nn.Sequential(
             nn.Dropout(0.2),
-            nn.Linear(self.last_channel, n_class),
+            nn.Conv2d(self.last_channel, n_class, kernel_size=(1,1), stride=(1,1), padding=(0,0)),
+            # nn.Linear(self.last_channel, n_class),
         )
-
+        self.n_cass = n_class
         self._initialize_weights()
 
     def forward(self, x):
         x = self.features(x)
-        x = x.mean(3).mean(2)
         x = self.classifier(x)
+        # change n_samplesxn_classx1x1 to n_samplesxn_class
+        x = x.view(-1, self.n_cass)
         return x
 
     def _initialize_weights(self):
@@ -129,6 +132,18 @@ class MobileNetV2(nn.Module):
                 n = m.weight.size(1)
                 m.weight.data.normal_(0, 0.01)
                 m.bias.data.zero_()
+
+def mobilenet_v2_1x_224(num_classes=1000):
+    model = MobileNetV2(num_classes, input_size=224, width_mult=1.)
+    return model
+
+def mobilenet_v2_0_75x_224(num_classes=1000):
+    model = MobileNetV2(num_classes, input_size=224, width_mult=0.75)
+    return model
+
+def mobilenet_v2_1_4x_224(num_classes=1000):
+    model = MobileNetV2(num_classes, input_size=224, width_mult=1.4)
+    return model
 
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -150,6 +165,16 @@ if __name__ == "__main__":
     """Testing
     """
     model = MobileNetV2(n_class=1000).cuda()
-    print("=> MobileNetV2 :\n {}".format(model))
-    speed(model, 'MobileNetV2 ', 224, 224) # for 224x224
-    print("=> MobileNetV2 param : {}".format(count_parameters(model)))
+    print("=> MobileNetV2 1x 224:\n {}".format(model))
+    speed(model, 'MobileNetV2 1x 224', 224, 224) # for 224x224
+    print("=> MobileNetV2 1x 224 param : {}".format(count_parameters(model)))
+
+    model = MobileNetV2(n_class=1000, width_mult=0.75).cuda()
+    print("=> MobileNetV2 0.75x 224 :\n {}".format(model))
+    speed(model, 'MobileNetV2 0.75x 224', 224, 224) # for 224x224
+    print("=> MobileNetV2 0.75x 224 param : {}".format(count_parameters(model)))
+
+    model = MobileNetV2(n_class=1000, width_mult=1.4).cuda()
+    print("=> MobileNetV2 1.4x 224 :\n {}".format(model))
+    speed(model, 'MobileNetV2 1.4x 224', 224, 224) # for 224x224
+    print("=> MobileNetV2 1.4x 224 param : {}".format(count_parameters(model)))

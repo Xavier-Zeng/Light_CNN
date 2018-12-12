@@ -34,6 +34,9 @@ from .cifar_squeezenext_ibn_b import sqnxt_23_1x_ibn_b, sqnxt_23_1x_v5_ibn_b, sq
 #add mobilenet for 224x224
 from .mobilenet import mobilenet_0_25_224, mobilenet_0_5_224, mobilenet_0_75_224, mobilenet_1_0_224
 
+#add mobilenet v2 for 224x224
+from .mobilenet_v2 import mobilenet_v2_0_75x_224, mobilenet_v2_1x_224, mobilenet_v2_1_4x_224
+
 #add squeezenext for 227x227
 from .squeezenext import sqnxt_23_1x, sqnxt_23_1x_v5 ,sqnxt_23_2x, sqnxt_23_2x_v5
 #add  squeezenext for 32x32
