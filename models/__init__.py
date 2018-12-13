@@ -45,3 +45,6 @@ from .cifar_squeezenext import cifar_sqnxt_23_1x, cifar_sqnxt_23_1x_v5, cifar_sq
 #add  shufflenet for 224x224
 from .shufflenet import shufflenet_g_1, shufflenet_g_2, shufflenet_g_3, shufflenet_g_4, shufflenet_g_8   
 
+#add  shufflenet v2 for 224x224
+from .shufflenet_v2 import shufflenet_v2_0_5x_224, shufflenet_v2_1x_224, shufflenet_v2_1_5x_224, shufflenet_v2_2x_224 
+
