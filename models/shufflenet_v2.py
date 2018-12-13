@@ -157,6 +157,21 @@ class ShuffleNetV2(nn.Module):
     
         # building classifier
         self.classifier = nn.Sequential(nn.Linear(self.stage_out_channels[-1], n_class))
+        self.init_params()
+    
+    def init_params(self):
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                init.kaiming_normal(m.weight, mode='fan_out')
+                if m.bias is not None:
+                    init.constant(m.bias, 0)
+            elif isinstance(m, nn.BatchNorm2d):
+                init.constant(m.weight, 1)
+                init.constant(m.bias, 0)
+            elif isinstance(m, nn.Linear):
+                init.normal(m.weight, std=0.001)
+                if m.bias is not None:
+                    init.constant(m.bias, 0)
 
     def forward(self, x):
         x = self.conv1(x)
@@ -167,6 +182,8 @@ class ShuffleNetV2(nn.Module):
         x = x.view(-1, self.stage_out_channels[-1])
         x = self.classifier(x)
         return x
+    
+    
 
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
