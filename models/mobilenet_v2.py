@@ -164,17 +164,24 @@ def speed(model, name, inputX, inputY):
 if __name__ == "__main__":
     """Testing
     """
+    # model = MobileNetV2(n_class=1000, width_mult=0.4).cuda()
+    # # print("=> MobileNetV2 0.4x 224 :\n {}".format(model))
+    # speed(model, 'MobileNetV2 0.4x 224', 224, 224) # for 224x224
+    # print("=> MobileNetV2 0.4x 224 param : {}".format(count_parameters(model)))
+
+    # model = MobileNetV2(n_class=1000, width_mult=0.75).cuda()
+    # # print("=> MobileNetV2 0.75x 224 :\n {}".format(model))
+    # speed(model, 'MobileNetV2 0.75x 224', 224, 224) # for 224x224
+    # print("=> MobileNetV2 0.75x 224 param : {}".format(count_parameters(model)))
+
+
     model = MobileNetV2(n_class=1000).cuda()
-    print("=> MobileNetV2 1x 224:\n {}".format(model))
+    # print("=> MobileNetV2 1x 224:\n {}".format(model))
     speed(model, 'MobileNetV2 1x 224', 224, 224) # for 224x224
     print("=> MobileNetV2 1x 224 param : {}".format(count_parameters(model)))
 
-    model = MobileNetV2(n_class=1000, width_mult=0.75).cuda()
-    print("=> MobileNetV2 0.75x 224 :\n {}".format(model))
-    speed(model, 'MobileNetV2 0.75x 224', 224, 224) # for 224x224
-    print("=> MobileNetV2 0.75x 224 param : {}".format(count_parameters(model)))
-
-    model = MobileNetV2(n_class=1000, width_mult=1.4).cuda()
-    print("=> MobileNetV2 1.4x 224 :\n {}".format(model))
-    speed(model, 'MobileNetV2 1.4x 224', 224, 224) # for 224x224
-    print("=> MobileNetV2 1.4x 224 param : {}".format(count_parameters(model)))
+    
+    # model = MobileNetV2(n_class=1000, width_mult=1.4).cuda()
+    # # print("=> MobileNetV2 1.4x 224 :\n {}".format(model))
+    # speed(model, 'MobileNetV2 1.4x 224', 224, 224) # for 224x224
+    # print("=> MobileNetV2 1.4x 224 param : {}".format(count_parameters(model)))

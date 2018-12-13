@@ -179,9 +179,9 @@ def speed(model, name, inputX, inputY):
 if __name__ == '__main__':
     #cudnn.benchmark = True # This will make network slow ??
     #  mobilenet_1_0
-    mobilenet = mobilenet_1_0(1, 128, 1000).cuda()
-    print("=> mobilenet_1_0 :\n {}".format(mobilenet))
-    speed(mobilenet, 'mobilenet_224_1_0', 128, 128) # for 224x224
+    # mobilenet = mobilenet_1_0(1, 128, 1000).cuda()
+    # print("=> mobilenet_1_0 :\n {}".format(mobilenet))
+    # speed(mobilenet, 'mobilenet_224_1_0', 128, 128) # for 224x224
 
     # mobilenet = mobilenet_1_0(1, 192, 1000).cuda()
     # print("=> mobilenet_1_0 :\n {}".format(mobilenet))
@@ -196,25 +196,26 @@ if __name__ == '__main__':
     # speed(mobilenet, 'mobilenet_128_1_0', 128, 128) # for 128x128
     # print("=> mobilenet_1_0 param : {}".format(count_parameters(mobilenet)))
 
-    # #  mobilenet_0_75
-    # mobilenet = mobilenet_0_75(0.75, 224, 1000).cuda()
-    # print("=> mobilenet_0_75 :\n {}".format(mobilenet))
-    # speed(mobilenet, 'mobilenet_224_0_75', 224, 224)
-    # print("=> mobilenet_0_75 param : {}".format(count_parameters(mobilenet)))
+    # #  mobilenet_0_25
+    # mobilenet = mobilenet_0_25(0.25, 224, 1000).cuda()
+    # print("=> MobileNet 0.25x 224 :\n {}".format(mobilenet))
+    # speed(mobilenet, 'MobileNet 0.25x 224 ', 224, 224) # for 224x224
+    # print("=> MobileNet 0.25x 224  param : {}".format(count_parameters(mobilenet)))
 
     # #  mobilenet_0_5
     # mobilenet = mobilenet_0_5(0.5, 224, 1000).cuda()
-    # print("=> mobilenet_0_5 :\n {}".format(mobilenet))
-    # speed(mobilenet, 'mobilenet_224_0_5', 224, 224)
-    # print("=> mobilenet_0_5 param : {}".format(count_parameters(mobilenet)))
+    # print("=> MobileNet 0.5x 224:\n {}".format(mobilenet))
+    # speed(mobilenet, 'MobileNet 0.5x 224', 224, 224)
+    # print("=> MobileNet 0.5x 224 param : {}".format(count_parameters(mobilenet)))
 
-    # #  mobilenet_0_25
-    # mobilenet = mobilenet_0_75(0.25, 224, 1000).cuda()
-    # print("=> mobilenet_0_25 :\n {}".format(mobilenet))
-    # speed(mobilenet, 'mobilenet_224_0_25', 224, 224)
-    # print("=> mobilenet_0_25 param : {}".format(count_parameters(mobilenet)))
+    # #  mobilenet_0_75
+    # mobilenet = mobilenet_0_75(0.75, 224, 1000).cuda()
+    # print("=> MobileNet 0.75x 224 :\n {}".format(mobilenet))
+    # speed(mobilenet, 'MobileNet 0.75x 224', 224, 224)
+    # print("=> MobileNet 0.75x 224 param : {}".format(count_parameters(mobilenet)))
 
+    # #  mobilenet_1_0
     mobilenet = mobilenet_1_0_224(num_classes=1000).cuda()
-    print("=> mobilenet_1_0_224 :\n {}".format(mobilenet))
-    speed(mobilenet, 'mobilenet_224_1_0', 224, 224) # for 224x224
-    print("=> mobilenet_0_25 param : {}".format(count_parameters(mobilenet)))
+    # print("=> MobileNetV2 1x 224 :\n {}".format(mobilenet))
+    speed(mobilenet, 'MobileNet 1x 224 ', 224, 224) # for 224x224
+    print("=> MobileNet 1x 224  param : {}".format(count_parameters(mobilenet)))
