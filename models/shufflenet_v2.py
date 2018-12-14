@@ -225,7 +225,7 @@ if __name__ == '__main__':
     # print("=> ShuffleNetV2 0.5x 224 param : {}".format(count_parameters(model)))
 
     model = ShuffleNetV2(n_class=1000, input_size=224, width_mult=1.).cuda()
-    # print("=> ShuffleNetV2 1x 224:\n {}".format(model))
+    print("=> ShuffleNetV2 1x 224:\n {}".format(model))
     speed(model, 'ShuffleNetV2 1x 224', 224, 224) # for 224x224
     print("=> ShuffleNetV2 1x 224 param : {}".format(count_parameters(model)))
 

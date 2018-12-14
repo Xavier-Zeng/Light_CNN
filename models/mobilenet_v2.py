@@ -133,12 +133,16 @@ class MobileNetV2(nn.Module):
                 m.weight.data.normal_(0, 0.01)
                 m.bias.data.zero_()
 
-def mobilenet_v2_1x_224(num_classes=1000):
-    model = MobileNetV2(num_classes, input_size=224, width_mult=1.)
+def mobilenet_v2_0_4x_224(num_classes=1000):
+    model = MobileNetV2(num_classes, input_size=224, width_mult=0.4)
     return model
 
 def mobilenet_v2_0_75x_224(num_classes=1000):
     model = MobileNetV2(num_classes, input_size=224, width_mult=0.75)
+    return model
+
+def mobilenet_v2_1x_224(num_classes=1000):
+    model = MobileNetV2(num_classes, input_size=224, width_mult=1.)
     return model
 
 def mobilenet_v2_1_4x_224(num_classes=1000):

@@ -153,9 +153,24 @@ def speed(model, name, inputX, inputY):
 if __name__ == '__main__':
     #cudnn.benchmark = True # This will make network slow ??
     #  sqnxt_23_1x
-    net = sqnxt_23_1x(1000).cuda()
-    print("=> mobilenet_1_0 :\n {}".format(net))
-    speed(net, 'sqnxt_23_1x', 227, 227) # for 224x224
-    print("=> sqnxt_23_1x param : {}".format(count_parameters(net)))
+    # net = sqnxt_23_1x(1000).cuda()
+    # # print("=> sqnxt_23_1x :\n {}".format(net))
+    # speed(net, 'sqnxt_23_1x', 227, 227) # for 224x224
+    # print("=> sqnxt_23_1x param : {}".format(count_parameters(net)))
+
+    # net = sqnxt_23_1x_v5(1000).cuda()
+    # # print("=> sqnxt_23_1x_v5 :\n {}".format(net))
+    # speed(net, 'sqnxt_23_1x_v5', 227, 227) # for 224x224
+    # print("=> sqnxt_23_1x_v5 param : {}".format(count_parameters(net)))
+
+    # net = sqnxt_23_2x(1000).cuda()
+    # # print("=> sqnxt_23_2x :\n {}".format(net))
+    # speed(net, 'sqnxt_23_2x', 227, 227) # for 224x224
+    # print("=> sqnxt_23_2x param : {}".format(count_parameters(net)))
+
+    net = sqnxt_23_2x_v5(1000).cuda()
+    # print("=> sqnxt_23_2x_v5 :\n {}".format(net))
+    speed(net, 'sqnxt_23_2x_v5', 227, 227) # for 224x224
+    print("=> sqnxt_23_2x_v5 param : {}".format(count_parameters(net)))
 
     
