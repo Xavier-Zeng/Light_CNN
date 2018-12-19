@@ -13,8 +13,8 @@ You can construct a model with random weights by calling its constructor:
 .. SqueezeNext: https://arxiv.org/abs/1803.10615
 """
 
-#add cifar_squeezenet1_0_1_1_vanilla
-# from .cifar_squeezenet1_0_1_1_vanilla import squeezenet1_0, squeezenet1_1
+# add cifar_squeezenet1_0_1_1_vanilla ffor 32x32
+from .cifar_squeezenet1_0_1_1_vanilla import cifar_squeezenet1_0, cifar_squeezenet1_1
 
 # add cifar_squeezenext
 # from .cifar_squeezenext import sqnxt_23_1x, sqnxt_23_1x_v5, sqnxt_23_2x, sqnxt_23_2x_v5
@@ -30,6 +30,9 @@ from .cifar_squeezenext_ibn_a_2_0_75 import sqnxt_23_1x_ibn_a_2_0_75, sqnxt_23_1
 
 #add cifar_squeezenext_ibn_b
 from .cifar_squeezenext_ibn_b import sqnxt_23_1x_ibn_b, sqnxt_23_1x_v5_ibn_b, sqnxt_23_2x_ibn_b, sqnxt_23_2x_v5_ibn_b
+
+# add cifar_squeezenet1_0_1_1_vanilla for 227x227
+from .squeezenet1_0_1_1_vanilla import squeezenet1_0, squeezenet1_1
 
 #add mobilenet for 224x224
 from .mobilenet import mobilenet_0_25_224, mobilenet_0_5_224, mobilenet_0_75_224, mobilenet_1_0_224

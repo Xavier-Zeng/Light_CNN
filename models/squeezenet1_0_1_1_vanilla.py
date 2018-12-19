@@ -13,10 +13,10 @@ from collections import OrderedDict
 __all__ = ['SqueezeNet', 'squeezenet1_0', 'squeezenet1_1']
 
 
-model_urls = {
-    'squeezenet1_0': 'https://download.pytorch.org/models/squeezenet1_0-a815701f.pth',
-    'squeezenet1_1': 'https://download.pytorch.org/models/squeezenet1_1-f364aa15.pth',
-}
+# model_urls = {
+#     'squeezenet1_0': 'https://download.pytorch.org/models/squeezenet1_0-a815701f.pth',
+#     'squeezenet1_1': 'https://download.pytorch.org/models/squeezenet1_1-f364aa15.pth',
+# }
 
 
 class Fire(nn.Module):
@@ -65,44 +65,44 @@ class SqueezeNet(nn.Module):
         self.num_classes = num_classes
         if version == 1.0:
             self.features = nn.Sequential(
-                nn.Conv2d(3, 96, kernel_size=3, stride=1, padding=1), # 32x32, 96
+                nn.Conv2d(3, 96, kernel_size=7, stride=2, padding=0), # 111x111, 96
                 nn.BatchNorm2d(96),
                 nn.ReLU(inplace=True),
 
-                nn.MaxPool2d(kernel_size=2, stride=2, ceil_mode=True), # 16x16, 96
+                nn.MaxPool2d(kernel_size=3, stride=2, ceil_mode=True), # 55x55, 96
 
                 Fire(96, 16, 64, 64),
                 Fire(128, 16, 64, 64),
                 Fire(128, 32, 128, 128),
 
-                nn.MaxPool2d(kernel_size=3, stride=2, ceil_mode=True), # 8x8, 256
+                nn.MaxPool2d(kernel_size=3, stride=2, ceil_mode=True), # 27x27, 256
 
                 Fire(256, 32, 128, 128),
                 Fire(256, 48, 192, 192),
                 Fire(384, 48, 192, 192),
                 Fire(384, 64, 256, 256),
 
-                nn.MaxPool2d(kernel_size=2, stride=2, ceil_mode=True), # 4x4, 512
+                nn.MaxPool2d(kernel_size=3, stride=2, ceil_mode=True), # 13x13, 512
 
-                Fire(512, 64, 256, 256), # 4x4, 512
+                Fire(512, 64, 256, 256), # 13x13, 512
             )
         else:
             self.features = nn.Sequential(
-                nn.Conv2d(3, 96, kernel_size=3, stride=1, padding=1), # 32x32, 96
+                nn.Conv2d(3, 96, kernel_size=7, stride=2, padding=0), # 111x111, 96
                 nn.BatchNorm2d(96),
                 nn.ReLU(inplace=True),
 
-                nn.MaxPool2d(kernel_size=2, stride=2, ceil_mode=True),
+                nn.MaxPool2d(kernel_size=3, stride=2, ceil_mode=True), # 55x55, 96
 
                 Fire(96, 16, 64, 64),
                 Fire(128, 16, 64, 64),
 
-                nn.MaxPool2d(kernel_size=2, stride=2, ceil_mode=True),
+                nn.MaxPool2d(kernel_size=3, stride=2, ceil_mode=True), # 27x27, 256
 
                 Fire(128, 32, 128, 128),
                 Fire(256, 32, 128, 128),
 
-                nn.MaxPool2d(kernel_size=2, stride=2, ceil_mode=True),
+                nn.MaxPool2d(kernel_size=3, stride=2, ceil_mode=True), # 13x13, 512
                 
                 Fire(256, 48, 192, 192),
                 Fire(384, 48, 192, 192),
@@ -110,13 +110,13 @@ class SqueezeNet(nn.Module):
                 Fire(512, 64, 256, 256),
             )
         # Final convolution is initialized differently form the rest
-        final_conv = nn.Conv2d(512, num_classes, kernel_size=1)
+        final_conv = nn.Conv2d(512, num_classes, kernel_size=1) # 13x13, 1000
         
         self.classifier = nn.Sequential(
             nn.Dropout(p=0.5),
             final_conv, # 4x4, 10
             nn.BatchNorm2d(num_classes),
-            nn.AvgPool2d(4), # 1x1, 10
+            nn.AvgPool2d(13), # 1x1, 1000
             nn.ReLU(inplace=True),
             # nn.Linear(64*block.expansion, num_classes)
         )
@@ -136,30 +136,30 @@ class SqueezeNet(nn.Module):
     def forward(self, x):
         x = self.features(x)
         x = self.classifier(x)
+        print("=> x.size() = {}".format(x.size()))
         return x.view(x.size(0), self.num_classes)
 
-def cifar_squeezenet1_0(pretrained=False, model_root=None, **kwargs):
+def squeezenet1_0(num_classes=1000):
     r"""SqueezeNet model architecture from the `"SqueezeNet: AlexNet-level
     accuracy with 50x fewer parameters and <0.5MB model size"
     <https://arxiv.org/abs/1602.07360>`_ paper.
     """
-    model = SqueezeNet(version=1.0, **kwargs)
-    if pretrained:
-        misc.load_state_dict(model, model_urls['squeezenet1_0'], model_root)
+    model = SqueezeNet(1.0, num_classes)
+    # if pretrained:
+    #     misc.load_state_dict(model, model_urls['squeezenet1_0'], model_root)
     return model
 
 
-def cifar_squeezenet1_1(pretrained=False, model_root=None, **kwargs):
+def squeezenet1_1(num_classes=1000):
     r"""SqueezeNet 1.1 model from the `official SqueezeNet repo
     <https://github.com/DeepScale/SqueezeNet/tree/master/SqueezeNet_v1.1>`_.
     SqueezeNet 1.1 has 2.4x less computation and slightly fewer parameters
     than SqueezeNet 1.0, without sacrificing accuracy.
     """
-    model = SqueezeNet(version=1.1, **kwargs)
-    if pretrained:
-        misc.load_state_dict(model, model_urls['squeezenet1_1'], model_root)
+    model = SqueezeNet(1.1, num_classes)
+    # if pretrained:
+    #     misc.load_state_dict(model, model_urls['squeezenet1_1'], model_root)
     return model
-
 
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
@@ -180,12 +180,15 @@ def speed(model, name, inputX, inputY):
 if __name__ == '__main__':
     """Testing
     """
-    # model = cifar_squeezenet1_0(num_classes=1000).cuda()
-    # print("=> cifar_squeezenet1_0 32:\n {}".format(model))
-    # speed(model, 'cifar_squeezenet1_0 32', 32, 32) # for 32x32
-    # print("=> cifar_squeezenet1_0 32 param : {}".format(count_parameters(model)))
+    # model = squeezenet1_0(num_classes=1000).cuda()
+    # print("=> squeezenet1_0 224:\n {}".format(model))
+    # speed(model, 'squeezenet1_0 224', 224, 224) # for 224x224
+    # print("=> squeezenet1_0 224 param : {}".format(count_parameters(model)))
 
-    model = cifar_squeezenet1_1(num_classes=1000).cuda()
-    print("=> cifar_squeezenet1_1 32:\n {}".format(model))
-    speed(model, 'cifar_squeezenet1_1 32', 32, 32) # for 32x32
-    print("=> cifar_squeezenet1_1 32 param : {}".format(count_parameters(model)))
+    model = squeezenet1_1(num_classes=1000).cuda()
+    print("=> squeezenet1_0 227:\n {}".format(model))
+    speed(model, 'squeezenet1_0 227', 227, 227) # for 227x227
+    print("=> squeezenet1_0 227 param : {}".format(count_parameters(model)))
+
+
+
