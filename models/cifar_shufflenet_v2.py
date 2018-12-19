@@ -131,7 +131,7 @@ class ShuffleNetV2(nn.Module):
 
         # building first layer
         input_channel = self.stage_out_channels[1]
-        self.conv1 = conv_bn(3, input_channel, stride=2, padding=1)    # 16x16
+        self.conv1 = conv_bn(3, input_channel, stride=1, padding=1)    # 32x32
         # self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         
         self.features = []
@@ -153,7 +153,7 @@ class ShuffleNetV2(nn.Module):
 
         # building last several layers
         self.conv_last = conv_1x1_bn(input_channel, self.stage_out_channels[-1])
-        self.globalpool = nn.Sequential(nn.AvgPool2d(int(input_size/16)))              
+        self.globalpool = nn.Sequential(nn.AvgPool2d(int(input_size/8)))              
     
         # building classifier
         self.classifier = nn.Sequential(nn.Linear(self.stage_out_channels[-1], n_class))
@@ -174,10 +174,10 @@ class ShuffleNetV2(nn.Module):
                     init.constant(m.bias, 0)
 
     def forward(self, x):
-        x = self.conv1(x) # 16x16x24
+        x = self.conv1(x) # 32x32x24
         # x = self.maxpool(x)
-        x = self.features(x) # 8x8x116=> 4x4x232 => 2x2x464
-        x = self.conv_last(x)  # 2x2x1024
+        x = self.features(x) # 16x16x116=> 8x8x232 => 4x4x464
+        x = self.conv_last(x)  # 4x4x1024
         x = self.globalpool(x) # 1x1x1024
         x = x.view(-1, self.stage_out_channels[-1])
         x = self.classifier(x)
